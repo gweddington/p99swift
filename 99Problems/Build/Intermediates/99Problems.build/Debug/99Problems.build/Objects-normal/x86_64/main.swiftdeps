@@ -1,5 +1,6 @@
 ### Swift dependencies file v0 ###
 provides-top-level:
+- "+"
 provides-nominal:
 provides-member:
 - ["C10_9Problems4List", ""]
@@ -7,13 +8,18 @@ provides-member:
 - ["C10_9Problems4List", "pennultimate"]
 - ["C10_9Problems4List", "subscript"]
 - ["C10_9Problems4List", "length"]
+- ["C10_9Problems4List", "reverse"]
+- ["C10_9Problems4List", "clone"]
+- ["C10_9Problems4List", "values"]
 provides-dynamic-lookup:
 depends-top-level:
-- !private "+"
+- "+"
 - !private "-"
 - !private "=="
 - !private ">="
 - !private "??"
+- !private "Array"
+- "AssignmentPrecedence"
 - !private "FloatLiteralType"
 - "Int"
 - !private "IntegerLiteralType"
@@ -22,14 +28,18 @@ depends-top-level:
 - "TernaryPrecedence"
 - !private "print"
 depends-member:
+- !private ["Ps9AnyObject", "List"]
+- !private ["Ps9AnyObject", "clone"]
 - !private ["Ps9AnyObject", "init"]
 - !private ["Ps9AnyObject", "last"]
 - !private ["Ps9AnyObject", "length"]
 - !private ["Ps9AnyObject", "nextItem"]
 - !private ["Ps9AnyObject", "pennultimate"]
 - !private ["Ps9AnyObject", "print"]
+- !private ["Ps9AnyObject", "reverse"]
 - !private ["Ps9AnyObject", "subscript"]
 - !private ["Ps9AnyObject", "value"]
+- !private ["Ps9AnyObject", "values"]
 - !private ["Sb", "_getBuiltinLogicValue"]
 - !private ["Ps7CVarArg", "init"]
 - !private ["Ps10Comparable", "init"]
@@ -38,10 +48,32 @@ depends-member:
 - !private ["Ps29CustomPlaygroundQuickLookable", "init"]
 - !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
 - !private ["Ps17CustomReflectable", "init"]
+- !private ["Ps23CustomStringConvertible", "List"]
 - !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "clone"]
 - !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "last"]
+- !private ["Ps23CustomStringConvertible", "length"]
+- !private ["Ps23CustomStringConvertible", "nextItem"]
+- !private ["Ps23CustomStringConvertible", "pennultimate"]
+- !private ["Ps23CustomStringConvertible", "print"]
+- !private ["Ps23CustomStringConvertible", "reverse"]
+- !private ["Ps23CustomStringConvertible", "subscript"]
+- !private ["Ps23CustomStringConvertible", "value"]
+- !private ["Ps23CustomStringConvertible", "values"]
+- !private ["Ps9Equatable", "List"]
 - !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- !private ["Ps9Equatable", "clone"]
 - !private ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "last"]
+- !private ["Ps9Equatable", "length"]
+- !private ["Ps9Equatable", "nextItem"]
+- !private ["Ps9Equatable", "pennultimate"]
+- !private ["Ps9Equatable", "print"]
+- !private ["Ps9Equatable", "reverse"]
+- !private ["Ps9Equatable", "subscript"]
+- !private ["Ps9Equatable", "value"]
+- !private ["Ps9Equatable", "values"]
 - !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
 - !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
 - !private ["Ps26ExpressibleByStringLiteral", "init"]
@@ -49,14 +81,20 @@ depends-member:
 - !private ["Ps8Hashable", "_getBuiltinLogicValue"]
 - !private ["Ps8Hashable", "init"]
 - ["C10_9Problems4List", "Int"]
+- ["C10_9Problems4List", "List"]
 - ["C10_9Problems4List", "T"]
+- ["C10_9Problems4List", "clone"]
+- !private ["C10_9Problems4List", "deinit"]
+- !private ["C10_9Problems4List", "init"]
 - ["C10_9Problems4List", "last"]
 - ["C10_9Problems4List", "length"]
 - !private ["C10_9Problems4List", "nextItem"]
 - ["C10_9Problems4List", "pennultimate"]
 - !private ["C10_9Problems4List", "print"]
+- ["C10_9Problems4List", "reverse"]
 - ["C10_9Problems4List", "subscript"]
 - !private ["C10_9Problems4List", "value"]
+- ["C10_9Problems4List", "values"]
 - !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps25LosslessStringConvertible", "init"]
 - !private ["Ps10MirrorPath", "init"]
@@ -131,4 +169,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreText.apinotesc"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.apinotesc"
-interface-hash: "df6e4b20ef71368a7258e911e1520d2d"
+interface-hash: "474fe50ce9ac2236fe6182ca4ea016f1"

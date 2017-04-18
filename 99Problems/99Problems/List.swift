@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class List<T> {
+public class List<T: Equatable> {
     var value: T!
     var nextItem: List<T>?
     
@@ -25,3 +25,17 @@ public class List<T> {
         nextItem = List(values)
     }
 }
+
+
+extension List: Equatable {
+    static public func ==(a: List<T>, b: List<T>) -> Bool {
+        return a.value == b.value && a.nextItem == b.nextItem
+    }
+}
+
+extension List: CustomStringConvertible {
+    public var description: String {
+        return values().description
+    }
+}
+

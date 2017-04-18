@@ -39,3 +39,30 @@ extension List {
         return (nextItem?.length ?? 0) + 1
     }
 }
+
+//P05 - Reverse a linked list.
+public func +<T>(left: List<T>, right: List<T>) -> List<T> {
+    if left.nextItem == nil {
+        let result = left.clone()
+        result.nextItem = right
+        return result
+    } else {
+        return List([left.value]) + (left.nextItem! + right)
+    }
+}
+extension List {
+    func reverse() -> List<T> {
+        return length == 1 ? self : nextItem!.reverse() + List([value])
+    }
+    
+    //I used these 2 for the operator (+) implementation
+    //I also used values for CustomStringConvertible
+    func clone() -> List<T> {
+        return List(values())
+    }
+    
+    func values() -> [T] {
+        return [value] + (nextItem?.values() ?? [])
+    }
+}
+

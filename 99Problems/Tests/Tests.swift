@@ -41,5 +41,11 @@ class Tests: XCTestCase {
         XCTAssertEqual(theList.length, 6)
     }
     
+    //P05 - Reverse a linked list.
+    func testP05() {
+        print(theList.reverse())
+        XCTAssertEqual(theList.reverse(), List(8, 5, 3, 2, 1, 1)!)
+    }
+    
     
 }

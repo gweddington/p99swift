@@ -1,104 +1,152 @@
 ### Swift dependencies file v0 ###
 provides-top-level:
 - "List"
+- "=="
 provides-nominal:
 - "C10_9Problems4List"
 provides-member:
 - ["C10_9Problems4List", ""]
 provides-dynamic-lookup:
 depends-top-level:
-- !private "=="
+- !private "&&"
+- "=="
 - "Array"
 - "AssignmentPrecedence"
+- "Bool"
+- "CustomStringConvertible"
+- "Equatable"
 - !private "FloatLiteralType"
 - !private "IntegerLiteralType"
 - "List"
+- "String"
 depends-member:
 - !private ["Ps9AnyObject", "Array"]
 - !private ["Ps9AnyObject", "List"]
+- ["Ps9AnyObject", "description"]
 - !private ["Ps9AnyObject", "init"]
 - !private ["Ps9AnyObject", "nextItem"]
 - !private ["Ps9AnyObject", "value"]
+- !private ["Ps9AnyObject", "values"]
 - ["Ps9AnyObject", ""]
 - !private ["Sa", "count"]
+- !private ["Sa", "description"]
 - !private ["Sa", "init"]
 - !private ["Sa", "removeFirst"]
 - !private ["Ps23BidirectionalCollection", "count"]
+- !private ["Ps23BidirectionalCollection", "description"]
 - !private ["Ps23BidirectionalCollection", "init"]
 - !private ["Ps23BidirectionalCollection", "removeFirst"]
 - !private ["Sb", "_getBuiltinLogicValue"]
 - !private ["Ps7CVarArg", "count"]
+- !private ["Ps7CVarArg", "description"]
 - !private ["Ps7CVarArg", "init"]
 - !private ["Ps7CVarArg", "removeFirst"]
 - !private ["Ps10Collection", "count"]
+- !private ["Ps10Collection", "description"]
 - !private ["Ps10Collection", "init"]
 - !private ["Ps10Collection", "removeFirst"]
 - !private ["Ps28CustomDebugStringConvertible", "count"]
+- !private ["Ps28CustomDebugStringConvertible", "description"]
 - !private ["Ps28CustomDebugStringConvertible", "init"]
 - !private ["Ps28CustomDebugStringConvertible", "removeFirst"]
 - !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
 - !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
 - !private ["Ps17CustomReflectable", "count"]
+- !private ["Ps17CustomReflectable", "description"]
 - !private ["Ps17CustomReflectable", "init"]
 - !private ["Ps17CustomReflectable", "removeFirst"]
+- !private ["Ps23CustomStringConvertible", "Array"]
+- !private ["Ps23CustomStringConvertible", "List"]
 - !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps23CustomStringConvertible", "count"]
+- ["Ps23CustomStringConvertible", "description"]
 - !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "nextItem"]
 - !private ["Ps23CustomStringConvertible", "removeFirst"]
+- !private ["Ps23CustomStringConvertible", "value"]
+- !private ["Ps23CustomStringConvertible", "values"]
+- ["Ps23CustomStringConvertible", ""]
+- !private ["Ps9Equatable", "Array"]
+- !private ["Ps9Equatable", "List"]
 - !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- ["Ps9Equatable", "description"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "nextItem"]
+- !private ["Ps9Equatable", "value"]
+- !private ["Ps9Equatable", "values"]
+- ["Ps9Equatable", ""]
 - !private ["Ps25ExpressibleByArrayLiteral", "count"]
+- !private ["Ps25ExpressibleByArrayLiteral", "description"]
 - !private ["Ps25ExpressibleByArrayLiteral", "init"]
 - !private ["Ps25ExpressibleByArrayLiteral", "removeFirst"]
 - !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
 - !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- ["C10_9Problems4List", "=="]
 - ["C10_9Problems4List", "Array"]
+- ["C10_9Problems4List", "Bool"]
 - ["C10_9Problems4List", "List"]
+- ["C10_9Problems4List", "String"]
 - ["C10_9Problems4List", "T"]
 - ["C10_9Problems4List", "deinit"]
+- ["C10_9Problems4List", "description"]
 - ["C10_9Problems4List", "init"]
 - ["C10_9Problems4List", "nextItem"]
 - ["C10_9Problems4List", "value"]
+- !private ["C10_9Problems4List", "values"]
 - !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps17MutableCollection", "count"]
+- !private ["Ps17MutableCollection", "description"]
 - !private ["Ps17MutableCollection", "init"]
 - !private ["Ps17MutableCollection", "removeFirst"]
 - !private ["Ps22RandomAccessCollection", "count"]
+- !private ["Ps22RandomAccessCollection", "description"]
 - !private ["Ps22RandomAccessCollection", "init"]
 - !private ["Ps22RandomAccessCollection", "removeFirst"]
 - !private ["Ps26RangeReplaceableCollection", "count"]
+- !private ["Ps26RangeReplaceableCollection", "description"]
 - !private ["Ps26RangeReplaceableCollection", "init"]
 - !private ["Ps26RangeReplaceableCollection", "removeFirst"]
 - !private ["Ps8Sequence", "count"]
+- !private ["Ps8Sequence", "description"]
 - !private ["Ps8Sequence", "init"]
 - !private ["Ps8Sequence", "removeFirst"]
 - !private ["Ps14_ArrayProtocol", "count"]
+- !private ["Ps14_ArrayProtocol", "description"]
 - !private ["Ps14_ArrayProtocol", "init"]
 - !private ["Ps14_ArrayProtocol", "removeFirst"]
 - !private ["Ps23_BidirectionalIndexable", "count"]
+- !private ["Ps23_BidirectionalIndexable", "description"]
 - !private ["Ps23_BidirectionalIndexable", "init"]
 - !private ["Ps23_BidirectionalIndexable", "removeFirst"]
 - !private ["Ps24_DestructorSafeContainer", "count"]
+- !private ["Ps24_DestructorSafeContainer", "description"]
 - !private ["Ps24_DestructorSafeContainer", "init"]
 - !private ["Ps24_DestructorSafeContainer", "removeFirst"]
 - !private ["Ps35_ExpressibleByBuiltinBooleanLiteral", "_getBuiltinLogicValue"]
 - !private ["Ps9_Hashable", "_getBuiltinLogicValue"]
 - !private ["Ps10_Indexable", "count"]
+- !private ["Ps10_Indexable", "description"]
 - !private ["Ps10_Indexable", "init"]
 - !private ["Ps10_Indexable", "removeFirst"]
 - !private ["Ps14_IndexableBase", "count"]
+- !private ["Ps14_IndexableBase", "description"]
 - !private ["Ps14_IndexableBase", "init"]
 - !private ["Ps14_IndexableBase", "removeFirst"]
 - !private ["Ps17_MutableIndexable", "count"]
+- !private ["Ps17_MutableIndexable", "description"]
 - !private ["Ps17_MutableIndexable", "init"]
 - !private ["Ps17_MutableIndexable", "removeFirst"]
 - !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
 - !private ["Ps21_ObjectiveCBridgeable", "count"]
+- !private ["Ps21_ObjectiveCBridgeable", "description"]
 - !private ["Ps21_ObjectiveCBridgeable", "init"]
 - !private ["Ps21_ObjectiveCBridgeable", "removeFirst"]
 - !private ["Ps22_RandomAccessIndexable", "count"]
+- !private ["Ps22_RandomAccessIndexable", "description"]
 - !private ["Ps22_RandomAccessIndexable", "init"]
 - !private ["Ps22_RandomAccessIndexable", "removeFirst"]
 - !private ["Ps26_RangeReplaceableIndexable", "count"]
+- !private ["Ps26_RangeReplaceableIndexable", "description"]
 - !private ["Ps26_RangeReplaceableIndexable", "init"]
 - !private ["Ps26_RangeReplaceableIndexable", "removeFirst"]
 depends-nominal:
@@ -111,8 +159,8 @@ depends-nominal:
 - !private "Ps28CustomDebugStringConvertible"
 - !private "Ps29CustomPlaygroundQuickLookable"
 - !private "Ps17CustomReflectable"
-- !private "Ps23CustomStringConvertible"
-- !private "Ps9Equatable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
 - !private "Ps25ExpressibleByArrayLiteral"
 - !private "Ps27ExpressibleByBooleanLiteral"
 - !private "Ps8Hashable"
@@ -148,4 +196,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreText.apinotesc"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.apinotesc"
-interface-hash: "00e6b05c0d18d32d263add001044fc21"
+interface-hash: "a65c8679134132f0b7081fc4b9f8bf9f"
