@@ -8,17 +8,27 @@
 
 import Foundation
 
-//P01
+//P01 - find the last element of a list
 extension List {
     var last: T? {
         return nextItem?.last ?? value
     }
 }
 
-//P02
+//P02 - find the pennultimate element of a list
 extension List {
     var pennultimate: T? {
         return nextItem?.nextItem == nil ? value : nextItem?.pennultimate
     }
 }
 
+//P03 - find the kth element of a list
+extension List {
+    subscript(index: Int) -> T? {
+        guard index >= 0 else {
+            print("index should be >= 0")
+            return nil
+        }
+        return index == 0 ? value : nextItem?[index-1]
+    }
+}

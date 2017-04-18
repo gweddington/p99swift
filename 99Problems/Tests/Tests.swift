@@ -21,14 +21,18 @@ class Tests: XCTestCase {
         super.tearDown()
     }
     
-    //find the last element of a list
+    //P01 - find the last element of a list
     func testP01() {
         XCTAssertEqual(theList.last, 8)
     }
     
-    //find the pennultimate element of a list
+    //P02 - find the pennultimate element of a list
     func testP02() {
         XCTAssertEqual(theList.pennultimate, 5)
     }
     
+    //P03 - find the kth element of a list
+    func testP03() {
+        XCTAssertEqual(theList[2], 2)
+    }
 }

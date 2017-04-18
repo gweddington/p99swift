@@ -10,6 +10,7 @@ provides-dynamic-lookup:
 - "tearDown"
 - "testP01"
 - "testP02"
+- "testP03"
 depends-top-level:
 - "Int"
 - "List"
@@ -24,6 +25,7 @@ depends-member:
 - !private ["Ps9AnyObject", "last"]
 - !private ["Ps9AnyObject", "pennultimate"]
 - !private ["Ps9AnyObject", "setUp"]
+- !private ["Ps9AnyObject", "subscript"]
 - !private ["Ps9AnyObject", "tearDown"]
 - !private ["Ps9AnyObject", "theList"]
 - ["Ps9AnyObject", ""]
@@ -69,6 +71,7 @@ depends-member:
 - ["C5Tests4List", "init"]
 - !private ["C5Tests4List", "last"]
 - !private ["C5Tests4List", "pennultimate"]
+- !private ["C5Tests4List", "subscript"]
 - ["CSo8NSObject", "Int"]
 - ["CSo8NSObject", "List"]
 - !private ["CSo8NSObject", "XCTAssertEqual"]
@@ -77,6 +80,7 @@ depends-member:
 - ["CSo8NSObject", "tearDown"]
 - ["CSo8NSObject", "testP01"]
 - ["CSo8NSObject", "testP02"]
+- ["CSo8NSObject", "testP03"]
 - ["CSo8NSObject", "theList"]
 - ["PSo16NSObjectProtocol", "List"]
 - !private ["PSo16NSObjectProtocol", "XCTAssertEqual"]
@@ -95,6 +99,7 @@ depends-member:
 - ["C5Tests5Tests", "tearDown"]
 - ["C5Tests5Tests", "testP01"]
 - ["C5Tests5Tests", "testP02"]
+- ["C5Tests5Tests", "testP03"]
 - ["C5Tests5Tests", "theList"]
 - ["PSo17XCTWaiterDelegate", "List"]
 - !private ["PSo17XCTWaiterDelegate", "XCTAssertEqual"]
@@ -111,6 +116,7 @@ depends-member:
 - ["CSo6XCTest", "tearDown"]
 - ["CSo6XCTest", "testP01"]
 - ["CSo6XCTest", "testP02"]
+- ["CSo6XCTest", "testP03"]
 - ["CSo6XCTest", "theList"]
 - ["CSo10XCTestCase", "Int"]
 - ["CSo10XCTestCase", "List"]
@@ -120,6 +126,7 @@ depends-member:
 - ["CSo10XCTestCase", "tearDown"]
 - ["CSo10XCTestCase", "testP01"]
 - ["CSo10XCTestCase", "testP02"]
+- ["CSo10XCTestCase", "testP03"]
 - ["CSo10XCTestCase", "theList"]
 - ["CSo10XCTestCase", ""]
 - !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
@@ -216,4 +223,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "18bb42449a6640eef0c2f1c648d45274"
+interface-hash: "2c6c6e7278e5e218242f8dd83ae854f0"
