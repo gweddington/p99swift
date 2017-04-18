@@ -11,6 +11,8 @@ provides-member:
 - ["C5Tests4List", "reverse"]
 - ["C5Tests4List", "clone"]
 - ["C5Tests4List", "values"]
+- ["C5Tests4List", "isPalindrome"]
+- ["C5Tests4List", "flatten"]
 provides-dynamic-lookup:
 depends-top-level:
 - "+"
@@ -20,6 +22,9 @@ depends-top-level:
 - !private "??"
 - !private "Array"
 - "AssignmentPrecedence"
+- "Bool"
+- "CastingPrecedence"
+- "Equatable"
 - !private "FloatLiteralType"
 - "Int"
 - !private "IntegerLiteralType"
@@ -28,8 +33,10 @@ depends-top-level:
 - "TernaryPrecedence"
 - !private "print"
 depends-member:
+- ["Ps9AnyObject", "Equatable"]
 - !private ["Ps9AnyObject", "List"]
 - !private ["Ps9AnyObject", "clone"]
+- !private ["Ps9AnyObject", "flatten"]
 - !private ["Ps9AnyObject", "init"]
 - !private ["Ps9AnyObject", "last"]
 - !private ["Ps9AnyObject", "length"]
@@ -48,9 +55,11 @@ depends-member:
 - !private ["Ps29CustomPlaygroundQuickLookable", "init"]
 - !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
 - !private ["Ps17CustomReflectable", "init"]
+- ["Ps23CustomStringConvertible", "Equatable"]
 - !private ["Ps23CustomStringConvertible", "List"]
 - !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps23CustomStringConvertible", "clone"]
+- !private ["Ps23CustomStringConvertible", "flatten"]
 - !private ["Ps23CustomStringConvertible", "init"]
 - !private ["Ps23CustomStringConvertible", "last"]
 - !private ["Ps23CustomStringConvertible", "length"]
@@ -61,9 +70,11 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "subscript"]
 - !private ["Ps23CustomStringConvertible", "value"]
 - !private ["Ps23CustomStringConvertible", "values"]
+- ["Ps9Equatable", "Equatable"]
 - !private ["Ps9Equatable", "List"]
 - !private ["Ps9Equatable", "_getBuiltinLogicValue"]
 - !private ["Ps9Equatable", "clone"]
+- !private ["Ps9Equatable", "flatten"]
 - !private ["Ps9Equatable", "init"]
 - !private ["Ps9Equatable", "last"]
 - !private ["Ps9Equatable", "length"]
@@ -80,12 +91,16 @@ depends-member:
 - !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
 - !private ["Ps8Hashable", "_getBuiltinLogicValue"]
 - !private ["Ps8Hashable", "init"]
+- ["C5Tests4List", "Bool"]
+- ["C5Tests4List", "Equatable"]
 - ["C5Tests4List", "Int"]
 - ["C5Tests4List", "List"]
 - ["C5Tests4List", "T"]
 - ["C5Tests4List", "clone"]
 - !private ["C5Tests4List", "deinit"]
+- ["C5Tests4List", "flatten"]
 - !private ["C5Tests4List", "init"]
+- ["C5Tests4List", "isPalindrome"]
 - ["C5Tests4List", "last"]
 - ["C5Tests4List", "length"]
 - !private ["C5Tests4List", "nextItem"]
@@ -121,15 +136,15 @@ depends-member:
 - !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
 - !private ["Ps21_ObjectiveCBridgeable", "init"]
 depends-nominal:
-- !private "Ps9AnyObject"
+- "Ps9AnyObject"
 - !private "Sb"
 - !private "Ps7CVarArg"
 - !private "Ps10Comparable"
 - !private "Ps28CustomDebugStringConvertible"
 - !private "Ps29CustomPlaygroundQuickLookable"
 - !private "Ps17CustomReflectable"
-- !private "Ps23CustomStringConvertible"
-- !private "Ps9Equatable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
 - !private "Ps27ExpressibleByBooleanLiteral"
 - !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
 - !private "Ps26ExpressibleByStringLiteral"
@@ -219,4 +234,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "474fe50ce9ac2236fe6182ca4ea016f1"
+interface-hash: "2f0331ad090ca03178227876b2b205d4"

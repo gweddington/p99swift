@@ -2,6 +2,7 @@
 provides-top-level:
 - "List"
 - "=="
+- "=="
 provides-nominal:
 - "C5Tests4List"
 provides-member:
@@ -84,6 +85,7 @@ depends-member:
 - ["C5Tests4List", "=="]
 - ["C5Tests4List", "Array"]
 - ["C5Tests4List", "Bool"]
+- ["C5Tests4List", "Equatable"]
 - ["C5Tests4List", "List"]
 - ["C5Tests4List", "String"]
 - ["C5Tests4List", "T"]
@@ -242,4 +244,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "a65c8679134132f0b7081fc4b9f8bf9f"
+interface-hash: "747723f4608a040bc7c1e217ec10e168"

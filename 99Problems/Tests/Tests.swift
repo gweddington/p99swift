@@ -43,9 +43,19 @@ class Tests: XCTestCase {
     
     //P05 - Reverse a linked list.
     func testP05() {
-        print(theList.reverse())
         XCTAssertEqual(theList.reverse(), List(8, 5, 3, 2, 1, 1)!)
     }
     
+    //P06 - Find out whether a linked list is a palindrome.
+    func testP06() {
+        XCTAssert(List(1, 2, 3, 2, 1).isPalindrome())
+        XCTAssertFalse(theList.isPalindrome())
+    }
     
+    
+    //P07 - Flatten a nested linked list structure.
+    func testP07() {
+        let list = List<Any>(List<Any>(1, 1), 2, List<Any>(3, List<Any>(5, 8)))!
+        XCTAssertEqual(list.flatten(), List<Any>(1, 1, 2, 3, 5, 8))
+    }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class List<T: Equatable> {
+public class List<T> {
     var value: T!
     var nextItem: List<T>?
     
@@ -28,8 +28,12 @@ public class List<T: Equatable> {
 
 
 extension List: Equatable {
-    static public func ==(a: List<T>, b: List<T>) -> Bool {
+    static public func ==<T: Equatable>(a: List<T>, b: List<T>) -> Bool {
         return a.value == b.value && a.nextItem == b.nextItem
+    }
+    //this kind of sucks, but it will suffice for testing equality for now
+    static public func ==(a: List<T>, b: List<T>) -> Bool {
+        return a.description == b.description
     }
 }
 

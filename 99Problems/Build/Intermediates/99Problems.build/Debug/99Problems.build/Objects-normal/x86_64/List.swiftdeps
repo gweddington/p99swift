@@ -2,6 +2,7 @@
 provides-top-level:
 - "List"
 - "=="
+- "=="
 provides-nominal:
 - "C10_9Problems4List"
 provides-member:
@@ -84,6 +85,7 @@ depends-member:
 - ["C10_9Problems4List", "=="]
 - ["C10_9Problems4List", "Array"]
 - ["C10_9Problems4List", "Bool"]
+- ["C10_9Problems4List", "Equatable"]
 - ["C10_9Problems4List", "List"]
 - ["C10_9Problems4List", "String"]
 - ["C10_9Problems4List", "T"]
@@ -196,4 +198,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreText.apinotesc"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.apinotesc"
-interface-hash: "a65c8679134132f0b7081fc4b9f8bf9f"
+interface-hash: "747723f4608a040bc7c1e217ec10e168"

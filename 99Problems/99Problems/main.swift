@@ -66,3 +66,28 @@ extension List {
     }
 }
 
+
+//P06 - Find out whether a linked list is a palindrome.
+extension List where T:Equatable {
+    func isPalindrome() -> Bool {
+        return self == reverse()
+    }
+}
+
+//P07 - Flatten a nested linked list structure.
+extension List {
+    func flatten() -> List {
+        if let l = value as? List, let next = nextItem {
+            return l.flatten() + next.flatten()
+        }
+        if let l = value as? List {
+            return l.flatten()
+        }
+        if let next = nextItem {
+            return List(value) + next.flatten()
+        }
+        return List(value)
+    }
+}
+
+
