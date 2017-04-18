@@ -15,3 +15,10 @@ extension List {
     }
 }
 
+//P02
+extension List {
+    var pennultimate: T? {
+        return nextItem?.nextItem == nil ? value : nextItem?.pennultimate
+    }
+}
+

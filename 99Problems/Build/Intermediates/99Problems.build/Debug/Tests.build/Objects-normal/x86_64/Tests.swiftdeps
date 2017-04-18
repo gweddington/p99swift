@@ -8,104 +8,129 @@ provides-member:
 provides-dynamic-lookup:
 - "setUp"
 - "tearDown"
-- "testP0"
+- "testP01"
+- "testP02"
 depends-top-level:
-- !private "List"
+- "Int"
+- "List"
 - !private "StringLiteralType"
 - "Tests"
 - !private "XCTAssertEqual"
 - "XCTestCase"
 depends-member:
-- !private ["Ps9AnyObject", "List"]
+- ["Ps9AnyObject", "List"]
 - !private ["Ps9AnyObject", "XCTAssertEqual"]
-- !private ["Ps9AnyObject", "init"]
+- ["Ps9AnyObject", "init"]
 - !private ["Ps9AnyObject", "last"]
+- !private ["Ps9AnyObject", "pennultimate"]
 - !private ["Ps9AnyObject", "setUp"]
 - !private ["Ps9AnyObject", "tearDown"]
+- !private ["Ps9AnyObject", "theList"]
 - ["Ps9AnyObject", ""]
-- !private ["Ps7CVarArg", "List"]
+- ["Ps7CVarArg", "List"]
 - !private ["Ps7CVarArg", "XCTAssertEqual"]
 - !private ["Ps7CVarArg", "init"]
 - !private ["Ps7CVarArg", "setUp"]
 - !private ["Ps7CVarArg", "tearDown"]
+- !private ["Ps7CVarArg", "theList"]
 - ["Ps7CVarArg", ""]
-- !private ["Ps28CustomDebugStringConvertible", "List"]
+- ["Ps28CustomDebugStringConvertible", "List"]
 - !private ["Ps28CustomDebugStringConvertible", "XCTAssertEqual"]
 - !private ["Ps28CustomDebugStringConvertible", "init"]
 - !private ["Ps28CustomDebugStringConvertible", "setUp"]
 - !private ["Ps28CustomDebugStringConvertible", "tearDown"]
+- !private ["Ps28CustomDebugStringConvertible", "theList"]
 - ["Ps28CustomDebugStringConvertible", ""]
 - !private ["Ps17CustomReflectable", "init"]
-- !private ["Ps23CustomStringConvertible", "List"]
+- ["Ps23CustomStringConvertible", "List"]
 - !private ["Ps23CustomStringConvertible", "XCTAssertEqual"]
 - !private ["Ps23CustomStringConvertible", "init"]
 - !private ["Ps23CustomStringConvertible", "setUp"]
 - !private ["Ps23CustomStringConvertible", "tearDown"]
+- !private ["Ps23CustomStringConvertible", "theList"]
 - ["Ps23CustomStringConvertible", ""]
-- !private ["Ps9Equatable", "List"]
+- ["Ps9Equatable", "List"]
 - !private ["Ps9Equatable", "XCTAssertEqual"]
 - !private ["Ps9Equatable", "init"]
 - !private ["Ps9Equatable", "setUp"]
 - !private ["Ps9Equatable", "tearDown"]
+- !private ["Ps9Equatable", "theList"]
 - ["Ps9Equatable", ""]
 - !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
 - !private ["Ps26ExpressibleByStringLiteral", "init"]
 - !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
-- !private ["Ps8Hashable", "List"]
+- ["Ps8Hashable", "List"]
 - !private ["Ps8Hashable", "XCTAssertEqual"]
 - !private ["Ps8Hashable", "init"]
 - !private ["Ps8Hashable", "setUp"]
 - !private ["Ps8Hashable", "tearDown"]
+- !private ["Ps8Hashable", "theList"]
 - ["Ps8Hashable", ""]
-- !private ["C5Tests4List", "init"]
+- ["C5Tests4List", "init"]
 - !private ["C5Tests4List", "last"]
-- !private ["CSo8NSObject", "List"]
+- !private ["C5Tests4List", "pennultimate"]
+- ["CSo8NSObject", "Int"]
+- ["CSo8NSObject", "List"]
 - !private ["CSo8NSObject", "XCTAssertEqual"]
 - ["CSo8NSObject", "init"]
 - ["CSo8NSObject", "setUp"]
 - ["CSo8NSObject", "tearDown"]
-- ["CSo8NSObject", "testP0"]
-- !private ["PSo16NSObjectProtocol", "List"]
+- ["CSo8NSObject", "testP01"]
+- ["CSo8NSObject", "testP02"]
+- ["CSo8NSObject", "theList"]
+- ["PSo16NSObjectProtocol", "List"]
 - !private ["PSo16NSObjectProtocol", "XCTAssertEqual"]
 - !private ["PSo16NSObjectProtocol", "init"]
 - !private ["PSo16NSObjectProtocol", "setUp"]
 - !private ["PSo16NSObjectProtocol", "tearDown"]
+- !private ["PSo16NSObjectProtocol", "theList"]
 - ["PSo16NSObjectProtocol", ""]
 - !private ["Vs12StaticString", "init"]
-- !private ["C5Tests5Tests", "List"]
+- ["C5Tests5Tests", "Int"]
+- ["C5Tests5Tests", "List"]
 - !private ["C5Tests5Tests", "XCTAssertEqual"]
 - ["C5Tests5Tests", "deinit"]
 - ["C5Tests5Tests", "init"]
 - ["C5Tests5Tests", "setUp"]
 - ["C5Tests5Tests", "tearDown"]
-- ["C5Tests5Tests", "testP0"]
-- !private ["PSo17XCTWaiterDelegate", "List"]
+- ["C5Tests5Tests", "testP01"]
+- ["C5Tests5Tests", "testP02"]
+- ["C5Tests5Tests", "theList"]
+- ["PSo17XCTWaiterDelegate", "List"]
 - !private ["PSo17XCTWaiterDelegate", "XCTAssertEqual"]
 - !private ["PSo17XCTWaiterDelegate", "init"]
 - !private ["PSo17XCTWaiterDelegate", "setUp"]
 - !private ["PSo17XCTWaiterDelegate", "tearDown"]
+- !private ["PSo17XCTWaiterDelegate", "theList"]
 - ["PSo17XCTWaiterDelegate", ""]
-- !private ["CSo6XCTest", "List"]
+- ["CSo6XCTest", "Int"]
+- ["CSo6XCTest", "List"]
 - !private ["CSo6XCTest", "XCTAssertEqual"]
 - ["CSo6XCTest", "init"]
 - ["CSo6XCTest", "setUp"]
 - ["CSo6XCTest", "tearDown"]
-- ["CSo6XCTest", "testP0"]
-- !private ["CSo10XCTestCase", "List"]
+- ["CSo6XCTest", "testP01"]
+- ["CSo6XCTest", "testP02"]
+- ["CSo6XCTest", "theList"]
+- ["CSo10XCTestCase", "Int"]
+- ["CSo10XCTestCase", "List"]
 - !private ["CSo10XCTestCase", "XCTAssertEqual"]
 - ["CSo10XCTestCase", "init"]
 - ["CSo10XCTestCase", "setUp"]
 - ["CSo10XCTestCase", "tearDown"]
-- ["CSo10XCTestCase", "testP0"]
+- ["CSo10XCTestCase", "testP01"]
+- ["CSo10XCTestCase", "testP02"]
+- ["CSo10XCTestCase", "theList"]
 - ["CSo10XCTestCase", ""]
 - !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
 - !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
 - !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
-- !private ["Ps9_Hashable", "List"]
+- ["Ps9_Hashable", "List"]
 - !private ["Ps9_Hashable", "XCTAssertEqual"]
 - !private ["Ps9_Hashable", "init"]
 - !private ["Ps9_Hashable", "setUp"]
 - !private ["Ps9_Hashable", "tearDown"]
+- !private ["Ps9_Hashable", "theList"]
 - ["Ps9_Hashable", ""]
 depends-nominal:
 - "Ps9AnyObject"
@@ -118,7 +143,7 @@ depends-nominal:
 - !private "Ps26ExpressibleByStringLiteral"
 - !private "Ps33ExpressibleByUnicodeScalarLiteral"
 - "Ps8Hashable"
-- !private "C5Tests4List"
+- "C5Tests4List"
 - "CSo8NSObject"
 - "PSo16NSObjectProtocol"
 - !private "Vs12StaticString"
@@ -191,4 +216,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "32a07a05a4e82e2c6be332bc703b3767"
+interface-hash: "18bb42449a6640eef0c2f1c648d45274"

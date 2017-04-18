@@ -9,6 +9,7 @@
 import XCTest
 
 class Tests: XCTestCase {
+    let theList: List<Int> = List(1, 1, 2, 3, 5, 8)
     
     override func setUp() {
         super.setUp()
@@ -21,8 +22,13 @@ class Tests: XCTestCase {
     }
     
     //find the last element of a list
-    func testP0() {
-        XCTAssertEqual(List(1, 1, 2, 3, 5, 8).last, 8)
+    func testP01() {
+        XCTAssertEqual(theList.last, 8)
+    }
+    
+    //find the pennultimate element of a list
+    func testP02() {
+        XCTAssertEqual(theList.pennultimate, 5)
     }
     
 }
