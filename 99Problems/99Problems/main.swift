@@ -32,3 +32,10 @@ extension List {
         return index == 0 ? value : nextItem?[index-1]
     }
 }
+
+//P04 - Find the number of elements of a linked list.
+extension List {
+    var length: Int {
+        return (nextItem?.length ?? 0) + 1
+    }
+}

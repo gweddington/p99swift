@@ -35,4 +35,11 @@ class Tests: XCTestCase {
     func testP03() {
         XCTAssertEqual(theList[2], 2)
     }
+    
+    //P04 - Find the number of elements of a linked list.
+    func testP04() {
+        XCTAssertEqual(theList.length, 6)
+    }
+    
+    
 }

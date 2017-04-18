@@ -6,8 +6,10 @@ provides-member:
 - ["C5Tests4List", "last"]
 - ["C5Tests4List", "pennultimate"]
 - ["C5Tests4List", "subscript"]
+- ["C5Tests4List", "length"]
 provides-dynamic-lookup:
 depends-top-level:
+- !private "+"
 - !private "-"
 - !private "=="
 - !private ">="
@@ -22,6 +24,7 @@ depends-top-level:
 depends-member:
 - !private ["Ps9AnyObject", "init"]
 - !private ["Ps9AnyObject", "last"]
+- !private ["Ps9AnyObject", "length"]
 - !private ["Ps9AnyObject", "nextItem"]
 - !private ["Ps9AnyObject", "pennultimate"]
 - !private ["Ps9AnyObject", "print"]
@@ -48,6 +51,7 @@ depends-member:
 - ["C5Tests4List", "Int"]
 - ["C5Tests4List", "T"]
 - ["C5Tests4List", "last"]
+- ["C5Tests4List", "length"]
 - !private ["C5Tests4List", "nextItem"]
 - ["C5Tests4List", "pennultimate"]
 - !private ["C5Tests4List", "print"]
@@ -177,4 +181,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "0a99408ed145e38e069fde13c87226c6"
+interface-hash: "df6e4b20ef71368a7258e911e1520d2d"
