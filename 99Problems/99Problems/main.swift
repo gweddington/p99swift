@@ -41,7 +41,7 @@ extension List {
 }
 
 //P05 - Reverse a linked list.
-public func +<T>(left: List<T>, right: List<T>) -> List<T> {
+public func +<T>(left: List<T>, right: List<T>?) -> List<T> {
     if left.nextItem == nil {
         let result = left.clone()
         result.nextItem = right
@@ -129,12 +129,46 @@ extension List where T: Equatable {
     func encode() -> List<(Int, T)> {
         return pack().map({ ($0.length, $0.value) })
     }
-    
-    //Note: map doesn't necessarily have to be limited to Equatable T's but for now this is ok
+}
+extension List {
     func map<R>(_ fn: (T) -> R) -> List<R> {
         let result = List<R>(fn(value))!
         guard let rest = nextItem?.map(fn) else { return result }
         return result + rest
     }
 }
+
+//P11 - Modified run-length encoding.
+extension List where T: Equatable {
+    func encodeModified() -> List<Any> {
+        return encode().map({(pair) -> Any in
+            pair.0 == 1 ? pair.1 : pair
+        })
+    }
+}
+
+//P12 - Decode a run-length encoded linked list.
+typealias EncodedPair = (Int, String)
+extension List {
+    func decode() -> List<String> {
+        let p = value as! EncodedPair   //if you call decode on a List of NOT EncodedPair this will throw at runtime!
+        let result = List<String>(Array(repeating: p.1, count: p.0))!
+        guard let next = nextItem?.decode() else { return result }
+        return result + next
+    }
+}
+//If you want decode to be more strongly typed, i.e. compiler error vs runtime error
+func decode(list: List<EncodedPair>) -> List<String> {
+    let p = list.value!
+    let result = repeatValue(p.1, count: p.0)
+    guard let next = list.nextItem else { return result }
+    return result + decode(list: next)
+}
+//Also, it kind of felt like cheating using the built in Array(repeating:count:) initializer, so...
+func repeatValue<T>(_ value: T, count: Int) -> List<T> {
+    guard count > 1 else { return List<T>(value) }
+    return List<T>(value) + repeatValue(value, count: count-1)
+}
+
+
 

@@ -82,4 +82,23 @@ class Tests: XCTestCase {
         let actual = list.encode()
         XCTAssertEqual(actual, expected)
     }
+    
+    //P11 - Modified run-length encoding.
+    func testP11() {
+        let list = List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e")!
+        let expected = List<Any>((4, "a"), "b", (2, "c"), (2, "a"), "d", (4, "e"))!
+        let actual = list.encodeModified()
+        XCTAssertEqual(actual, expected)
+    }
+    
+    //P12 - Decode a run-length encoded linked list.
+    func testP12() {
+        let list = List((4, "a"), (1, "b"), (2, "c"), (2, "a"), (1, "d"), (4, "e"))!
+        let expected = List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e")!
+        let actual = list.decode()
+        XCTAssertEqual(actual, expected)
+        
+        let actual2 = decode(list: list as List<EncodedPair>)
+        XCTAssertEqual(actual2, expected)
+    }
 }
