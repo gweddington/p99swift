@@ -66,4 +66,12 @@ class Tests: XCTestCase {
         let actual = list.compress()
         XCTAssertEqual(actual, expected)
     }
+    
+    //P09 - Pack consecutive duplicates of linked list elements into sub linked lists.
+    func testP09() {
+        let list = List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e")!
+        let expected = List(List("a", "a", "a", "a")!, List("b")!, List("c", "c")!, List("a", "a")!, List("d")!, List("e", "e", "e", "e")!)!
+        let actual = list.pack()
+        XCTAssertEqual(actual, expected)
+    }
 }

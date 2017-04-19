@@ -101,3 +101,26 @@ extension List where T:Equatable {
     }
 }
 
+//P09 - Pack consecutive duplicates of linked list elements into sub linked lists.
+extension List where T: Equatable {
+    func pack() -> List<List<T>> {
+        let result = List<List<T>>(List(value))!
+        guard nextItem != nil else { return result }
+        let pair = span({ $0 == value })
+        guard let fst = pair.0 else { return result }
+        let head = List<List<T>>(fst)!
+        guard let snd = pair.1 else { return head }
+        return head + snd.pack()
+    }
+    
+    func span(_ predicate: (T) -> Bool) -> (List<T>?, List<T>?) {
+        if predicate(value) {
+            guard let pair = nextItem?.span(predicate) else { return (List(value), nil) }
+            var fst = List(value)!
+            if let p0 = pair.0 { fst = fst + p0 }
+            return (fst, pair.1)
+        }
+        return (nil, self)
+    }
+}
+

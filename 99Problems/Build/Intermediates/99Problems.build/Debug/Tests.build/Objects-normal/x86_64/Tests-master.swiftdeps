@@ -1,7 +1,7 @@
 version: "Apple Swift version 3.1 (swiftlang-802.0.51 clang-802.0.41)"
 options: "242d6e62d8040391481915d01e85c077"
-build_time: [545886589, 982462000]
+build_time: [545893432, 904000000]
 inputs:
-  "/Users/gregweddington/code/fp/p99swift/99Problems/Tests/Tests.swift": [545883471, 0]
+  "/Users/gregweddington/code/fp/p99swift/99Problems/Tests/Tests.swift": [545893407, 0]
   "/Users/gregweddington/code/fp/p99swift/99Problems/99Problems/List.swift": [545884633, 0]
-  "/Users/gregweddington/code/fp/p99swift/99Problems/99Problems/main.swift": [545886589, 0]
+  "/Users/gregweddington/code/fp/p99swift/99Problems/99Problems/main.swift": [545893432, 0]

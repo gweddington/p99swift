@@ -14,8 +14,11 @@ provides-member:
 - ["C5Tests4List", "isPalindrome"]
 - ["C5Tests4List", "flatten"]
 - ["C5Tests4List", "compress"]
+- ["C5Tests4List", "pack"]
+- ["C5Tests4List", "span"]
 provides-dynamic-lookup:
 depends-top-level:
+- !private "!="
 - "+"
 - !private "-"
 - !private "=="
@@ -43,9 +46,11 @@ depends-member:
 - !private ["Ps9AnyObject", "last"]
 - !private ["Ps9AnyObject", "length"]
 - !private ["Ps9AnyObject", "nextItem"]
+- !private ["Ps9AnyObject", "pack"]
 - !private ["Ps9AnyObject", "pennultimate"]
 - !private ["Ps9AnyObject", "print"]
 - !private ["Ps9AnyObject", "reverse"]
+- !private ["Ps9AnyObject", "span"]
 - !private ["Ps9AnyObject", "subscript"]
 - !private ["Ps9AnyObject", "value"]
 - !private ["Ps9AnyObject", "values"]
@@ -67,9 +72,11 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "last"]
 - !private ["Ps23CustomStringConvertible", "length"]
 - !private ["Ps23CustomStringConvertible", "nextItem"]
+- !private ["Ps23CustomStringConvertible", "pack"]
 - !private ["Ps23CustomStringConvertible", "pennultimate"]
 - !private ["Ps23CustomStringConvertible", "print"]
 - !private ["Ps23CustomStringConvertible", "reverse"]
+- !private ["Ps23CustomStringConvertible", "span"]
 - !private ["Ps23CustomStringConvertible", "subscript"]
 - !private ["Ps23CustomStringConvertible", "value"]
 - !private ["Ps23CustomStringConvertible", "values"]
@@ -83,9 +90,11 @@ depends-member:
 - !private ["Ps9Equatable", "last"]
 - !private ["Ps9Equatable", "length"]
 - !private ["Ps9Equatable", "nextItem"]
+- !private ["Ps9Equatable", "pack"]
 - !private ["Ps9Equatable", "pennultimate"]
 - !private ["Ps9Equatable", "print"]
 - !private ["Ps9Equatable", "reverse"]
+- !private ["Ps9Equatable", "span"]
 - !private ["Ps9Equatable", "subscript"]
 - !private ["Ps9Equatable", "value"]
 - !private ["Ps9Equatable", "values"]
@@ -109,9 +118,11 @@ depends-member:
 - ["C5Tests4List", "last"]
 - ["C5Tests4List", "length"]
 - !private ["C5Tests4List", "nextItem"]
+- ["C5Tests4List", "pack"]
 - ["C5Tests4List", "pennultimate"]
 - !private ["C5Tests4List", "print"]
 - ["C5Tests4List", "reverse"]
+- ["C5Tests4List", "span"]
 - ["C5Tests4List", "subscript"]
 - !private ["C5Tests4List", "value"]
 - ["C5Tests4List", "values"]
@@ -239,4 +250,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "2bbd636e583ffde2374d1085c05ba51b"
+interface-hash: "66ae0aca2ba9f21dae55fde346afdb52"
