@@ -8,10 +8,14 @@ provides-nominal:
 provides-member:
 - ["C5Tests4List", ""]
 - ["C5Tests4List", "=="]
+- ["C5Tests4List", "clone"]
+- ["C5Tests4List", "values"]
 provides-dynamic-lookup:
 depends-top-level:
 - !private "&&"
+- !private "+"
 - "=="
+- !private "??"
 - "Array"
 - "AssignmentPrecedence"
 - "Bool"
@@ -93,12 +97,13 @@ depends-member:
 - ["C5Tests4List", "List"]
 - ["C5Tests4List", "String"]
 - ["C5Tests4List", "T"]
+- ["C5Tests4List", "clone"]
 - ["C5Tests4List", "deinit"]
 - ["C5Tests4List", "description"]
 - ["C5Tests4List", "init"]
 - ["C5Tests4List", "nextItem"]
 - ["C5Tests4List", "value"]
-- !private ["C5Tests4List", "values"]
+- ["C5Tests4List", "values"]
 - !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps17MutableCollection", "count"]
 - !private ["Ps17MutableCollection", "description"]
@@ -248,4 +253,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "79a5576a9b72eaf0bc4270d040b5fc5f"
+interface-hash: "3eb441790c891c52493dc880df5d01a1"

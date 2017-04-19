@@ -16,6 +16,11 @@ public class List<T> {
         self.init(Array(values))
     }
     
+    public convenience init(value: T, next: List<T>?) {
+        self.init([value])
+        self.nextItem = next
+    }
+    
     init!( _ values: Array<T>) {
         var values = values
         if values.count == 0 {
@@ -46,3 +51,12 @@ extension List: CustomStringConvertible {
     }
 }
 
+extension List {
+    func clone() -> List<T> {
+        return List(values())
+    }
+    
+    func values() -> [T] {
+        return [value] + (nextItem?.values() ?? [])
+    }
+}

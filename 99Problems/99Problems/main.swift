@@ -43,26 +43,14 @@ extension List {
 //P05 - Reverse a linked list.
 public func +<T>(left: List<T>, right: List<T>?) -> List<T> {
     if left.nextItem == nil {
-        let result = left.clone()
-        result.nextItem = right
-        return result
+        return List(value: left.value, next: right)
     } else {
-        return List([left.value]) + (left.nextItem! + right)
+        return List(left.value) + (left.nextItem! + right)
     }
 }
 extension List {
     func reverse() -> List<T> {
-        return length == 1 ? self : nextItem!.reverse() + List([value])
-    }
-    
-    //I used these 2 for the operator (+) implementation
-    //I also used values for CustomStringConvertible
-    func clone() -> List<T> {
-        return List(values())
-    }
-    
-    func values() -> [T] {
-        return [value] + (nextItem?.values() ?? [])
+        return length == 1 ? self : nextItem!.reverse() + List(value)
     }
 }
 
@@ -77,16 +65,10 @@ extension List where T:Equatable {
 //P07 - Flatten a nested linked list structure.
 extension List {
     func flatten() -> List {
-        if let l = value as? List, let next = nextItem {
-            return l.flatten() + next.flatten()
-        }
         if let l = value as? List {
-            return l.flatten()
+            return l.flatten() + nextItem?.flatten()
         }
-        if let next = nextItem {
-            return List(value) + next.flatten()
-        }
-        return List(value)
+        return List(value) + nextItem?.flatten()
     }
 }
 
@@ -104,13 +86,10 @@ extension List where T:Equatable {
 //P09 - Pack consecutive duplicates of linked list elements into sub linked lists.
 extension List where T: Equatable {
     func pack() -> List<List<T>> {
-        let result = List<List<T>>(List(value))!
-        guard nextItem != nil else { return result }
+        guard nextItem != nil else { return List<List<T>>(List(value))! }
         let pair = span({ $0 == value })
-        guard let fst = pair.0 else { return result }
-        let head = List<List<T>>(fst)!
-        guard let snd = pair.1 else { return head }
-        return head + snd.pack()
+        let head = List<List<T>>(pair.0!)!
+        return head + pair.1?.pack()
     }
     
     func span(_ predicate: (T) -> Bool) -> (List<T>?, List<T>?) {
@@ -170,5 +149,34 @@ func repeatValue<T>(_ value: T, count: Int) -> List<T> {
     return List<T>(value) + repeatValue(value, count: count-1)
 }
 
+//P13 - Run-length encoding of a linked list (direct solution).
+extension List where T: Equatable {
+    func encodeDirect() -> List<(Int, T)> {
+        let pair = span({$0 == value})
+        let matches = pair.0!
+        let rest = pair.1
+        return List<(Int, T)>((matches.length, matches.value)) + rest?.encodeDirect()
+    }
+}
 
+//P14 - Duplicate the elements of a linked list.
+extension List {
+    func duplicate() -> List {
+        return List(value, value) + nextItem?.duplicate()
+    }
+}
 
+//P15 - Duplicate the elements of a linked list a given number of times.
+extension List {
+    func duplicate(times: Int) -> List {
+        return times <= 1 ? self : List(value) + List(value).duplicate(times: times - 1) + nextItem?.duplicate(times: times)
+    }
+    //perhaps this is easier to read
+    func duplicateAlt(times: Int) -> List {
+        if times <= 1 { return self }
+        let l = List(value)!
+        let headDups = l + l.duplicateAlt(times: times - 1)
+        let tailDups = nextItem?.duplicateAlt(times: times)
+        return headDups + tailDups
+    }
+}

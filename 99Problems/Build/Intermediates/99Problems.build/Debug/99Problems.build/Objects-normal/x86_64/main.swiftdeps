@@ -12,8 +12,6 @@ provides-member:
 - ["C10_9Problems4List", "subscript"]
 - ["C10_9Problems4List", "length"]
 - ["C10_9Problems4List", "reverse"]
-- ["C10_9Problems4List", "clone"]
-- ["C10_9Problems4List", "values"]
 - ["C10_9Problems4List", "isPalindrome"]
 - ["C10_9Problems4List", "flatten"]
 - ["C10_9Problems4List", "compress"]
@@ -23,11 +21,16 @@ provides-member:
 - ["C10_9Problems4List", "map"]
 - ["C10_9Problems4List", "encodeModified"]
 - ["C10_9Problems4List", "decode"]
+- ["C10_9Problems4List", "encodeDirect"]
+- ["C10_9Problems4List", "duplicate"]
+- ["C10_9Problems4List", "duplicate"]
+- ["C10_9Problems4List", "duplicateAlt"]
 provides-dynamic-lookup:
 depends-top-level:
 - !private "!="
 - "+"
 - !private "-"
+- !private "<="
 - !private "=="
 - !private ">"
 - !private ">="
@@ -52,10 +55,12 @@ depends-member:
 - !private ["Ps9AnyObject", "Array"]
 - ["Ps9AnyObject", "Equatable"]
 - !private ["Ps9AnyObject", "List"]
-- !private ["Ps9AnyObject", "clone"]
 - !private ["Ps9AnyObject", "compress"]
 - !private ["Ps9AnyObject", "decode"]
+- !private ["Ps9AnyObject", "duplicate"]
+- !private ["Ps9AnyObject", "duplicateAlt"]
 - !private ["Ps9AnyObject", "encode"]
+- !private ["Ps9AnyObject", "encodeDirect"]
 - !private ["Ps9AnyObject", "flatten"]
 - !private ["Ps9AnyObject", "init"]
 - !private ["Ps9AnyObject", "last"]
@@ -69,7 +74,6 @@ depends-member:
 - !private ["Ps9AnyObject", "span"]
 - !private ["Ps9AnyObject", "subscript"]
 - !private ["Ps9AnyObject", "value"]
-- !private ["Ps9AnyObject", "values"]
 - !private ["Sa", "init"]
 - !private ["Ps23BidirectionalCollection", "init"]
 - !private ["Sb", "_getBuiltinLogicValue"]
@@ -85,10 +89,12 @@ depends-member:
 - ["Ps23CustomStringConvertible", "Equatable"]
 - !private ["Ps23CustomStringConvertible", "List"]
 - !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
-- !private ["Ps23CustomStringConvertible", "clone"]
 - !private ["Ps23CustomStringConvertible", "compress"]
 - !private ["Ps23CustomStringConvertible", "decode"]
+- !private ["Ps23CustomStringConvertible", "duplicate"]
+- !private ["Ps23CustomStringConvertible", "duplicateAlt"]
 - !private ["Ps23CustomStringConvertible", "encode"]
+- !private ["Ps23CustomStringConvertible", "encodeDirect"]
 - !private ["Ps23CustomStringConvertible", "flatten"]
 - !private ["Ps23CustomStringConvertible", "init"]
 - !private ["Ps23CustomStringConvertible", "last"]
@@ -102,15 +108,16 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "span"]
 - !private ["Ps23CustomStringConvertible", "subscript"]
 - !private ["Ps23CustomStringConvertible", "value"]
-- !private ["Ps23CustomStringConvertible", "values"]
 - !private ["Ps9Equatable", "Array"]
 - ["Ps9Equatable", "Equatable"]
 - !private ["Ps9Equatable", "List"]
 - !private ["Ps9Equatable", "_getBuiltinLogicValue"]
-- !private ["Ps9Equatable", "clone"]
 - !private ["Ps9Equatable", "compress"]
 - !private ["Ps9Equatable", "decode"]
+- !private ["Ps9Equatable", "duplicate"]
+- !private ["Ps9Equatable", "duplicateAlt"]
 - !private ["Ps9Equatable", "encode"]
+- !private ["Ps9Equatable", "encodeDirect"]
 - !private ["Ps9Equatable", "flatten"]
 - !private ["Ps9Equatable", "init"]
 - !private ["Ps9Equatable", "last"]
@@ -124,7 +131,6 @@ depends-member:
 - !private ["Ps9Equatable", "span"]
 - !private ["Ps9Equatable", "subscript"]
 - !private ["Ps9Equatable", "value"]
-- !private ["Ps9Equatable", "values"]
 - !private ["Ps25ExpressibleByArrayLiteral", "init"]
 - !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
 - !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
@@ -140,11 +146,13 @@ depends-member:
 - ["C10_9Problems4List", "List"]
 - ["C10_9Problems4List", "String"]
 - ["C10_9Problems4List", "T"]
-- ["C10_9Problems4List", "clone"]
 - ["C10_9Problems4List", "compress"]
 - ["C10_9Problems4List", "decode"]
 - !private ["C10_9Problems4List", "deinit"]
+- ["C10_9Problems4List", "duplicate"]
+- ["C10_9Problems4List", "duplicateAlt"]
 - ["C10_9Problems4List", "encode"]
+- ["C10_9Problems4List", "encodeDirect"]
 - ["C10_9Problems4List", "encodeModified"]
 - ["C10_9Problems4List", "flatten"]
 - !private ["C10_9Problems4List", "init"]
@@ -160,7 +168,6 @@ depends-member:
 - ["C10_9Problems4List", "span"]
 - ["C10_9Problems4List", "subscript"]
 - !private ["C10_9Problems4List", "value"]
-- ["C10_9Problems4List", "values"]
 - !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps25LosslessStringConvertible", "init"]
 - !private ["Ps10MirrorPath", "init"]
@@ -263,4 +270,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreText.apinotesc"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.apinotesc"
-interface-hash: "1e8a4d88c1987c9325c1795f7aa8abe1"
+interface-hash: "efec940c39ed87ba98b375c0f3a45ef9"

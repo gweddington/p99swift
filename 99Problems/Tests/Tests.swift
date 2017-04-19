@@ -101,4 +101,24 @@ class Tests: XCTestCase {
         let actual2 = decode(list: list as List<EncodedPair>)
         XCTAssertEqual(actual2, expected)
     }
+    
+    //P13 - Run-length encoding of a linked list (direct solution).
+    func testP13() {
+        let list = List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e")!
+        let expected = List((4, "a"), (1, "b"), (2, "c"), (2, "a"), (1, "d"), (4, "e"))!
+        let actual = list.encodeDirect()
+        XCTAssertEqual(actual, expected)
+    }
+    
+    //P14 - Duplicate the elements of a linked list.
+    func testP14() {
+        XCTAssertEqual(theList.duplicate(), List(1, 1, 1, 1, 2, 2, 3, 3, 5, 5, 8, 8))
+        XCTAssertEqual(List("a","b","c","d").duplicate(), List("a", "a", "b", "b", "c", "c", "d", "d"))
+    }
+    
+    //P15 - Duplicate the elements of a linked list a given number of times.
+    func testP15() {
+        XCTAssertEqual(theList.duplicate(times: 3), List(1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 5, 5, 5, 8, 8, 8))
+        XCTAssertEqual(theList.duplicate(times: 4), theList.duplicateAlt(times: 4))
+    }
 }
