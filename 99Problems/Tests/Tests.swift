@@ -121,4 +121,12 @@ class Tests: XCTestCase {
         XCTAssertEqual(theList.duplicate(times: 3), List(1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 5, 5, 5, 8, 8, 8))
         XCTAssertEqual(theList.duplicate(times: 4), theList.duplicateAlt(times: 4))
     }
+    
+    //P16 - Drop every Nth element from a linked list.
+    func testP16() {
+        let list = List("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k")!
+        let expected = List("a", "b", "d", "e", "g", "h", "j", "k")!
+        let actual = list.drop(every: 3)
+        XCTAssertEqual(actual, expected)
+    }
 }

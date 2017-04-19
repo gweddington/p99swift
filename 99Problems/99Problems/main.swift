@@ -180,3 +180,29 @@ extension List {
         return headDups + tailDups
     }
 }
+
+//P16 - Drop every Nth element from a linked list.
+extension List {
+    func drop(every: Int) -> List {
+        if every > length || every <= 1 {
+            print("Invalid every value: \(every)")
+            return self
+        }
+        let list = withIndex(1)
+        let dropped = list.filter({$0.index % every != 0})!
+        return dropped.map({$0.value})
+    }
+    
+    func filter(_ predicate: (T) -> Bool) -> List<T>? {
+        if predicate(value) {
+            return List(value) + nextItem?.filter(predicate)
+        }
+        return nextItem?.filter(predicate)
+    }
+    
+    func withIndex(_ index: Int = 0) -> List<(value: T, index: Int)> {
+        return List<(value: T, index: Int)>((value: value, index: index)) + nextItem?.withIndex(index + 1)
+    }
+}
+
+
