@@ -17,6 +17,7 @@ provides-dynamic-lookup:
 - "testP07"
 - "testP08"
 - "testP09"
+- "testP10"
 depends-top-level:
 - "Int"
 - "List"
@@ -33,6 +34,7 @@ depends-member:
 - !private ["Ps9AnyObject", "XCTAssertEqual"]
 - !private ["Ps9AnyObject", "XCTAssertFalse"]
 - !private ["Ps9AnyObject", "compress"]
+- !private ["Ps9AnyObject", "encode"]
 - !private ["Ps9AnyObject", "flatten"]
 - ["Ps9AnyObject", "init"]
 - !private ["Ps9AnyObject", "isPalindrome"]
@@ -72,6 +74,7 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "XCTAssertEqual"]
 - !private ["Ps23CustomStringConvertible", "XCTAssertFalse"]
 - !private ["Ps23CustomStringConvertible", "compress"]
+- !private ["Ps23CustomStringConvertible", "encode"]
 - !private ["Ps23CustomStringConvertible", "flatten"]
 - ["Ps23CustomStringConvertible", "init"]
 - !private ["Ps23CustomStringConvertible", "isPalindrome"]
@@ -90,6 +93,7 @@ depends-member:
 - !private ["Ps9Equatable", "XCTAssertEqual"]
 - !private ["Ps9Equatable", "XCTAssertFalse"]
 - !private ["Ps9Equatable", "compress"]
+- !private ["Ps9Equatable", "encode"]
 - !private ["Ps9Equatable", "flatten"]
 - ["Ps9Equatable", "init"]
 - !private ["Ps9Equatable", "isPalindrome"]
@@ -117,6 +121,7 @@ depends-member:
 - ["Ps8Hashable", ""]
 - !private ["C5Tests4List", "compress"]
 - !private ["C5Tests4List", "deinit"]
+- !private ["C5Tests4List", "encode"]
 - !private ["C5Tests4List", "flatten"]
 - ["C5Tests4List", "init"]
 - !private ["C5Tests4List", "isPalindrome"]
@@ -148,6 +153,7 @@ depends-member:
 - ["CSo8NSObject", "testP07"]
 - ["CSo8NSObject", "testP08"]
 - ["CSo8NSObject", "testP09"]
+- ["CSo8NSObject", "testP10"]
 - ["CSo8NSObject", "theList"]
 - ["PSo16NSObjectProtocol", "List"]
 - !private ["PSo16NSObjectProtocol", "XCTAssert"]
@@ -182,6 +188,7 @@ depends-member:
 - ["C5Tests5Tests", "testP07"]
 - ["C5Tests5Tests", "testP08"]
 - ["C5Tests5Tests", "testP09"]
+- ["C5Tests5Tests", "testP10"]
 - ["C5Tests5Tests", "theList"]
 - !private ["Ps16TextOutputStream", "init"]
 - !private ["Ps20TextOutputStreamable", "init"]
@@ -211,6 +218,7 @@ depends-member:
 - ["CSo6XCTest", "testP07"]
 - ["CSo6XCTest", "testP08"]
 - ["CSo6XCTest", "testP09"]
+- ["CSo6XCTest", "testP10"]
 - ["CSo6XCTest", "theList"]
 - ["CSo10XCTestCase", "Int"]
 - ["CSo10XCTestCase", "List"]
@@ -229,6 +237,7 @@ depends-member:
 - ["CSo10XCTestCase", "testP07"]
 - ["CSo10XCTestCase", "testP08"]
 - ["CSo10XCTestCase", "testP09"]
+- ["CSo10XCTestCase", "testP10"]
 - ["CSo10XCTestCase", "theList"]
 - ["CSo10XCTestCase", ""]
 - !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
@@ -349,4 +358,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "9dab56898ff4398640e5da2039e89d68"
+interface-hash: "4a9a3cfa29258cdfe39b6394e753b33f"

@@ -124,3 +124,17 @@ extension List where T: Equatable {
     }
 }
 
+//P10 - Run-length encoding of a linked list.
+extension List where T: Equatable {
+    func encode() -> List<(Int, T)> {
+        return pack().map({ ($0.length, $0.value) })
+    }
+    
+    //Note: map doesn't necessarily have to be limited to Equatable T's but for now this is ok
+    func map<R>(_ fn: (T) -> R) -> List<R> {
+        let result = List<R>(fn(value))!
+        guard let rest = nextItem?.map(fn) else { return result }
+        return result + rest
+    }
+}
+

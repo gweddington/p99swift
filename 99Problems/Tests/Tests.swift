@@ -74,4 +74,12 @@ class Tests: XCTestCase {
         let actual = list.pack()
         XCTAssertEqual(actual, expected)
     }
+    
+    //P10 - Run-length encoding of a linked list.
+    func testP10() {
+        let list = List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e")!
+        let expected = List((4, "a"), (1, "b"), (2, "c"), (2, "a"), (1, "d"), (4, "e"))!
+        let actual = list.encode()
+        XCTAssertEqual(actual, expected)
+    }
 }

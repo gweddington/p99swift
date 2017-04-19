@@ -16,6 +16,8 @@ provides-member:
 - ["C5Tests4List", "compress"]
 - ["C5Tests4List", "pack"]
 - ["C5Tests4List", "span"]
+- ["C5Tests4List", "encode"]
+- ["C5Tests4List", "map"]
 provides-dynamic-lookup:
 depends-top-level:
 - !private "!="
@@ -45,6 +47,7 @@ depends-member:
 - !private ["Ps9AnyObject", "init"]
 - !private ["Ps9AnyObject", "last"]
 - !private ["Ps9AnyObject", "length"]
+- !private ["Ps9AnyObject", "map"]
 - !private ["Ps9AnyObject", "nextItem"]
 - !private ["Ps9AnyObject", "pack"]
 - !private ["Ps9AnyObject", "pennultimate"]
@@ -71,6 +74,7 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "init"]
 - !private ["Ps23CustomStringConvertible", "last"]
 - !private ["Ps23CustomStringConvertible", "length"]
+- !private ["Ps23CustomStringConvertible", "map"]
 - !private ["Ps23CustomStringConvertible", "nextItem"]
 - !private ["Ps23CustomStringConvertible", "pack"]
 - !private ["Ps23CustomStringConvertible", "pennultimate"]
@@ -89,6 +93,7 @@ depends-member:
 - !private ["Ps9Equatable", "init"]
 - !private ["Ps9Equatable", "last"]
 - !private ["Ps9Equatable", "length"]
+- !private ["Ps9Equatable", "map"]
 - !private ["Ps9Equatable", "nextItem"]
 - !private ["Ps9Equatable", "pack"]
 - !private ["Ps9Equatable", "pennultimate"]
@@ -112,11 +117,13 @@ depends-member:
 - ["C5Tests4List", "clone"]
 - ["C5Tests4List", "compress"]
 - !private ["C5Tests4List", "deinit"]
+- ["C5Tests4List", "encode"]
 - ["C5Tests4List", "flatten"]
 - !private ["C5Tests4List", "init"]
 - ["C5Tests4List", "isPalindrome"]
 - ["C5Tests4List", "last"]
 - ["C5Tests4List", "length"]
+- ["C5Tests4List", "map"]
 - !private ["C5Tests4List", "nextItem"]
 - ["C5Tests4List", "pack"]
 - ["C5Tests4List", "pennultimate"]
@@ -250,4 +257,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "66ae0aca2ba9f21dae55fde346afdb52"
+interface-hash: "c36f1ff1fca5d77301a4cd5855305bed"
