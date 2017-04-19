@@ -7,6 +7,7 @@ provides-nominal:
 - "C5Tests4List"
 provides-member:
 - ["C5Tests4List", ""]
+- ["C5Tests4List", "=="]
 provides-dynamic-lookup:
 depends-top-level:
 - !private "&&"
@@ -22,6 +23,7 @@ depends-top-level:
 - "String"
 depends-member:
 - !private ["Ps9AnyObject", "Array"]
+- ["Ps9AnyObject", "Equatable"]
 - !private ["Ps9AnyObject", "List"]
 - ["Ps9AnyObject", "description"]
 - !private ["Ps9AnyObject", "init"]
@@ -57,6 +59,7 @@ depends-member:
 - !private ["Ps17CustomReflectable", "init"]
 - !private ["Ps17CustomReflectable", "removeFirst"]
 - !private ["Ps23CustomStringConvertible", "Array"]
+- ["Ps23CustomStringConvertible", "Equatable"]
 - !private ["Ps23CustomStringConvertible", "List"]
 - !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps23CustomStringConvertible", "count"]
@@ -68,6 +71,7 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "values"]
 - ["Ps23CustomStringConvertible", ""]
 - !private ["Ps9Equatable", "Array"]
+- ["Ps9Equatable", "Equatable"]
 - !private ["Ps9Equatable", "List"]
 - !private ["Ps9Equatable", "_getBuiltinLogicValue"]
 - ["Ps9Equatable", "description"]
@@ -244,4 +248,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "747723f4608a040bc7c1e217ec10e168"
+interface-hash: "79a5576a9b72eaf0bc4270d040b5fc5f"

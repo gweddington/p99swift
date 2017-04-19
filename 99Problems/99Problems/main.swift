@@ -90,4 +90,14 @@ extension List {
     }
 }
 
+//P08 - Eliminate consecutive duplicates of linked list elements.
+extension List where T:Equatable {
+    func compress() -> List {
+        guard let next = nextItem else { return List(value) }
+        if value == next.value {
+            return next.compress()
+        }
+        return List(value) + next.compress()
+    }
+}
 

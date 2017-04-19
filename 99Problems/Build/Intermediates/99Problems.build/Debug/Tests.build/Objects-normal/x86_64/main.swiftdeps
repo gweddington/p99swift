@@ -13,6 +13,7 @@ provides-member:
 - ["C5Tests4List", "values"]
 - ["C5Tests4List", "isPalindrome"]
 - ["C5Tests4List", "flatten"]
+- ["C5Tests4List", "compress"]
 provides-dynamic-lookup:
 depends-top-level:
 - "+"
@@ -36,6 +37,7 @@ depends-member:
 - ["Ps9AnyObject", "Equatable"]
 - !private ["Ps9AnyObject", "List"]
 - !private ["Ps9AnyObject", "clone"]
+- !private ["Ps9AnyObject", "compress"]
 - !private ["Ps9AnyObject", "flatten"]
 - !private ["Ps9AnyObject", "init"]
 - !private ["Ps9AnyObject", "last"]
@@ -59,6 +61,7 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "List"]
 - !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps23CustomStringConvertible", "clone"]
+- !private ["Ps23CustomStringConvertible", "compress"]
 - !private ["Ps23CustomStringConvertible", "flatten"]
 - !private ["Ps23CustomStringConvertible", "init"]
 - !private ["Ps23CustomStringConvertible", "last"]
@@ -74,6 +77,7 @@ depends-member:
 - !private ["Ps9Equatable", "List"]
 - !private ["Ps9Equatable", "_getBuiltinLogicValue"]
 - !private ["Ps9Equatable", "clone"]
+- !private ["Ps9Equatable", "compress"]
 - !private ["Ps9Equatable", "flatten"]
 - !private ["Ps9Equatable", "init"]
 - !private ["Ps9Equatable", "last"]
@@ -97,6 +101,7 @@ depends-member:
 - ["C5Tests4List", "List"]
 - ["C5Tests4List", "T"]
 - ["C5Tests4List", "clone"]
+- ["C5Tests4List", "compress"]
 - !private ["C5Tests4List", "deinit"]
 - ["C5Tests4List", "flatten"]
 - !private ["C5Tests4List", "init"]
@@ -234,4 +239,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "2f0331ad090ca03178227876b2b205d4"
+interface-hash: "2bbd636e583ffde2374d1085c05ba51b"

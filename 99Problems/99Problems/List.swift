@@ -28,12 +28,15 @@ public class List<T> {
 
 
 extension List: Equatable {
-    static public func ==<T: Equatable>(a: List<T>, b: List<T>) -> Bool {
-        return a.value == b.value && a.nextItem == b.nextItem
-    }
     //this kind of sucks, but it will suffice for testing equality for now
     static public func ==(a: List<T>, b: List<T>) -> Bool {
         return a.description == b.description
+    }
+}
+
+extension List where T: Equatable {
+    static public func ==(a: List<T>, b: List<T>) -> Bool {
+        return a.value == b.value && a.nextItem == b.nextItem
     }
 }
 

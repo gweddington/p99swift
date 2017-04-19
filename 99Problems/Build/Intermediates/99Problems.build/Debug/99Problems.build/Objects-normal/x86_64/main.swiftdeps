@@ -13,6 +13,7 @@ provides-member:
 - ["C10_9Problems4List", "values"]
 - ["C10_9Problems4List", "isPalindrome"]
 - ["C10_9Problems4List", "flatten"]
+- ["C10_9Problems4List", "compress"]
 provides-dynamic-lookup:
 depends-top-level:
 - "+"
@@ -36,6 +37,7 @@ depends-member:
 - ["Ps9AnyObject", "Equatable"]
 - !private ["Ps9AnyObject", "List"]
 - !private ["Ps9AnyObject", "clone"]
+- !private ["Ps9AnyObject", "compress"]
 - !private ["Ps9AnyObject", "flatten"]
 - !private ["Ps9AnyObject", "init"]
 - !private ["Ps9AnyObject", "last"]
@@ -59,6 +61,7 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "List"]
 - !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps23CustomStringConvertible", "clone"]
+- !private ["Ps23CustomStringConvertible", "compress"]
 - !private ["Ps23CustomStringConvertible", "flatten"]
 - !private ["Ps23CustomStringConvertible", "init"]
 - !private ["Ps23CustomStringConvertible", "last"]
@@ -74,6 +77,7 @@ depends-member:
 - !private ["Ps9Equatable", "List"]
 - !private ["Ps9Equatable", "_getBuiltinLogicValue"]
 - !private ["Ps9Equatable", "clone"]
+- !private ["Ps9Equatable", "compress"]
 - !private ["Ps9Equatable", "flatten"]
 - !private ["Ps9Equatable", "init"]
 - !private ["Ps9Equatable", "last"]
@@ -97,6 +101,7 @@ depends-member:
 - ["C10_9Problems4List", "List"]
 - ["C10_9Problems4List", "T"]
 - ["C10_9Problems4List", "clone"]
+- ["C10_9Problems4List", "compress"]
 - !private ["C10_9Problems4List", "deinit"]
 - ["C10_9Problems4List", "flatten"]
 - !private ["C10_9Problems4List", "init"]
@@ -184,4 +189,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreText.apinotesc"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.apinotesc"
-interface-hash: "2f0331ad090ca03178227876b2b205d4"
+interface-hash: "2bbd636e583ffde2374d1085c05ba51b"

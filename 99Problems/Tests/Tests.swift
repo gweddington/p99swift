@@ -58,4 +58,12 @@ class Tests: XCTestCase {
         let list = List<Any>(List<Any>(1, 1), 2, List<Any>(3, List<Any>(5, 8)))!
         XCTAssertEqual(list.flatten(), List<Any>(1, 1, 2, 3, 5, 8))
     }
+    
+    //P08 - Eliminate consecutive duplicates of linked list elements.
+    func testP08() {
+        let list = List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e")!
+        let expected = List("a", "b", "c", "a", "d", "e")!
+        let actual = list.compress()
+        XCTAssertEqual(actual, expected)
+    }
 }
