@@ -24,6 +24,10 @@ provides-dynamic-lookup:
 - "testP14"
 - "testP15"
 - "testP16"
+- "testP17"
+- "testP18"
+- "testP19"
+- "testP20"
 depends-top-level:
 - "CastingPrecedence"
 - !private "EncodedPair"
@@ -35,6 +39,7 @@ depends-top-level:
 - !private "XCTAssert"
 - !private "XCTAssertEqual"
 - !private "XCTAssertFalse"
+- !private "XCTAssertNil"
 - "XCTestCase"
 - !private "decode"
 depends-member:
@@ -42,6 +47,7 @@ depends-member:
 - !private ["Ps9AnyObject", "XCTAssert"]
 - !private ["Ps9AnyObject", "XCTAssertEqual"]
 - !private ["Ps9AnyObject", "XCTAssertFalse"]
+- !private ["Ps9AnyObject", "XCTAssertNil"]
 - !private ["Ps9AnyObject", "compress"]
 - !private ["Ps9AnyObject", "decode"]
 - !private ["Ps9AnyObject", "drop"]
@@ -57,8 +63,13 @@ depends-member:
 - !private ["Ps9AnyObject", "length"]
 - !private ["Ps9AnyObject", "pack"]
 - !private ["Ps9AnyObject", "pennultimate"]
+- !private ["Ps9AnyObject", "remove"]
 - !private ["Ps9AnyObject", "reverse"]
+- !private ["Ps9AnyObject", "rotate"]
 - !private ["Ps9AnyObject", "setUp"]
+- !private ["Ps9AnyObject", "slice"]
+- !private ["Ps9AnyObject", "sliceAlt"]
+- !private ["Ps9AnyObject", "split"]
 - !private ["Ps9AnyObject", "subscript"]
 - !private ["Ps9AnyObject", "tearDown"]
 - !private ["Ps9AnyObject", "theList"]
@@ -67,6 +78,7 @@ depends-member:
 - !private ["Ps7CVarArg", "XCTAssert"]
 - !private ["Ps7CVarArg", "XCTAssertEqual"]
 - !private ["Ps7CVarArg", "XCTAssertFalse"]
+- !private ["Ps7CVarArg", "XCTAssertNil"]
 - !private ["Ps7CVarArg", "decode"]
 - !private ["Ps7CVarArg", "init"]
 - !private ["Ps7CVarArg", "setUp"]
@@ -78,6 +90,7 @@ depends-member:
 - !private ["Ps28CustomDebugStringConvertible", "XCTAssert"]
 - !private ["Ps28CustomDebugStringConvertible", "XCTAssertEqual"]
 - !private ["Ps28CustomDebugStringConvertible", "XCTAssertFalse"]
+- !private ["Ps28CustomDebugStringConvertible", "XCTAssertNil"]
 - !private ["Ps28CustomDebugStringConvertible", "decode"]
 - !private ["Ps28CustomDebugStringConvertible", "init"]
 - !private ["Ps28CustomDebugStringConvertible", "setUp"]
@@ -90,6 +103,7 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "XCTAssert"]
 - !private ["Ps23CustomStringConvertible", "XCTAssertEqual"]
 - !private ["Ps23CustomStringConvertible", "XCTAssertFalse"]
+- !private ["Ps23CustomStringConvertible", "XCTAssertNil"]
 - !private ["Ps23CustomStringConvertible", "compress"]
 - !private ["Ps23CustomStringConvertible", "decode"]
 - !private ["Ps23CustomStringConvertible", "drop"]
@@ -105,8 +119,13 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "length"]
 - !private ["Ps23CustomStringConvertible", "pack"]
 - !private ["Ps23CustomStringConvertible", "pennultimate"]
+- !private ["Ps23CustomStringConvertible", "remove"]
 - !private ["Ps23CustomStringConvertible", "reverse"]
+- !private ["Ps23CustomStringConvertible", "rotate"]
 - !private ["Ps23CustomStringConvertible", "setUp"]
+- !private ["Ps23CustomStringConvertible", "slice"]
+- !private ["Ps23CustomStringConvertible", "sliceAlt"]
+- !private ["Ps23CustomStringConvertible", "split"]
 - !private ["Ps23CustomStringConvertible", "subscript"]
 - !private ["Ps23CustomStringConvertible", "tearDown"]
 - !private ["Ps23CustomStringConvertible", "theList"]
@@ -115,6 +134,7 @@ depends-member:
 - !private ["Ps9Equatable", "XCTAssert"]
 - !private ["Ps9Equatable", "XCTAssertEqual"]
 - !private ["Ps9Equatable", "XCTAssertFalse"]
+- !private ["Ps9Equatable", "XCTAssertNil"]
 - !private ["Ps9Equatable", "compress"]
 - !private ["Ps9Equatable", "decode"]
 - !private ["Ps9Equatable", "drop"]
@@ -130,8 +150,13 @@ depends-member:
 - !private ["Ps9Equatable", "length"]
 - !private ["Ps9Equatable", "pack"]
 - !private ["Ps9Equatable", "pennultimate"]
+- !private ["Ps9Equatable", "remove"]
 - !private ["Ps9Equatable", "reverse"]
+- !private ["Ps9Equatable", "rotate"]
 - !private ["Ps9Equatable", "setUp"]
+- !private ["Ps9Equatable", "slice"]
+- !private ["Ps9Equatable", "sliceAlt"]
+- !private ["Ps9Equatable", "split"]
 - !private ["Ps9Equatable", "subscript"]
 - !private ["Ps9Equatable", "tearDown"]
 - !private ["Ps9Equatable", "theList"]
@@ -143,6 +168,7 @@ depends-member:
 - !private ["Ps8Hashable", "XCTAssert"]
 - !private ["Ps8Hashable", "XCTAssertEqual"]
 - !private ["Ps8Hashable", "XCTAssertFalse"]
+- !private ["Ps8Hashable", "XCTAssertNil"]
 - !private ["Ps8Hashable", "decode"]
 - !private ["Ps8Hashable", "init"]
 - !private ["Ps8Hashable", "setUp"]
@@ -165,7 +191,12 @@ depends-member:
 - !private ["C5Tests4List", "length"]
 - !private ["C5Tests4List", "pack"]
 - !private ["C5Tests4List", "pennultimate"]
+- !private ["C5Tests4List", "remove"]
 - !private ["C5Tests4List", "reverse"]
+- !private ["C5Tests4List", "rotate"]
+- !private ["C5Tests4List", "slice"]
+- !private ["C5Tests4List", "sliceAlt"]
+- !private ["C5Tests4List", "split"]
 - !private ["C5Tests4List", "subscript"]
 - !private ["Ps25LosslessStringConvertible", "init"]
 - !private ["Ps10MirrorPath", "init"]
@@ -178,6 +209,7 @@ depends-member:
 - !private ["CSo8NSObject", "XCTAssert"]
 - !private ["CSo8NSObject", "XCTAssertEqual"]
 - !private ["CSo8NSObject", "XCTAssertFalse"]
+- !private ["CSo8NSObject", "XCTAssertNil"]
 - !private ["CSo8NSObject", "decode"]
 - ["CSo8NSObject", "init"]
 - ["CSo8NSObject", "setUp"]
@@ -198,11 +230,16 @@ depends-member:
 - ["CSo8NSObject", "testP14"]
 - ["CSo8NSObject", "testP15"]
 - ["CSo8NSObject", "testP16"]
+- ["CSo8NSObject", "testP17"]
+- ["CSo8NSObject", "testP18"]
+- ["CSo8NSObject", "testP19"]
+- ["CSo8NSObject", "testP20"]
 - ["CSo8NSObject", "theList"]
 - ["PSo16NSObjectProtocol", "List"]
 - !private ["PSo16NSObjectProtocol", "XCTAssert"]
 - !private ["PSo16NSObjectProtocol", "XCTAssertEqual"]
 - !private ["PSo16NSObjectProtocol", "XCTAssertFalse"]
+- !private ["PSo16NSObjectProtocol", "XCTAssertNil"]
 - !private ["PSo16NSObjectProtocol", "decode"]
 - !private ["PSo16NSObjectProtocol", "init"]
 - !private ["PSo16NSObjectProtocol", "setUp"]
@@ -221,6 +258,7 @@ depends-member:
 - !private ["C5Tests5Tests", "XCTAssert"]
 - !private ["C5Tests5Tests", "XCTAssertEqual"]
 - !private ["C5Tests5Tests", "XCTAssertFalse"]
+- !private ["C5Tests5Tests", "XCTAssertNil"]
 - !private ["C5Tests5Tests", "decode"]
 - ["C5Tests5Tests", "deinit"]
 - ["C5Tests5Tests", "init"]
@@ -242,6 +280,10 @@ depends-member:
 - ["C5Tests5Tests", "testP14"]
 - ["C5Tests5Tests", "testP15"]
 - ["C5Tests5Tests", "testP16"]
+- ["C5Tests5Tests", "testP17"]
+- ["C5Tests5Tests", "testP18"]
+- ["C5Tests5Tests", "testP19"]
+- ["C5Tests5Tests", "testP20"]
 - ["C5Tests5Tests", "theList"]
 - !private ["Ps16TextOutputStream", "init"]
 - !private ["Ps20TextOutputStreamable", "init"]
@@ -249,6 +291,7 @@ depends-member:
 - !private ["PSo17XCTWaiterDelegate", "XCTAssert"]
 - !private ["PSo17XCTWaiterDelegate", "XCTAssertEqual"]
 - !private ["PSo17XCTWaiterDelegate", "XCTAssertFalse"]
+- !private ["PSo17XCTWaiterDelegate", "XCTAssertNil"]
 - !private ["PSo17XCTWaiterDelegate", "decode"]
 - !private ["PSo17XCTWaiterDelegate", "init"]
 - !private ["PSo17XCTWaiterDelegate", "setUp"]
@@ -261,6 +304,7 @@ depends-member:
 - !private ["CSo6XCTest", "XCTAssert"]
 - !private ["CSo6XCTest", "XCTAssertEqual"]
 - !private ["CSo6XCTest", "XCTAssertFalse"]
+- !private ["CSo6XCTest", "XCTAssertNil"]
 - !private ["CSo6XCTest", "decode"]
 - ["CSo6XCTest", "init"]
 - ["CSo6XCTest", "setUp"]
@@ -281,6 +325,10 @@ depends-member:
 - ["CSo6XCTest", "testP14"]
 - ["CSo6XCTest", "testP15"]
 - ["CSo6XCTest", "testP16"]
+- ["CSo6XCTest", "testP17"]
+- ["CSo6XCTest", "testP18"]
+- ["CSo6XCTest", "testP19"]
+- ["CSo6XCTest", "testP20"]
 - ["CSo6XCTest", "theList"]
 - !private ["CSo10XCTestCase", "EncodedPair"]
 - ["CSo10XCTestCase", "Int"]
@@ -288,6 +336,7 @@ depends-member:
 - !private ["CSo10XCTestCase", "XCTAssert"]
 - !private ["CSo10XCTestCase", "XCTAssertEqual"]
 - !private ["CSo10XCTestCase", "XCTAssertFalse"]
+- !private ["CSo10XCTestCase", "XCTAssertNil"]
 - !private ["CSo10XCTestCase", "decode"]
 - ["CSo10XCTestCase", "init"]
 - ["CSo10XCTestCase", "setUp"]
@@ -308,6 +357,10 @@ depends-member:
 - ["CSo10XCTestCase", "testP14"]
 - ["CSo10XCTestCase", "testP15"]
 - ["CSo10XCTestCase", "testP16"]
+- ["CSo10XCTestCase", "testP17"]
+- ["CSo10XCTestCase", "testP18"]
+- ["CSo10XCTestCase", "testP19"]
+- ["CSo10XCTestCase", "testP20"]
 - ["CSo10XCTestCase", "theList"]
 - ["CSo10XCTestCase", ""]
 - !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
@@ -320,6 +373,7 @@ depends-member:
 - !private ["Ps9_Hashable", "XCTAssert"]
 - !private ["Ps9_Hashable", "XCTAssertEqual"]
 - !private ["Ps9_Hashable", "XCTAssertFalse"]
+- !private ["Ps9_Hashable", "XCTAssertNil"]
 - !private ["Ps9_Hashable", "decode"]
 - !private ["Ps9_Hashable", "init"]
 - !private ["Ps9_Hashable", "setUp"]
@@ -429,4 +483,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "1cd96aee4e0cad19af78571593203ede"
+interface-hash: "cb8c9feb1af31c3acb88b986bd5e4986"

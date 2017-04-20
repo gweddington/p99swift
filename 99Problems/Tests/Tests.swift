@@ -129,4 +129,51 @@ class Tests: XCTestCase {
         let actual = list.drop(every: 3)
         XCTAssertEqual(actual, expected)
     }
+    
+    //P17 - Split a linked list into two parts.
+    func testP17() {
+        let list = List("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k")!
+        let actual = list.split(atIndex: 3)
+        let expected = (left: List("a", "b", "c")!, right: List("d", "e", "f", "g", "h", "i", "j", "k")!)
+        XCTAssertEqual(actual.left, expected.left)
+        XCTAssertEqual(actual.right, expected.right)
+    }
+    
+    //P18 - Extract a slice from a linked list.
+    func testP18() {
+        let list = List("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k")!
+        let actual = list.slice(3, 7)
+        let expected = List("d", "e", "f", "g")!
+        XCTAssertEqual(actual, expected)
+        
+        XCTAssertEqual(list.sliceAlt(3, 7), expected)
+    }
+    
+    //P19 (**) Rotate a list N places to the left.
+    func testP19() {
+        let list = List("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k")!
+        let actual = list.rotate(amount: 3)
+        let expected = List("d", "e", "f", "g", "h", "i", "j", "k", "a", "b", "c")!
+
+        let actual2 = list.rotate(amount: -2)
+        let expected2 = List("j", "k", "a", "b", "c", "d", "e", "f", "g", "h", "i")!
+        
+        XCTAssertEqual(actual, expected)
+        XCTAssertEqual(actual2, expected2)
+    }
+    
+    //P20 (*) Remove the Kth element from a linked list.
+    func testP20() {
+        let list = List("a", "b", "c", "d")!
+        let actual = list.remove(at: 1)
+        let expected = (rest: List("a", "c", "d"), removed: "b")
+        XCTAssertEqual(actual.rest, expected.rest)
+        XCTAssertEqual(actual.removed, expected.removed)
+        
+        //what if we only have 1 item in the list?
+        let actual2 = List(1)!.remove(at: 0)
+        XCTAssertNil(actual2.rest)
+        XCTAssertEqual(actual2.removed, 1)
+        
+    }
 }

@@ -160,6 +160,10 @@ SWIFT_CLASS("_TtC5Tests5Tests")
 - (void)testP14;
 - (void)testP15;
 - (void)testP16;
+- (void)testP17;
+- (void)testP18;
+- (void)testP19;
+- (void)testP20;
 - (nonnull instancetype)initWithInvocation:(NSInvocation * _Nullable)invocation OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithSelector:(SEL _Nonnull)selector OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;

@@ -1,19 +1,25 @@
 ### Swift dependencies file v0 ###
 provides-top-level:
 - "List"
+- "IndexedItem"
 - "=="
 - "=="
 provides-nominal:
 - "C5Tests4List"
+- "V5Tests11IndexedItem"
 provides-member:
 - ["C5Tests4List", ""]
+- ["V5Tests11IndexedItem", ""]
 - ["C5Tests4List", "=="]
 - ["C5Tests4List", "clone"]
 - ["C5Tests4List", "values"]
+- ["C5Tests4List", "take"]
 provides-dynamic-lookup:
 depends-top-level:
 - !private "&&"
 - !private "+"
+- !private "-"
+- !private "<="
 - "=="
 - !private "??"
 - "Array"
@@ -22,9 +28,12 @@ depends-top-level:
 - "CustomStringConvertible"
 - "Equatable"
 - !private "FloatLiteralType"
+- "IndexedItem"
+- "Int"
 - !private "IntegerLiteralType"
 - "List"
 - "String"
+- !private "||"
 depends-member:
 - !private ["Ps9AnyObject", "Array"]
 - ["Ps9AnyObject", "Equatable"]
@@ -32,6 +41,7 @@ depends-member:
 - ["Ps9AnyObject", "description"]
 - !private ["Ps9AnyObject", "init"]
 - !private ["Ps9AnyObject", "nextItem"]
+- !private ["Ps9AnyObject", "take"]
 - !private ["Ps9AnyObject", "value"]
 - !private ["Ps9AnyObject", "values"]
 - ["Ps9AnyObject", ""]
@@ -71,6 +81,7 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "init"]
 - !private ["Ps23CustomStringConvertible", "nextItem"]
 - !private ["Ps23CustomStringConvertible", "removeFirst"]
+- !private ["Ps23CustomStringConvertible", "take"]
 - !private ["Ps23CustomStringConvertible", "value"]
 - !private ["Ps23CustomStringConvertible", "values"]
 - ["Ps23CustomStringConvertible", ""]
@@ -81,6 +92,7 @@ depends-member:
 - ["Ps9Equatable", "description"]
 - !private ["Ps9Equatable", "init"]
 - !private ["Ps9Equatable", "nextItem"]
+- !private ["Ps9Equatable", "take"]
 - !private ["Ps9Equatable", "value"]
 - !private ["Ps9Equatable", "values"]
 - ["Ps9Equatable", ""]
@@ -90,10 +102,16 @@ depends-member:
 - !private ["Ps25ExpressibleByArrayLiteral", "removeFirst"]
 - !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
 - !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- ["V5Tests11IndexedItem", "Int"]
+- ["V5Tests11IndexedItem", "T"]
+- ["V5Tests11IndexedItem", "index"]
+- ["V5Tests11IndexedItem", "init"]
+- ["V5Tests11IndexedItem", "value"]
 - ["C5Tests4List", "=="]
 - ["C5Tests4List", "Array"]
 - ["C5Tests4List", "Bool"]
 - ["C5Tests4List", "Equatable"]
+- ["C5Tests4List", "Int"]
 - ["C5Tests4List", "List"]
 - ["C5Tests4List", "String"]
 - ["C5Tests4List", "T"]
@@ -102,6 +120,7 @@ depends-member:
 - ["C5Tests4List", "description"]
 - ["C5Tests4List", "init"]
 - ["C5Tests4List", "nextItem"]
+- ["C5Tests4List", "take"]
 - ["C5Tests4List", "value"]
 - ["C5Tests4List", "values"]
 - !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
@@ -175,6 +194,7 @@ depends-nominal:
 - !private "Ps25ExpressibleByArrayLiteral"
 - !private "Ps27ExpressibleByBooleanLiteral"
 - !private "Ps8Hashable"
+- "V5Tests11IndexedItem"
 - "C5Tests4List"
 - !private "Ps25LosslessStringConvertible"
 - !private "Ps17MutableCollection"
@@ -253,4 +273,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "3eb441790c891c52493dc880df5d01a1"
+interface-hash: "7416687be71a94687ee8f731536c8c0b"

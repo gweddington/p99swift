@@ -188,9 +188,7 @@ extension List {
             print("Invalid every value: \(every)")
             return self
         }
-        let list = withIndex(1)
-        let dropped = list.filter({$0.index % every != 0})!
-        return dropped.map({$0.value})
+        return filterAsIndexed(withRoot: 1, {$0.index % every != 0})!
     }
     
     func filter(_ predicate: (T) -> Bool) -> List<T>? {
@@ -200,8 +198,72 @@ extension List {
         return nextItem?.filter(predicate)
     }
     
-    func withIndex(_ index: Int = 0) -> List<(value: T, index: Int)> {
-        return List<(value: T, index: Int)>((value: value, index: index)) + nextItem?.withIndex(index + 1)
+    func toIndexedList(_ index: Int = 0) -> List<IndexedItem<T>> {
+        return List<IndexedItem<T>>(IndexedItem<T>(value: value, index: index)) + nextItem?.toIndexedList(index + 1)
+    }
+}
+
+extension List {
+    func toList<R>() -> List<R> {
+        return map({($0 as! IndexedItem<R>).value})
+    }
+}
+
+//P17 - Split a linked list into two parts.
+extension List {
+    func split(atIndex: Int) -> (left: List, right: List) {
+        if atIndex >= length || atIndex < 1 {
+            print("Invalid atIndex value: \(atIndex)")
+            return (self, self)
+        }
+        let list = toIndexedList(1)
+        let left = list.filter({$0.index <= atIndex})!.map({$0.value})
+        let right = list.filter({$0.index > atIndex})!.map({$0.value})
+        return (left: left, right: right)
+    }
+}
+
+//P18 - Extract a slice from a linked list.
+extension List {
+    func slice(_ from: Int, _ to: Int) -> List {
+        guard from < to else {
+            print("from should be less than to - obviously!")
+            return self
+        }
+        return filterAsIndexed(withRoot: 1, {$0.index > from && $0.index <= to})!
+    }
+    
+    func sliceAlt(_ from: Int, _ to: Int) -> List {
+        return split(atIndex: from).right.split(atIndex: (to - from)).left
+    }
+}
+
+//P19 (**) Rotate a list N places to the left.
+extension List {
+    func rotate(amount: Int) -> List {
+        guard amount != 0 else { return self }
+        guard let next = nextItem else { return self }
+        let amt = amount < 0 ? length + amount : amount
+        return (next + List(value)).rotate(amount: amt - 1)
+    }
+}
+
+//P20 (*) Remove the Kth element from a linked list.
+extension List {
+    func remove(at position: Int) -> (rest: List?, removed: T?) {
+        guard position >= 0 && position < length else {
+            print("Invalid at value: \(position)")
+            return (rest: nil, removed: nil)
+        }
+        guard length > 1 else { return (rest: nil, removed: value) }
+        let rest = filterAsIndexed({$0.index != position})
+        return (rest: rest, removed: self[position])
+    }
+    
+    //I keep doing this alot so maybe it needs its own func: indexList.filter(predicate).map(backToValueList)
+    func filterAsIndexed(withRoot: Int = 0, _ predicate: (IndexedItem<T>) -> Bool) -> List<T>? {
+        guard let filtered = toIndexedList(withRoot).filter(predicate) else { return nil }
+        return filtered.map({$0.value})
     }
 }
 

@@ -27,13 +27,22 @@ provides-member:
 - ["C5Tests4List", "duplicateAlt"]
 - ["C5Tests4List", "drop"]
 - ["C5Tests4List", "filter"]
-- ["C5Tests4List", "withIndex"]
+- ["C5Tests4List", "toIndexedList"]
+- ["C5Tests4List", "toList"]
+- ["C5Tests4List", "split"]
+- ["C5Tests4List", "slice"]
+- ["C5Tests4List", "sliceAlt"]
+- ["C5Tests4List", "rotate"]
+- ["C5Tests4List", "remove"]
+- ["C5Tests4List", "filterAsIndexed"]
 provides-dynamic-lookup:
 depends-top-level:
 - !private "!="
 - !private "%"
+- !private "&&"
 - "+"
 - !private "-"
+- !private "<"
 - !private "<="
 - !private "=="
 - !private ">"
@@ -46,6 +55,7 @@ depends-top-level:
 - "EncodedPair"
 - "Equatable"
 - !private "FloatLiteralType"
+- "IndexedItem"
 - "Int"
 - !private "IntegerLiteralType"
 - "List"
@@ -59,6 +69,7 @@ depends-top-level:
 depends-member:
 - !private ["Ps9AnyObject", "Array"]
 - ["Ps9AnyObject", "Equatable"]
+- !private ["Ps9AnyObject", "IndexedItem"]
 - !private ["Ps9AnyObject", "List"]
 - !private ["Ps9AnyObject", "compress"]
 - !private ["Ps9AnyObject", "decode"]
@@ -67,6 +78,7 @@ depends-member:
 - !private ["Ps9AnyObject", "encode"]
 - !private ["Ps9AnyObject", "encodeDirect"]
 - !private ["Ps9AnyObject", "filter"]
+- !private ["Ps9AnyObject", "filterAsIndexed"]
 - !private ["Ps9AnyObject", "flatten"]
 - !private ["Ps9AnyObject", "init"]
 - !private ["Ps9AnyObject", "last"]
@@ -77,10 +89,12 @@ depends-member:
 - !private ["Ps9AnyObject", "pennultimate"]
 - !private ["Ps9AnyObject", "print"]
 - !private ["Ps9AnyObject", "reverse"]
+- !private ["Ps9AnyObject", "rotate"]
 - !private ["Ps9AnyObject", "span"]
+- !private ["Ps9AnyObject", "split"]
 - !private ["Ps9AnyObject", "subscript"]
+- !private ["Ps9AnyObject", "toIndexedList"]
 - !private ["Ps9AnyObject", "value"]
-- !private ["Ps9AnyObject", "withIndex"]
 - !private ["Sa", "init"]
 - !private ["Ps23BidirectionalCollection", "init"]
 - !private ["Sb", "_getBuiltinLogicValue"]
@@ -88,12 +102,15 @@ depends-member:
 - !private ["Ps10Collection", "init"]
 - !private ["Ps10Comparable", "init"]
 - !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "rotate"]
 - !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
 - !private ["Ps29CustomPlaygroundQuickLookable", "init"]
 - !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
 - !private ["Ps17CustomReflectable", "init"]
+- !private ["Ps17CustomReflectable", "rotate"]
 - !private ["Ps23CustomStringConvertible", "Array"]
 - ["Ps23CustomStringConvertible", "Equatable"]
+- !private ["Ps23CustomStringConvertible", "IndexedItem"]
 - !private ["Ps23CustomStringConvertible", "List"]
 - !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps23CustomStringConvertible", "compress"]
@@ -103,6 +120,7 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "encode"]
 - !private ["Ps23CustomStringConvertible", "encodeDirect"]
 - !private ["Ps23CustomStringConvertible", "filter"]
+- !private ["Ps23CustomStringConvertible", "filterAsIndexed"]
 - !private ["Ps23CustomStringConvertible", "flatten"]
 - !private ["Ps23CustomStringConvertible", "init"]
 - !private ["Ps23CustomStringConvertible", "last"]
@@ -113,12 +131,15 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "pennultimate"]
 - !private ["Ps23CustomStringConvertible", "print"]
 - !private ["Ps23CustomStringConvertible", "reverse"]
+- !private ["Ps23CustomStringConvertible", "rotate"]
 - !private ["Ps23CustomStringConvertible", "span"]
+- !private ["Ps23CustomStringConvertible", "split"]
 - !private ["Ps23CustomStringConvertible", "subscript"]
+- !private ["Ps23CustomStringConvertible", "toIndexedList"]
 - !private ["Ps23CustomStringConvertible", "value"]
-- !private ["Ps23CustomStringConvertible", "withIndex"]
 - !private ["Ps9Equatable", "Array"]
 - ["Ps9Equatable", "Equatable"]
+- !private ["Ps9Equatable", "IndexedItem"]
 - !private ["Ps9Equatable", "List"]
 - !private ["Ps9Equatable", "_getBuiltinLogicValue"]
 - !private ["Ps9Equatable", "compress"]
@@ -128,6 +149,7 @@ depends-member:
 - !private ["Ps9Equatable", "encode"]
 - !private ["Ps9Equatable", "encodeDirect"]
 - !private ["Ps9Equatable", "filter"]
+- !private ["Ps9Equatable", "filterAsIndexed"]
 - !private ["Ps9Equatable", "flatten"]
 - !private ["Ps9Equatable", "init"]
 - !private ["Ps9Equatable", "last"]
@@ -138,21 +160,28 @@ depends-member:
 - !private ["Ps9Equatable", "pennultimate"]
 - !private ["Ps9Equatable", "print"]
 - !private ["Ps9Equatable", "reverse"]
+- !private ["Ps9Equatable", "rotate"]
 - !private ["Ps9Equatable", "span"]
+- !private ["Ps9Equatable", "split"]
 - !private ["Ps9Equatable", "subscript"]
+- !private ["Ps9Equatable", "toIndexedList"]
 - !private ["Ps9Equatable", "value"]
-- !private ["Ps9Equatable", "withIndex"]
 - !private ["Ps25ExpressibleByArrayLiteral", "init"]
 - !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
 - !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps23ExpressibleByNilLiteral", "rotate"]
 - !private ["Ps26ExpressibleByStringLiteral", "init"]
 - !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
 - !private ["Ps8Hashable", "_getBuiltinLogicValue"]
 - !private ["Ps8Hashable", "init"]
+- !private ["V5Tests11IndexedItem", "index"]
+- !private ["V5Tests11IndexedItem", "init"]
+- !private ["V5Tests11IndexedItem", "value"]
 - !private ["C5Tests4List", "Array"]
 - ["C5Tests4List", "Bool"]
 - !private ["C5Tests4List", "EncodedPair"]
 - ["C5Tests4List", "Equatable"]
+- ["C5Tests4List", "IndexedItem"]
 - ["C5Tests4List", "Int"]
 - ["C5Tests4List", "List"]
 - ["C5Tests4List", "String"]
@@ -167,6 +196,7 @@ depends-member:
 - ["C5Tests4List", "encodeDirect"]
 - ["C5Tests4List", "encodeModified"]
 - ["C5Tests4List", "filter"]
+- ["C5Tests4List", "filterAsIndexed"]
 - ["C5Tests4List", "flatten"]
 - !private ["C5Tests4List", "init"]
 - ["C5Tests4List", "isPalindrome"]
@@ -177,11 +207,17 @@ depends-member:
 - ["C5Tests4List", "pack"]
 - ["C5Tests4List", "pennultimate"]
 - !private ["C5Tests4List", "print"]
+- ["C5Tests4List", "remove"]
 - ["C5Tests4List", "reverse"]
+- ["C5Tests4List", "rotate"]
+- ["C5Tests4List", "slice"]
+- ["C5Tests4List", "sliceAlt"]
 - ["C5Tests4List", "span"]
+- ["C5Tests4List", "split"]
 - ["C5Tests4List", "subscript"]
+- ["C5Tests4List", "toIndexedList"]
+- ["C5Tests4List", "toList"]
 - !private ["C5Tests4List", "value"]
-- ["C5Tests4List", "withIndex"]
 - !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps25LosslessStringConvertible", "init"]
 - !private ["Ps10MirrorPath", "init"]
@@ -194,6 +230,7 @@ depends-member:
 - !private ["PSo19NSPasteboardWriting", "init"]
 - !private ["PSo14NSSecureCoding", "init"]
 - !private ["CSo8NSString", "init"]
+- !private ["Sq", "rotate"]
 - !private ["Ps22RandomAccessCollection", "init"]
 - !private ["Ps26RangeReplaceableCollection", "init"]
 - !private ["Ps8Sequence", "init"]
@@ -217,6 +254,7 @@ depends-member:
 - !private ["Ps17_MutableIndexable", "init"]
 - !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
 - !private ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "rotate"]
 - !private ["Ps22_RandomAccessIndexable", "init"]
 - !private ["Ps26_RangeReplaceableIndexable", "init"]
 depends-nominal:
@@ -235,9 +273,11 @@ depends-nominal:
 - !private "Ps25ExpressibleByArrayLiteral"
 - !private "Ps27ExpressibleByBooleanLiteral"
 - !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps23ExpressibleByNilLiteral"
 - !private "Ps26ExpressibleByStringLiteral"
 - !private "Ps33ExpressibleByUnicodeScalarLiteral"
 - !private "Ps8Hashable"
+- !private "V5Tests11IndexedItem"
 - "C5Tests4List"
 - !private "Ps25LosslessStringConvertible"
 - !private "Ps10MirrorPath"
@@ -250,6 +290,7 @@ depends-nominal:
 - !private "PSo19NSPasteboardWriting"
 - !private "PSo14NSSecureCoding"
 - !private "CSo8NSString"
+- !private "Sq"
 - !private "Ps22RandomAccessCollection"
 - !private "Ps26RangeReplaceableCollection"
 - !private "Ps8Sequence"
@@ -334,4 +375,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
-interface-hash: "413d139a2e2611aab1b15543b2ec85ea"
+interface-hash: "fe9b86661dffc272da6be6f53af2fded"
