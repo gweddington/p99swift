@@ -128,12 +128,15 @@ class Tests: XCTestCase {
         let expected = List("a", "b", "d", "e", "g", "h", "j", "k")!
         let actual = list.drop(every: 3)
         XCTAssertEqual(actual, expected)
+        
+        //try alt version
+        XCTAssertEqual(list.dropAlt(every: 3), expected)
     }
     
     //P17 - Split a linked list into two parts.
     func testP17() {
         let list = List("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k")!
-        let actual = list.split(atIndex: 3)
+        let actual = list.split(at: 3)
         let expected = (left: List("a", "b", "c")!, right: List("d", "e", "f", "g", "h", "i", "j", "k")!)
         XCTAssertEqual(actual.left, expected.left)
         XCTAssertEqual(actual.right, expected.right)
@@ -174,6 +177,10 @@ class Tests: XCTestCase {
         let actual2 = List(1)!.remove(at: 0)
         XCTAssertNil(actual2.rest)
         XCTAssertEqual(actual2.removed, 1)
+        
+        //try alt solution
+        XCTAssertEqual(list.removeAlt(at: 1).rest, expected.rest)
+        XCTAssertEqual(list.removeAlt(at: 1).removed, expected.removed)
     }
     
     //P21 - Insert an element at a given position into a linked list.

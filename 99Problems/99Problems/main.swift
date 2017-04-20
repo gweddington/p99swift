@@ -193,6 +193,18 @@ extension List {
         return filterAsIndexed(withRoot: 1, {$0.index % every != 0})!
     }
     
+    func dropAlt(every: Int) -> List {
+        guard every <= length && every > 1 else { return self }
+        let len = length
+        func dropIfIndexIsFactorEvery(_ item: List, index: Int) -> List {
+            guard index < len else { return List(item.value) }
+            let next = dropIfIndexIsFactorEvery(item.nextItem!, index: index + 1)
+            guard index % every != 0 else { return next }
+            return List(item.value) + next
+        }
+        return dropIfIndexIsFactorEvery(self, index: 1)
+    }
+    
     func filter(_ predicate: (T) -> Bool) -> List<T>? {
         if predicate(value) {
             return List(value) + nextItem?.filter(predicate)
@@ -213,13 +225,13 @@ extension List {
 
 //P17 - Split a linked list into two parts.
 extension List {
-    func split(atIndex: Int) -> (left: List, right: List) {
-        if atIndex >= length || atIndex < 1 {
-            print("Invalid atIndex value: \(atIndex)")
-            return (self, self)
+    func split(at index: Int) -> (left: List, right: List) {
+        guard index >= 1 && index < length else { return (self, self) }
+        if index == 1 {
+            return (List(value), nextItem!)
         }
-        let (left, right) = toIndexedList().span({$0.index < atIndex})
-        return (left: left!.map({$0.value}), right: right!.map({$0.value}))
+        let (nextLeft, nextRight) = nextItem!.split(at: index - 1)
+        return (left: (List(value) + nextLeft), right: nextRight)
     }
 }
 
@@ -234,7 +246,7 @@ extension List {
     }
     
     func sliceAlt(_ from: Int, _ to: Int) -> List {
-        return split(atIndex: from).right.split(atIndex: (to - from)).left
+        return split(at: from).right.split(at: (to - from)).left
     }
 }
 
@@ -256,21 +268,36 @@ extension List {
             return (rest: nil, removed: nil)
         }
         guard length > 1 else { return (rest: nil, removed: value) }
-        let rest = filterAsIndexed({$0.index != position})
-        return (rest: rest, removed: self[position])
+        let (left, right) = split(at: position)
+        return (rest: left + right.nextItem, removed: right.value)
+    }
+    
+    //alt solution going about it the long way, i.e. not using split or indexedList
+    func removeAlt(at position: Int) -> (rest: List?, removed: T?) {
+        func r(parents: List, item: List?, index: Int) -> (rest: List?, removed: T?) {
+            guard let item = item else { return (rest: parents, removed: nil) }
+            if index == 0 {
+                return (rest: parents + item.nextItem, removed: item.value)
+            }
+            return r(parents: parents + List(item.value), item: item.nextItem, index: index - 1)
+        }
+        if position == 0 {
+            return (rest: nextItem, value)
+        }
+        return r(parents: List(value), item: nextItem, index: position - 1)
     }
     
     //I keep doing this alot so maybe it needs its own func: indexList.filter(predicate).map(backToValueList)
     func filterAsIndexed(withRoot: Int = 0, _ predicate: (IndexedItem<T>) -> Bool) -> List<T>? {
         guard let filtered = toIndexedList(withRoot).filter(predicate) else { return nil }
-        return filtered.map({$0.value})
+        return filtered.toList()
     }
 }
 
 //P21 - Insert an element at a given position into a linked list.
 extension List {
     func insert(at index: Int, value: T) -> List<T> {
-        let (left, right) = split(atIndex: index)
+        let (left, right) = split(at: index)
         return left + List(value) + right
     }
 }
