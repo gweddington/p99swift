@@ -190,4 +190,9 @@ class Tests: XCTestCase {
         let expected = List("a", "new", "b", "c", "d")!
         XCTAssertEqual(actual, expected)
     }
+    
+    //P22 (*) Create a linked list containing all integers within a given range.
+    func testP22() {
+        XCTAssertEqual(List<Any>.range(4, 9), List(4, 5, 6, 7, 8, 9)!)
+    }
 }

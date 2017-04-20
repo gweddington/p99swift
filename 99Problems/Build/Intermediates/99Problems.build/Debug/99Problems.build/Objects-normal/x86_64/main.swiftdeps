@@ -38,6 +38,7 @@ provides-member:
 - ["C10_9Problems4List", "removeAlt"]
 - ["C10_9Problems4List", "filterAsIndexed"]
 - ["C10_9Problems4List", "insert"]
+- ["C10_9Problems4List", "range"]
 provides-dynamic-lookup:
 depends-top-level:
 - !private "!="
@@ -91,6 +92,7 @@ depends-member:
 - !private ["Ps9AnyObject", "pack"]
 - !private ["Ps9AnyObject", "pennultimate"]
 - !private ["Ps9AnyObject", "print"]
+- !private ["Ps9AnyObject", "range"]
 - !private ["Ps9AnyObject", "reverse"]
 - !private ["Ps9AnyObject", "rotate"]
 - !private ["Ps9AnyObject", "span"]
@@ -134,6 +136,7 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "pack"]
 - !private ["Ps23CustomStringConvertible", "pennultimate"]
 - !private ["Ps23CustomStringConvertible", "print"]
+- !private ["Ps23CustomStringConvertible", "range"]
 - !private ["Ps23CustomStringConvertible", "reverse"]
 - !private ["Ps23CustomStringConvertible", "rotate"]
 - !private ["Ps23CustomStringConvertible", "span"]
@@ -164,6 +167,7 @@ depends-member:
 - !private ["Ps9Equatable", "pack"]
 - !private ["Ps9Equatable", "pennultimate"]
 - !private ["Ps9Equatable", "print"]
+- !private ["Ps9Equatable", "range"]
 - !private ["Ps9Equatable", "reverse"]
 - !private ["Ps9Equatable", "rotate"]
 - !private ["Ps9Equatable", "span"]
@@ -215,6 +219,7 @@ depends-member:
 - ["C10_9Problems4List", "pack"]
 - ["C10_9Problems4List", "pennultimate"]
 - !private ["C10_9Problems4List", "print"]
+- ["C10_9Problems4List", "range"]
 - ["C10_9Problems4List", "remove"]
 - ["C10_9Problems4List", "removeAlt"]
 - ["C10_9Problems4List", "reverse"]
@@ -334,4 +339,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
-interface-hash: "f6defa2b628a210fbd0736db3510be2d"
+interface-hash: "ccd60d5f8f23a1d35f05edb3353abf58"

@@ -29,6 +29,7 @@ provides-dynamic-lookup:
 - "testP19"
 - "testP20"
 - "testP21"
+- "testP22"
 depends-top-level:
 - "CastingPrecedence"
 - !private "EncodedPair"
@@ -66,6 +67,7 @@ depends-member:
 - !private ["Ps9AnyObject", "length"]
 - !private ["Ps9AnyObject", "pack"]
 - !private ["Ps9AnyObject", "pennultimate"]
+- !private ["Ps9AnyObject", "range"]
 - !private ["Ps9AnyObject", "remove"]
 - !private ["Ps9AnyObject", "removeAlt"]
 - !private ["Ps9AnyObject", "reverse"]
@@ -125,6 +127,7 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "length"]
 - !private ["Ps23CustomStringConvertible", "pack"]
 - !private ["Ps23CustomStringConvertible", "pennultimate"]
+- !private ["Ps23CustomStringConvertible", "range"]
 - !private ["Ps23CustomStringConvertible", "remove"]
 - !private ["Ps23CustomStringConvertible", "removeAlt"]
 - !private ["Ps23CustomStringConvertible", "reverse"]
@@ -159,6 +162,7 @@ depends-member:
 - !private ["Ps9Equatable", "length"]
 - !private ["Ps9Equatable", "pack"]
 - !private ["Ps9Equatable", "pennultimate"]
+- !private ["Ps9Equatable", "range"]
 - !private ["Ps9Equatable", "remove"]
 - !private ["Ps9Equatable", "removeAlt"]
 - !private ["Ps9Equatable", "reverse"]
@@ -203,6 +207,7 @@ depends-member:
 - !private ["C5Tests4List", "length"]
 - !private ["C5Tests4List", "pack"]
 - !private ["C5Tests4List", "pennultimate"]
+- !private ["C5Tests4List", "range"]
 - !private ["C5Tests4List", "remove"]
 - !private ["C5Tests4List", "removeAlt"]
 - !private ["C5Tests4List", "reverse"]
@@ -248,6 +253,7 @@ depends-member:
 - ["CSo8NSObject", "testP19"]
 - ["CSo8NSObject", "testP20"]
 - ["CSo8NSObject", "testP21"]
+- ["CSo8NSObject", "testP22"]
 - ["CSo8NSObject", "theList"]
 - ["PSo16NSObjectProtocol", "List"]
 - !private ["PSo16NSObjectProtocol", "XCTAssert"]
@@ -299,6 +305,7 @@ depends-member:
 - ["C5Tests5Tests", "testP19"]
 - ["C5Tests5Tests", "testP20"]
 - ["C5Tests5Tests", "testP21"]
+- ["C5Tests5Tests", "testP22"]
 - ["C5Tests5Tests", "theList"]
 - !private ["Ps16TextOutputStream", "init"]
 - !private ["Ps20TextOutputStreamable", "init"]
@@ -345,6 +352,7 @@ depends-member:
 - ["CSo6XCTest", "testP19"]
 - ["CSo6XCTest", "testP20"]
 - ["CSo6XCTest", "testP21"]
+- ["CSo6XCTest", "testP22"]
 - ["CSo6XCTest", "theList"]
 - !private ["CSo10XCTestCase", "EncodedPair"]
 - ["CSo10XCTestCase", "Int"]
@@ -378,6 +386,7 @@ depends-member:
 - ["CSo10XCTestCase", "testP19"]
 - ["CSo10XCTestCase", "testP20"]
 - ["CSo10XCTestCase", "testP21"]
+- ["CSo10XCTestCase", "testP22"]
 - ["CSo10XCTestCase", "theList"]
 - ["CSo10XCTestCase", ""]
 - !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
@@ -500,4 +509,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCAbstractTest.h"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElementQuery.h"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Modules/module.modulemap"
-interface-hash: "205610bfd9494f015c6e7ca3845eb1d5"
+interface-hash: "42798f63aabdc81eb1af0f662e0ee35b"

@@ -196,13 +196,13 @@ extension List {
     func dropAlt(every: Int) -> List {
         guard every <= length && every > 1 else { return self }
         let len = length
-        func dropIfIndexIsFactorEvery(_ item: List, index: Int) -> List {
+        func dropIfIndexIsFactor(_ item: List, index: Int) -> List {
             guard index < len else { return List(item.value) }
-            let next = dropIfIndexIsFactorEvery(item.nextItem!, index: index + 1)
+            let next = dropIfIndexIsFactor(item.nextItem!, index: index + 1)
             guard index % every != 0 else { return next }
             return List(item.value) + next
         }
-        return dropIfIndexIsFactorEvery(self, index: 1)
+        return dropIfIndexIsFactor(self, index: 1)
     }
     
     func filter(_ predicate: (T) -> Bool) -> List<T>? {
@@ -299,5 +299,13 @@ extension List {
     func insert(at index: Int, value: T) -> List<T> {
         let (left, right) = split(at: index)
         return left + List(value) + right
+    }
+}
+
+//P22 (*) Create a linked list containing all integers within a given range.
+extension List {
+    class func range(_ from: Int, _ to: Int) -> List<Int> {
+        guard from < to else { return List<Int>(from) }
+        return List<Int>(from) + range(from + 1, to)
     }
 }
