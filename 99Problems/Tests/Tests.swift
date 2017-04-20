@@ -174,6 +174,13 @@ class Tests: XCTestCase {
         let actual2 = List(1)!.remove(at: 0)
         XCTAssertNil(actual2.rest)
         XCTAssertEqual(actual2.removed, 1)
-        
+    }
+    
+    //P21 - Insert an element at a given position into a linked list.
+    func testP21() {
+        let list = List("a", "b", "c", "d")!
+        let actual = list.insert(at: 1, value: "new")
+        let expected = List("a", "new", "b", "c", "d")!
+        XCTAssertEqual(actual, expected)
     }
 }

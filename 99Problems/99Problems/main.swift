@@ -91,7 +91,9 @@ extension List where T: Equatable {
         let head = List<List<T>>(pair.0!)!
         return head + pair.1?.pack()
     }
-    
+}
+//since span doesn't require equatable, moving it out of the extension with that type condition
+extension List {
     func span(_ predicate: (T) -> Bool) -> (List<T>?, List<T>?) {
         if predicate(value) {
             guard let pair = nextItem?.span(predicate) else { return (List(value), nil) }
@@ -216,10 +218,8 @@ extension List {
             print("Invalid atIndex value: \(atIndex)")
             return (self, self)
         }
-        let list = toIndexedList(1)
-        let left = list.filter({$0.index <= atIndex})!.map({$0.value})
-        let right = list.filter({$0.index > atIndex})!.map({$0.value})
-        return (left: left, right: right)
+        let (left, right) = toIndexedList().span({$0.index < atIndex})
+        return (left: left!.map({$0.value}), right: right!.map({$0.value}))
     }
 }
 
@@ -267,4 +267,10 @@ extension List {
     }
 }
 
-
+//P21 - Insert an element at a given position into a linked list.
+extension List {
+    func insert(at index: Int, value: T) -> List<T> {
+        let (left, right) = split(atIndex: index)
+        return left + List(value) + right
+    }
+}
