@@ -13,13 +13,10 @@ provides-member:
 - ["C10_9Problems4List", "=="]
 - ["C10_9Problems4List", "clone"]
 - ["C10_9Problems4List", "values"]
-- ["C10_9Problems4List", "take"]
 provides-dynamic-lookup:
 depends-top-level:
 - !private "&&"
 - !private "+"
-- !private "-"
-- !private "<="
 - "=="
 - !private "??"
 - "Array"
@@ -33,7 +30,6 @@ depends-top-level:
 - !private "IntegerLiteralType"
 - "List"
 - "String"
-- !private "||"
 depends-member:
 - !private ["Ps9AnyObject", "Array"]
 - ["Ps9AnyObject", "Equatable"]
@@ -41,7 +37,6 @@ depends-member:
 - ["Ps9AnyObject", "description"]
 - !private ["Ps9AnyObject", "init"]
 - !private ["Ps9AnyObject", "nextItem"]
-- !private ["Ps9AnyObject", "take"]
 - !private ["Ps9AnyObject", "value"]
 - !private ["Ps9AnyObject", "values"]
 - ["Ps9AnyObject", ""]
@@ -81,7 +76,6 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "init"]
 - !private ["Ps23CustomStringConvertible", "nextItem"]
 - !private ["Ps23CustomStringConvertible", "removeFirst"]
-- !private ["Ps23CustomStringConvertible", "take"]
 - !private ["Ps23CustomStringConvertible", "value"]
 - !private ["Ps23CustomStringConvertible", "values"]
 - ["Ps23CustomStringConvertible", ""]
@@ -92,7 +86,6 @@ depends-member:
 - ["Ps9Equatable", "description"]
 - !private ["Ps9Equatable", "init"]
 - !private ["Ps9Equatable", "nextItem"]
-- !private ["Ps9Equatable", "take"]
 - !private ["Ps9Equatable", "value"]
 - !private ["Ps9Equatable", "values"]
 - ["Ps9Equatable", ""]
@@ -111,7 +104,6 @@ depends-member:
 - ["C10_9Problems4List", "Array"]
 - ["C10_9Problems4List", "Bool"]
 - ["C10_9Problems4List", "Equatable"]
-- ["C10_9Problems4List", "Int"]
 - ["C10_9Problems4List", "List"]
 - ["C10_9Problems4List", "String"]
 - ["C10_9Problems4List", "T"]
@@ -120,7 +112,6 @@ depends-member:
 - ["C10_9Problems4List", "description"]
 - ["C10_9Problems4List", "init"]
 - ["C10_9Problems4List", "nextItem"]
-- ["C10_9Problems4List", "take"]
 - ["C10_9Problems4List", "value"]
 - ["C10_9Problems4List", "values"]
 - !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
@@ -227,4 +218,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
-interface-hash: "7416687be71a94687ee8f731536c8c0b"
+interface-hash: "4609fe9334ec818e4c50b86beca1241f"

@@ -60,12 +60,11 @@ extension List {
         return [value] + (nextItem?.values() ?? [])
     }
     
-    //I started P20 with take but then realized I didn't need it, but its probably a good tool to have
-    func take(_ index: Int) -> List {
-        if index <= 1 || nextItem == nil {
+    func take(_ amount: Int) -> List {
+        if amount <= 1 || nextItem == nil {
             return List(value)
         }
-        return List(value) + nextItem?.take(index - 1)
+        return List(value) + nextItem?.take(amount - 1)
     }
     
 

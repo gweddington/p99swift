@@ -195,4 +195,17 @@ class Tests: XCTestCase {
     func testP22() {
         XCTAssertEqual(List<Any>.range(4, 9), List(4, 5, 6, 7, 8, 9)!)
     }
+    
+    //P23 (**) Extract a given number of randomly selected elements from a linked list.
+    func testP23() {
+        let list = List("a", "b", "c", "d", "e", "f", "g", "h")!
+        var indices = [4,3,0]
+        let actual = list.randomSelect(amount: 3) { e in
+            return indices.removeFirst()
+        }
+        //how does one assert randomness? Instead of the requested fn, I will write one that accepts
+        //a fn that provides the random indices
+        let expected = List("e","d","a")!
+        XCTAssertEqual(actual, expected)
+    }
 }

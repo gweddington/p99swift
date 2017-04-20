@@ -309,3 +309,20 @@ extension List {
         return List<Int>(from) + range(from + 1, to)
     }
 }
+
+//P23 (**) Extract a given number of randomly selected elements from a linked list.
+extension List {
+    //note: I diverged from the recommended signature to one that accepts a closure
+    //to acquire the next random index. This way the function has a predictable 
+    //output, so long as the randomIndex closure is predictable
+    func randomSelect(amount: Int, randomIndex: @escaping () -> Int) -> List? {
+        guard amount > 0 else { return nil }
+        let index = randomIndex()
+        guard index >= 0 && index < length else {
+            //invalid random index - I could correct it but I chose to just retry
+            return randomSelect(amount: amount, randomIndex: randomIndex)
+        }
+        let item = filterAsIndexed({$0.index == index})!
+        return item + randomSelect(amount: amount - 1, randomIndex: randomIndex)
+    }
+}

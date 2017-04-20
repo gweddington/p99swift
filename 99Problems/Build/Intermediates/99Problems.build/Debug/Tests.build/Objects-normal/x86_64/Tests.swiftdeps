@@ -30,7 +30,9 @@ provides-dynamic-lookup:
 - "testP20"
 - "testP21"
 - "testP22"
+- "testP23"
 depends-top-level:
+- !private "Array"
 - "CastingPrecedence"
 - !private "EncodedPair"
 - "Int"
@@ -67,6 +69,7 @@ depends-member:
 - !private ["Ps9AnyObject", "length"]
 - !private ["Ps9AnyObject", "pack"]
 - !private ["Ps9AnyObject", "pennultimate"]
+- !private ["Ps9AnyObject", "randomSelect"]
 - !private ["Ps9AnyObject", "range"]
 - !private ["Ps9AnyObject", "remove"]
 - !private ["Ps9AnyObject", "removeAlt"]
@@ -80,6 +83,8 @@ depends-member:
 - !private ["Ps9AnyObject", "tearDown"]
 - !private ["Ps9AnyObject", "theList"]
 - ["Ps9AnyObject", ""]
+- !private ["Sa", "removeFirst"]
+- !private ["Ps23BidirectionalCollection", "removeFirst"]
 - ["Ps7CVarArg", "List"]
 - !private ["Ps7CVarArg", "XCTAssert"]
 - !private ["Ps7CVarArg", "XCTAssertEqual"]
@@ -87,10 +92,12 @@ depends-member:
 - !private ["Ps7CVarArg", "XCTAssertNil"]
 - !private ["Ps7CVarArg", "decode"]
 - !private ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "removeFirst"]
 - !private ["Ps7CVarArg", "setUp"]
 - !private ["Ps7CVarArg", "tearDown"]
 - !private ["Ps7CVarArg", "theList"]
 - ["Ps7CVarArg", ""]
+- !private ["Ps10Collection", "removeFirst"]
 - !private ["Ps10Comparable", "init"]
 - ["Ps28CustomDebugStringConvertible", "List"]
 - !private ["Ps28CustomDebugStringConvertible", "XCTAssert"]
@@ -99,12 +106,14 @@ depends-member:
 - !private ["Ps28CustomDebugStringConvertible", "XCTAssertNil"]
 - !private ["Ps28CustomDebugStringConvertible", "decode"]
 - !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "removeFirst"]
 - !private ["Ps28CustomDebugStringConvertible", "setUp"]
 - !private ["Ps28CustomDebugStringConvertible", "tearDown"]
 - !private ["Ps28CustomDebugStringConvertible", "theList"]
 - ["Ps28CustomDebugStringConvertible", ""]
 - !private ["Ps29CustomPlaygroundQuickLookable", "init"]
 - !private ["Ps17CustomReflectable", "init"]
+- !private ["Ps17CustomReflectable", "removeFirst"]
 - ["Ps23CustomStringConvertible", "List"]
 - !private ["Ps23CustomStringConvertible", "XCTAssert"]
 - !private ["Ps23CustomStringConvertible", "XCTAssertEqual"]
@@ -127,9 +136,11 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "length"]
 - !private ["Ps23CustomStringConvertible", "pack"]
 - !private ["Ps23CustomStringConvertible", "pennultimate"]
+- !private ["Ps23CustomStringConvertible", "randomSelect"]
 - !private ["Ps23CustomStringConvertible", "range"]
 - !private ["Ps23CustomStringConvertible", "remove"]
 - !private ["Ps23CustomStringConvertible", "removeAlt"]
+- !private ["Ps23CustomStringConvertible", "removeFirst"]
 - !private ["Ps23CustomStringConvertible", "reverse"]
 - !private ["Ps23CustomStringConvertible", "rotate"]
 - !private ["Ps23CustomStringConvertible", "setUp"]
@@ -162,6 +173,7 @@ depends-member:
 - !private ["Ps9Equatable", "length"]
 - !private ["Ps9Equatable", "pack"]
 - !private ["Ps9Equatable", "pennultimate"]
+- !private ["Ps9Equatable", "randomSelect"]
 - !private ["Ps9Equatable", "range"]
 - !private ["Ps9Equatable", "remove"]
 - !private ["Ps9Equatable", "removeAlt"]
@@ -175,6 +187,7 @@ depends-member:
 - !private ["Ps9Equatable", "tearDown"]
 - !private ["Ps9Equatable", "theList"]
 - ["Ps9Equatable", ""]
+- !private ["Ps25ExpressibleByArrayLiteral", "removeFirst"]
 - !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
 - !private ["Ps26ExpressibleByStringLiteral", "init"]
 - !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
@@ -207,6 +220,7 @@ depends-member:
 - !private ["C5Tests4List", "length"]
 - !private ["C5Tests4List", "pack"]
 - !private ["C5Tests4List", "pennultimate"]
+- !private ["C5Tests4List", "randomSelect"]
 - !private ["C5Tests4List", "range"]
 - !private ["C5Tests4List", "remove"]
 - !private ["C5Tests4List", "removeAlt"]
@@ -218,6 +232,7 @@ depends-member:
 - !private ["C5Tests4List", "subscript"]
 - !private ["Ps25LosslessStringConvertible", "init"]
 - !private ["Ps10MirrorPath", "init"]
+- !private ["Ps17MutableCollection", "removeFirst"]
 - !private ["PSo8NSCoding", "init"]
 - !private ["PSo9NSCopying", "init"]
 - !private ["PSo16NSMutableCopying", "init"]
@@ -254,6 +269,7 @@ depends-member:
 - ["CSo8NSObject", "testP20"]
 - ["CSo8NSObject", "testP21"]
 - ["CSo8NSObject", "testP22"]
+- ["CSo8NSObject", "testP23"]
 - ["CSo8NSObject", "theList"]
 - ["PSo16NSObjectProtocol", "List"]
 - !private ["PSo16NSObjectProtocol", "XCTAssert"]
@@ -270,6 +286,9 @@ depends-member:
 - !private ["PSo19NSPasteboardWriting", "init"]
 - !private ["PSo14NSSecureCoding", "init"]
 - !private ["CSo8NSString", "init"]
+- !private ["Ps22RandomAccessCollection", "removeFirst"]
+- !private ["Ps26RangeReplaceableCollection", "removeFirst"]
+- !private ["Ps8Sequence", "removeFirst"]
 - !private ["Vs12StaticString", "init"]
 - !private ["SS", "init"]
 - !private ["C5Tests5Tests", "EncodedPair"]
@@ -306,6 +325,7 @@ depends-member:
 - ["C5Tests5Tests", "testP20"]
 - ["C5Tests5Tests", "testP21"]
 - ["C5Tests5Tests", "testP22"]
+- ["C5Tests5Tests", "testP23"]
 - ["C5Tests5Tests", "theList"]
 - !private ["Ps16TextOutputStream", "init"]
 - !private ["Ps20TextOutputStreamable", "init"]
@@ -353,6 +373,7 @@ depends-member:
 - ["CSo6XCTest", "testP20"]
 - ["CSo6XCTest", "testP21"]
 - ["CSo6XCTest", "testP22"]
+- ["CSo6XCTest", "testP23"]
 - ["CSo6XCTest", "theList"]
 - !private ["CSo10XCTestCase", "EncodedPair"]
 - ["CSo10XCTestCase", "Int"]
@@ -387,8 +408,12 @@ depends-member:
 - ["CSo10XCTestCase", "testP20"]
 - ["CSo10XCTestCase", "testP21"]
 - ["CSo10XCTestCase", "testP22"]
+- ["CSo10XCTestCase", "testP23"]
 - ["CSo10XCTestCase", "theList"]
 - ["CSo10XCTestCase", ""]
+- !private ["Ps14_ArrayProtocol", "removeFirst"]
+- !private ["Ps23_BidirectionalIndexable", "removeFirst"]
+- !private ["Ps24_DestructorSafeContainer", "removeFirst"]
 - !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
 - !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
 - !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
@@ -406,16 +431,26 @@ depends-member:
 - !private ["Ps9_Hashable", "tearDown"]
 - !private ["Ps9_Hashable", "theList"]
 - ["Ps9_Hashable", ""]
+- !private ["Ps10_Indexable", "removeFirst"]
+- !private ["Ps14_IndexableBase", "removeFirst"]
+- !private ["Ps17_MutableIndexable", "removeFirst"]
 - !private ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "removeFirst"]
+- !private ["Ps22_RandomAccessIndexable", "removeFirst"]
+- !private ["Ps26_RangeReplaceableIndexable", "removeFirst"]
 depends-nominal:
 - "Ps9AnyObject"
+- !private "Sa"
+- !private "Ps23BidirectionalCollection"
 - "Ps7CVarArg"
+- !private "Ps10Collection"
 - !private "Ps10Comparable"
 - "Ps28CustomDebugStringConvertible"
 - !private "Ps29CustomPlaygroundQuickLookable"
 - !private "Ps17CustomReflectable"
 - "Ps23CustomStringConvertible"
 - "Ps9Equatable"
+- !private "Ps25ExpressibleByArrayLiteral"
 - !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
 - !private "Ps26ExpressibleByStringLiteral"
 - !private "Ps33ExpressibleByUnicodeScalarLiteral"
@@ -423,6 +458,7 @@ depends-nominal:
 - "C5Tests4List"
 - !private "Ps25LosslessStringConvertible"
 - !private "Ps10MirrorPath"
+- !private "Ps17MutableCollection"
 - !private "PSo8NSCoding"
 - !private "PSo9NSCopying"
 - !private "PSo16NSMutableCopying"
@@ -432,6 +468,9 @@ depends-nominal:
 - !private "PSo19NSPasteboardWriting"
 - !private "PSo14NSSecureCoding"
 - !private "CSo8NSString"
+- !private "Ps22RandomAccessCollection"
+- !private "Ps26RangeReplaceableCollection"
+- !private "Ps8Sequence"
 - !private "Vs12StaticString"
 - !private "SS"
 - "C5Tests5Tests"
@@ -440,6 +479,9 @@ depends-nominal:
 - "PSo17XCTWaiterDelegate"
 - "CSo6XCTest"
 - "CSo10XCTestCase"
+- !private "Ps14_ArrayProtocol"
+- !private "Ps23_BidirectionalIndexable"
+- !private "Ps24_DestructorSafeContainer"
 - !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
 - !private "Ps34_ExpressibleByBuiltinStringLiteral"
 - !private "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
@@ -447,7 +489,12 @@ depends-nominal:
 - !private "Ps33_ExpressibleByStringInterpolation"
 - !private "Ps35_HasCustomAnyHashableRepresentation"
 - "Ps9_Hashable"
+- !private "Ps10_Indexable"
+- !private "Ps14_IndexableBase"
+- !private "Ps17_MutableIndexable"
 - !private "Ps21_ObjectiveCBridgeable"
+- !private "Ps22_RandomAccessIndexable"
+- !private "Ps26_RangeReplaceableIndexable"
 depends-dynamic-lookup:
 depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.apinotesc"
@@ -509,4 +556,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCAbstractTest.h"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElementQuery.h"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Modules/module.modulemap"
-interface-hash: "42798f63aabdc81eb1af0f662e0ee35b"
+interface-hash: "50bb50584f87f73a7e5be5c6d73dfde6"

@@ -39,6 +39,8 @@ provides-member:
 - ["C5Tests4List", "filterAsIndexed"]
 - ["C5Tests4List", "insert"]
 - ["C5Tests4List", "range"]
+- ["C5Tests4List", "randomSelect"]
+- ["C5Tests4List", "take"]
 provides-dynamic-lookup:
 depends-top-level:
 - !private "!="
@@ -92,12 +94,14 @@ depends-member:
 - !private ["Ps9AnyObject", "pack"]
 - !private ["Ps9AnyObject", "pennultimate"]
 - !private ["Ps9AnyObject", "print"]
+- !private ["Ps9AnyObject", "randomSelect"]
 - !private ["Ps9AnyObject", "range"]
 - !private ["Ps9AnyObject", "reverse"]
 - !private ["Ps9AnyObject", "rotate"]
 - !private ["Ps9AnyObject", "span"]
 - !private ["Ps9AnyObject", "split"]
 - !private ["Ps9AnyObject", "subscript"]
+- !private ["Ps9AnyObject", "take"]
 - !private ["Ps9AnyObject", "toIndexedList"]
 - !private ["Ps9AnyObject", "toList"]
 - !private ["Ps9AnyObject", "value"]
@@ -136,12 +140,14 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "pack"]
 - !private ["Ps23CustomStringConvertible", "pennultimate"]
 - !private ["Ps23CustomStringConvertible", "print"]
+- !private ["Ps23CustomStringConvertible", "randomSelect"]
 - !private ["Ps23CustomStringConvertible", "range"]
 - !private ["Ps23CustomStringConvertible", "reverse"]
 - !private ["Ps23CustomStringConvertible", "rotate"]
 - !private ["Ps23CustomStringConvertible", "span"]
 - !private ["Ps23CustomStringConvertible", "split"]
 - !private ["Ps23CustomStringConvertible", "subscript"]
+- !private ["Ps23CustomStringConvertible", "take"]
 - !private ["Ps23CustomStringConvertible", "toIndexedList"]
 - !private ["Ps23CustomStringConvertible", "toList"]
 - !private ["Ps23CustomStringConvertible", "value"]
@@ -167,12 +173,14 @@ depends-member:
 - !private ["Ps9Equatable", "pack"]
 - !private ["Ps9Equatable", "pennultimate"]
 - !private ["Ps9Equatable", "print"]
+- !private ["Ps9Equatable", "randomSelect"]
 - !private ["Ps9Equatable", "range"]
 - !private ["Ps9Equatable", "reverse"]
 - !private ["Ps9Equatable", "rotate"]
 - !private ["Ps9Equatable", "span"]
 - !private ["Ps9Equatable", "split"]
 - !private ["Ps9Equatable", "subscript"]
+- !private ["Ps9Equatable", "take"]
 - !private ["Ps9Equatable", "toIndexedList"]
 - !private ["Ps9Equatable", "toList"]
 - !private ["Ps9Equatable", "value"]
@@ -219,6 +227,7 @@ depends-member:
 - ["C5Tests4List", "pack"]
 - ["C5Tests4List", "pennultimate"]
 - !private ["C5Tests4List", "print"]
+- ["C5Tests4List", "randomSelect"]
 - ["C5Tests4List", "range"]
 - ["C5Tests4List", "remove"]
 - ["C5Tests4List", "removeAlt"]
@@ -229,6 +238,7 @@ depends-member:
 - ["C5Tests4List", "span"]
 - ["C5Tests4List", "split"]
 - ["C5Tests4List", "subscript"]
+- ["C5Tests4List", "take"]
 - ["C5Tests4List", "toIndexedList"]
 - ["C5Tests4List", "toList"]
 - !private ["C5Tests4List", "value"]
@@ -389,4 +399,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCAbstractTest.h"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElementQuery.h"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Modules/module.modulemap"
-interface-hash: "ccd60d5f8f23a1d35f05edb3353abf58"
+interface-hash: "dc23dc915d07a941f26c78ef6b126a16"
