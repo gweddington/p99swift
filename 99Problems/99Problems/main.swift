@@ -268,6 +268,9 @@ extension List {
             return (rest: nil, removed: nil)
         }
         guard length > 1 else { return (rest: nil, removed: value) }
+        if position == 0 {
+            return (rest: nextItem, removed: value)
+        }
         let (left, right) = split(at: position)
         return (rest: left + right.nextItem, removed: right.value)
     }
@@ -314,15 +317,193 @@ extension List {
 extension List {
     //note: I diverged from the recommended signature to one that accepts a closure
     //to acquire the next random index. This way the function has a predictable 
-    //output, so long as the randomIndex closure is predictable
-    func randomSelect(amount: Int, randomIndex: @escaping () -> Int) -> List? {
+    //output, so long as the generator closure is predictable
+    func randomSelect(amount: Int, generator: @escaping () -> Int) -> List? {
         guard amount > 0 else { return nil }
-        let index = randomIndex()
+        let index = generator()
         guard index >= 0 && index < length else {
             //invalid random index - I could correct it but I chose to just retry
-            return randomSelect(amount: amount, randomIndex: randomIndex)
+            return randomSelect(amount: amount, generator: generator)
         }
-        let item = filterAsIndexed({$0.index == index})!
-        return item + randomSelect(amount: amount - 1, randomIndex: randomIndex)
+        let item = List(self[index]!)!
+        return item + randomSelect(amount: amount - 1, generator: generator)
+    }
+}
+
+//P24 (*) Lotto: Draw N different random numbers from the set 1..M.
+extension List {
+    //note: just like P23, I defined it to take in a generator fn instead of choosing a random number
+    //I suspose one could easily write an overload that just takes the 2 numbers and calls
+    //this method by providing it a random generator
+    class func lotto(_ numbers: Int, _ maximum: Int, generator: @escaping () -> Int) -> List<Int> {
+        //for the sake of simplicity, if the generated number exceeds maximum, just use maximum
+        //we could, instead, retry or something but...
+        let num = min(generator(), maximum)
+        guard numbers > 1 else { return List<Int>(num) }
+        return List<Int>(num) + lotto(numbers - 1, maximum, generator: generator)
+    }
+    //so the random version w/o supplying a random number generator, i.e. impure
+    class func lotto(_ numbers: Int, _ maximum: Int) -> List<Int> {
+        return lotto(numbers, maximum) { () in
+            return Int(arc4random_uniform(UInt32(maximum)) + 1)
+        }
+    }
+}
+
+//P25 (*) Generate a random permutation of the elements of a linked list.
+extension List {
+    func randomPermute(generator: @escaping (Int) -> Int) -> List {
+        let index = generator(length - 1)
+        let (rest, removed) = remove(at: index)
+        guard let item = removed else {
+            return randomPermute(generator: generator)  //try again
+        }
+        return List(item) + rest?.randomPermute(generator: generator)
+    }
+}
+
+//P26 (**) Generate the combinations of K distinct objects chosen from the N elements of a linked list.
+extension List {
+    func combinations(group: Int) -> List<List<T>> {
+        guard nextItem != nil else { return List<List<T>>(List<T>(value)) }
+        guard group > 1 else {
+            return List<List<T>>(List<T>(value)) + nextItem!.combinations(group: group)
+        }
+        let combos = nextItem!.combinations(group: group - 1).map({ List<T>(value) + $0 })
+            + nextItem!.combinations(group: group)
+        return combos.filter({$0.length == group}) ?? combos
+    }
+}
+
+//P26B (**) Generate the permutations of K distinct objects chosen from the N elements of a linked list.
+extension List where T:Equatable {
+    func permutations(group: Int) -> List<List<T>> {
+        func ps(rotation: Int) -> List<List<T>> {
+            guard rotation > 0 else { return combinations(group: group) }
+            return rotate(amount: rotation).combinations(group: group) + ps(rotation: rotation - 1)
+        }
+        return ps(rotation: length - 1)
+            .removeDups()
+    }
+
+    func removeDups() -> List {
+        guard let next = nextItem else { return List(value) }
+        if next.contains(value) {
+            return next.removeDups()
+        }
+        return List(value) + next.removeDups()
+    }
+}
+
+//P27 (**) Group the elements of a set into disjoint subsets.
+//I can't do this one :(
+extension List where T: Equatable {
+    func group3() -> List<List<List<T>>>? {
+        //groups of 2, 3, 4
+//        let twos = combinations(group: 2)
+//        let threes = combinations(group: 3)
+//        let fours = combinations(group: 4)
+        return nil
+//        func combination(n: Int, list: List<T>) -> List<(List<T>, List<T>?)> {
+//            let x = list.value!, xs = list.nextItem
+//            guard n > 0 && list.nextItem != nil else {
+//                return List<(List<T>, List<T>?)>((List<T>(x), xs))
+//            }
+//            func addToLeft(_ p: (List<T>,List<T>?)) -> (List<T>,List<T>?) {
+//                return (List<T>(x) + p.0, p.1)
+//            }
+//            func addToRight(_ p: (List<T>,List<T>?)) -> (List<T>,List<T>?) {
+//                return (p.0, List<T>(x) + p.1)
+//            }
+//            return combination(n: n - 1, list: xs!).map(addToLeft)
+//                 + combination(n: n, list: xs!).map(addToRight)
+//        }
+//        
+//        let twos = combination(n: 2, list: self).foldr(start: nil, reducer: {(b,p) -> List<List<List<T>>> in
+//            if p.1 == nil && b == nil { return List<List<List<T>>>(List<List<T>>(p.0)) }
+//            return p.1!.group3().map({List<List<T>>(p.0) + $0}) + b
+//        })
+//        let threes = combination(n: 3, list: self).foldr(start: nil, reducer: {(b,p) -> List<List<List<T>>> in
+//            if p.1 == nil && b == nil { return List<List<List<T>>>(List<List<T>>(p.0)) }
+//            return p.1!.group3().map({List<List<T>>(p.0) + $0}) + b
+//        })
+//        let fours = combination(n: 4, list: self).foldr(start: nil, reducer: {(b,p) -> List<List<List<T>>> in
+//            if p.1 == nil && b == nil { return List<List<List<T>>>(List<List<T>>(p.0)) }
+//            return p.1!.group3().map({List<List<T>>(p.0) + $0}) + b
+//        })
+//
+//        print(twos)
+//        return twos + threes + fours
+    }
+    
+    //combine each elem of the list with every element of the other list
+    // [1,2] combine [3,4,5] = [[1,3],[1,4],[1,5],[2,3],[2,4],[2,5]]
+    func combine(with other: List<T>) -> List<List<List<T>>> {
+        return map({a in
+            other.map({b in
+                List<T>(a) + List<T>(b)
+            })
+        });
+    }
+}
+
+//P28 (**) Sorting a linked list of linked lists according to length of sublists.
+//Note: I had an issue with using as? and/or is List/List<T> with lsort as an extension method
+//so I am implementing it as an external function instead
+func lsort<T>(list: List<List<T>>) -> List<List<T>> {
+    return listSort(list: list, by: {$0.length})
+}
+
+//P28B (**) Sorting a linked list of linked lists according to their length frequency.
+func lsortFreq<T>(list: List<List<T>>) -> List<List<T>> {
+    func sortByFreq(_ unsorted: List<(Int, List<T>)>) -> List<(Int, List<T>)> {
+        return listSort(list: unsorted, by: {$0.0})
+    }
+    func freqOfLength(_ list: List<(Int, List<T>)>, rotation: Int = 0) -> List<(Int, List<T>)> {
+        let (len, ls) = list.value
+        guard let next = list.nextItem else { return List<(Int, List<T>)>((1, ls)) }
+        let freq = (next.filter({$0.0 == len})?.length ?? 0) + 1
+        guard rotation < list.length - 1 else { return List<(Int, List<T>)>((freq, ls)) }
+        return List<(Int, List<T>)>((freq, ls)) +
+            freqOfLength(next + List<(Int, List<T>)>((len, ls)),
+                         rotation: rotation + 1)
+    }
+    func fromPairToItem(_ pair: (Int, List<T>)) -> List<T> {
+        return pair.1
+    }
+    func lengthItemPairs(_ list: List<List<T>>) -> List<(Int, List<T>)> {
+//        let len = list.length
+//        let (matches, rest) = list.span({$0.length == len})
+        return list.map({(ls: List<T>) in (ls.length, ls)})
+    }
+    let lengthed = lengthItemPairs(list)
+    let frequencied = freqOfLength(lengthed)
+    let sorted = sortByFreq(frequencied)
+    return sorted.map(fromPairToItem)
+}
+
+//more generic list sort, with a fn to evaluate what to sort by
+func listSort<T, R:Comparable>(list: List<T>, by fn: @escaping (T) -> R) -> List<T> {
+    let value = list.value!
+    let nextItem = list.nextItem
+    let head = List<T>(value)!
+    guard let next = nextItem else { return head }
+    let check = fn(value)
+    let lessThanCheck: (T) -> Bool = { fn($0) < check }
+    let left = next.filter(lessThanCheck)
+    let right = next.filter({ !lessThanCheck($0) })
+    if left == nil && right == nil { return head }
+    if left == nil { return head + listSort(list: right!, by: fn) }
+    if right == nil { return listSort(list: left!, by: fn) + head }
+    return listSort(list: left!, by: fn) + head + listSort(list: right!, by: fn)
+}
+
+
+
+extension List where T:Equatable {
+    func contains(_ elem: T) -> Bool {
+        if value == elem { return true }
+        if nextItem == nil { return false }
+        return nextItem!.contains(elem)
     }
 }

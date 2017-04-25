@@ -9,7 +9,7 @@
 import Foundation
 
 public class List<T> {
-    var value: T!
+    let value: T!
     var nextItem: List<T>?
     
     public convenience init!(_ values: T...) {
@@ -66,7 +66,27 @@ extension List {
         }
         return List(value) + nextItem?.take(amount - 1)
     }
+
+    func foldr<R>(start: R?, reducer: (R?, T) -> R) -> R {
+        guard let next = nextItem else { return reducer(start, value) }
+        return next.foldr(start: reducer(start, value), reducer: reducer)
+    }
     
+    func swapValuesAtIndices(_ a: Int, _ b: Int) -> List {
+        guard a != b else { return self }
+        guard a < b else { return swapValuesAtIndices(b, a) }
+        guard a >= 0 && b < length else { return  self }
+        let (rest, aVal) = remove(at: a)
+        let (rest2, bVal) = rest!.remove(at: b - 1)
+        return rest2!.insert(at: a, value: bVal!).insert(at: b, value: aVal!)
+    }
+    
+    func drop(count: Int) -> List? {
+        guard count > 0 else { return self.clone() }
+        guard let next = nextItem else { return nil }
+        return next.drop(count: count - 1)
+    }
+
 
 }
 

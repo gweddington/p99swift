@@ -181,6 +181,10 @@ class Tests: XCTestCase {
         //try alt solution
         XCTAssertEqual(list.removeAlt(at: 1).rest, expected.rest)
         XCTAssertEqual(list.removeAlt(at: 1).removed, expected.removed)
+        
+        //something's fishy with removing index 0
+        XCTAssertEqual(List(1,2,3).remove(at: 0).rest, List(2,3))
+        XCTAssertEqual(List(1,2,3).removeAlt(at: 0).rest, List(2,3))
     }
     
     //P21 - Insert an element at a given position into a linked list.
@@ -200,12 +204,94 @@ class Tests: XCTestCase {
     func testP23() {
         let list = List("a", "b", "c", "d", "e", "f", "g", "h")!
         var indices = [4,3,0]
-        let actual = list.randomSelect(amount: 3) { e in
+        let actual = list.randomSelect(amount: 3) { () in
             return indices.removeFirst()
         }
         //how does one assert randomness? Instead of the requested fn, I will write one that accepts
         //a fn that provides the random indices
         let expected = List("e","d","a")!
+        XCTAssertEqual(actual, expected)
+    }
+    
+    //P24 (*) Lotto: Draw N different random numbers from the set 1..M.
+    func testP24() {
+        var nums = [23, 1, 17, 33, 21, 37]
+        let expected = List(nums)!
+        let actual = List<Any>.lotto(6, 49) { () in
+            return nums.removeFirst()
+        }
+        XCTAssertEqual(actual, expected)
+        
+        //test if it respects the given maximum
+        let actual2 = List<Any>.lotto(7, 2) { () in
+            return 3
+        }
+        //we don't care about what the values are just that they are all less than or equal to 2
+        let greaterThan2 = actual2.filter({$0 > 2})
+        XCTAssertNil(greaterThan2)
+    }
+    
+    //P25 (*) Generate a random permutation of the elements of a linked list.
+    func testP25() {
+        let expected = List("b", "a", "d", "c", "f", "e")
+        let actual = List("a", "b", "c", "d", "e", "f").randomPermute() { (max) in
+            return max % 2
+        }
+        XCTAssertEqual(actual, expected)
+    }
+    
+    //P26 (**) Generate the combinations of K distinct objects chosen from the N elements of a linked list.
+    func testP26() {
+        let actual = List("a", "b", "c")!.combinations(group: 2)
+        let expected = List(List("a", "b")!, List("a", "c")!, List("b", "c")!)!
+        XCTAssertEqual(actual, expected)
+
+        let actual2 = List("a", "b", "c", "d")!.combinations(group: 3)
+        let expected2 = List(List("a", "b", "c")!, List("a", "b", "d")!, List("a", "c", "d")!,                        List("b", "c", "d")!)!
+        XCTAssertEqual(actual2, expected2)
+        
+        //binomial coefficient should be n! / ((n-k)! * k!)
+        //so... 4! / (4-2)! * 2! = 6
+        XCTAssertEqual(List(Array(1...4))!.combinations(group: 2).length, 6)
+        //and.... 12! / (10! * 2!) = 66
+        XCTAssertEqual(List(Array(1...12))!.combinations(group: 2).length, 66)
+    }
+    
+    //P26B (**) Generate the permutations of K distinct objects chosen from the N elements of a linked list.
+    func testP26B() {
+        let actual = List("a", "b", "c").permutations(group: 2)
+        //because permutations does not return this in any particular order, just ensure it has all the values we expect
+        XCTAssert(actual.contains(List("a", "b")!))
+        XCTAssert(actual.contains(List("a", "c")!))
+        XCTAssert(actual.contains(List("b", "a")!))
+        XCTAssert(actual.contains(List("b", "c")!))
+        XCTAssert(actual.contains(List("c", "a")!))
+        XCTAssert(actual.contains(List("c", "b")!))
+        XCTAssertEqual(actual.length, 6)
+    }
+    
+    //P27 (**) Group the elements of a set into disjoint subsets.
+    func testP27() {
+        //let list = List("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida")!
+        //let actual = list.group3()
+        //how can I test this? hell I can't even figure out how to do it
+        //XCTAssertEqual(actual?.length, 1260) // 9! / 2!*3!*4! = 1260
+        print("Skipping P27 because I wasn't smart enough to figure it out :(")
+    }
+    
+    //P28 (**) Sorting a linked list of linked lists according to length of sublists.
+    func testP28() {
+        let list = List(List("a", "b", "c")!, List("d", "e")!, List("f", "g", "h")!, List("d", "e")!, List("i", "j", "k", "l")!, List("m", "n")!, List("o")!)!
+        let actual = lsort(list: list)
+        let expected = List(List("o")!, List("d", "e")!, List("d", "e")!, List("m", "n")!, List("a", "b", "c")!, List("f", "g", "h")!, List("i", "j", "k", "l")!)!
+        XCTAssertEqual(actual, expected)
+    }
+    
+    //P28B (**) Sorting a linked list of linked lists according to their length frequency.
+    func testP28B() {
+        let list = List(List("a", "b", "c")!, List("d", "e")!, List("f", "g", "h")!, List("d", "e")!, List("i", "j", "k", "l")!, List("m", "n")!, List("o")!)!
+        let actual = lsortFreq(list: list)
+        let expected = List(List("i", "j", "k", "l")!, List("o")!, List("a", "b", "c")!, List("f", "g", "h")!, List("d", "e")!, List("d", "e")!, List("m", "n")!)!
         XCTAssertEqual(actual, expected)
     }
 }

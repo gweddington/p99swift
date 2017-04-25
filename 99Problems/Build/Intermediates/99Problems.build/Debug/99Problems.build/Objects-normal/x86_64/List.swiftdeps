@@ -13,11 +13,21 @@ provides-member:
 - ["C10_9Problems4List", "=="]
 - ["C10_9Problems4List", "clone"]
 - ["C10_9Problems4List", "values"]
+- ["C10_9Problems4List", "take"]
+- ["C10_9Problems4List", "foldr"]
+- ["C10_9Problems4List", "swapValuesAtIndices"]
+- ["C10_9Problems4List", "drop"]
 provides-dynamic-lookup:
 depends-top-level:
+- !private "!="
 - !private "&&"
 - !private "+"
+- !private "-"
+- !private "<"
+- !private "<="
 - "=="
+- !private ">"
+- !private ">="
 - !private "??"
 - "Array"
 - "AssignmentPrecedence"
@@ -30,13 +40,22 @@ depends-top-level:
 - !private "IntegerLiteralType"
 - "List"
 - "String"
+- !private "||"
 depends-member:
 - !private ["Ps9AnyObject", "Array"]
 - ["Ps9AnyObject", "Equatable"]
 - !private ["Ps9AnyObject", "List"]
+- !private ["Ps9AnyObject", "clone"]
 - ["Ps9AnyObject", "description"]
+- !private ["Ps9AnyObject", "drop"]
+- !private ["Ps9AnyObject", "foldr"]
 - !private ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "insert"]
+- !private ["Ps9AnyObject", "length"]
 - !private ["Ps9AnyObject", "nextItem"]
+- !private ["Ps9AnyObject", "remove"]
+- !private ["Ps9AnyObject", "swapValuesAtIndices"]
+- !private ["Ps9AnyObject", "take"]
 - !private ["Ps9AnyObject", "value"]
 - !private ["Ps9AnyObject", "values"]
 - ["Ps9AnyObject", ""]
@@ -71,11 +90,19 @@ depends-member:
 - ["Ps23CustomStringConvertible", "Equatable"]
 - !private ["Ps23CustomStringConvertible", "List"]
 - !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "clone"]
 - !private ["Ps23CustomStringConvertible", "count"]
 - ["Ps23CustomStringConvertible", "description"]
+- !private ["Ps23CustomStringConvertible", "drop"]
+- !private ["Ps23CustomStringConvertible", "foldr"]
 - !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "insert"]
+- !private ["Ps23CustomStringConvertible", "length"]
 - !private ["Ps23CustomStringConvertible", "nextItem"]
+- !private ["Ps23CustomStringConvertible", "remove"]
 - !private ["Ps23CustomStringConvertible", "removeFirst"]
+- !private ["Ps23CustomStringConvertible", "swapValuesAtIndices"]
+- !private ["Ps23CustomStringConvertible", "take"]
 - !private ["Ps23CustomStringConvertible", "value"]
 - !private ["Ps23CustomStringConvertible", "values"]
 - ["Ps23CustomStringConvertible", ""]
@@ -83,9 +110,17 @@ depends-member:
 - ["Ps9Equatable", "Equatable"]
 - !private ["Ps9Equatable", "List"]
 - !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- !private ["Ps9Equatable", "clone"]
 - ["Ps9Equatable", "description"]
+- !private ["Ps9Equatable", "drop"]
+- !private ["Ps9Equatable", "foldr"]
 - !private ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "insert"]
+- !private ["Ps9Equatable", "length"]
 - !private ["Ps9Equatable", "nextItem"]
+- !private ["Ps9Equatable", "remove"]
+- !private ["Ps9Equatable", "swapValuesAtIndices"]
+- !private ["Ps9Equatable", "take"]
 - !private ["Ps9Equatable", "value"]
 - !private ["Ps9Equatable", "values"]
 - ["Ps9Equatable", ""]
@@ -104,14 +139,22 @@ depends-member:
 - ["C10_9Problems4List", "Array"]
 - ["C10_9Problems4List", "Bool"]
 - ["C10_9Problems4List", "Equatable"]
+- ["C10_9Problems4List", "Int"]
 - ["C10_9Problems4List", "List"]
 - ["C10_9Problems4List", "String"]
 - ["C10_9Problems4List", "T"]
 - ["C10_9Problems4List", "clone"]
 - ["C10_9Problems4List", "deinit"]
 - ["C10_9Problems4List", "description"]
+- ["C10_9Problems4List", "drop"]
+- ["C10_9Problems4List", "foldr"]
 - ["C10_9Problems4List", "init"]
+- !private ["C10_9Problems4List", "insert"]
+- !private ["C10_9Problems4List", "length"]
 - ["C10_9Problems4List", "nextItem"]
+- !private ["C10_9Problems4List", "remove"]
+- ["C10_9Problems4List", "swapValuesAtIndices"]
+- ["C10_9Problems4List", "take"]
 - ["C10_9Problems4List", "value"]
 - ["C10_9Problems4List", "values"]
 - !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
@@ -218,4 +261,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
-interface-hash: "4609fe9334ec818e4c50b86beca1241f"
+interface-hash: "c6195853f124c0fd8d56709016b293bd"
