@@ -89,6 +89,40 @@ extension List {
 
 
 }
+//Appendix 1A
+/// Conforming to the Sequence Protocol
+/// ===================================
+///
+/// Making your own custom types conform to `Sequence` enables many useful
+/// operations, like `for`-`in` looping and the `contains` method, without
+/// much effort. To add `Sequence` conformance to your own custom type, add a
+/// `makeIterator()` method that returns an iterator.
+///
+/// Alternatively, if your type can act as its own iterator, implementing the
+/// requirements of the `IteratorProtocol` protocol and declaring conformance
+/// to both `Sequence` and `IteratorProtocol` are sufficient.
+///
+/// Here's a definition of a `Countdown` sequence that serves as its own
+/// iterator. The `makeIterator()` method is provided as a default
+/// implementation.
+///
+///     struct Countdown: Sequence, IteratorProtocol {
+///         var count: Int
+///
+///         mutating func next() -> Int? {
+///             if count == 0 {
+///                 return nil
+///             } else {
+///                 defer { count -= 1 }
+///                 return count
+///             }
+///         }
+///     }
+extension List: Sequence, IteratorProtocol {
+    public func next() -> T? {
+        return nextItem?.value
+    }
+}
 
 public struct IndexedItem<T> {
     var value: T

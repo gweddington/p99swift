@@ -227,7 +227,7 @@ class Tests: XCTestCase {
             return 3
         }
         //we don't care about what the values are just that they are all less than or equal to 2
-        let greaterThan2 = actual2.filter({$0 > 2})
+        let greaterThan2 = actual2.filterList({$0 > 2})
         XCTAssertNil(greaterThan2)
     }
     

@@ -108,13 +108,13 @@ extension List {
 //P10 - Run-length encoding of a linked list.
 extension List where T: Equatable {
     func encode() -> List<(Int, T)> {
-        return pack().map({ ($0.length, $0.value) })
+        return pack().mapList({ ($0.length, $0.value) })
     }
 }
 extension List {
-    func map<R>(_ fn: (T) -> R) -> List<R> {
+    func mapList<R>(_ fn: (T) -> R) -> List<R> {
         let result = List<R>(fn(value))!
-        guard let rest = nextItem?.map(fn) else { return result }
+        guard let rest = nextItem?.mapList(fn) else { return result }
         return result + rest
     }
 }
@@ -122,7 +122,7 @@ extension List {
 //P11 - Modified run-length encoding.
 extension List where T: Equatable {
     func encodeModified() -> List<Any> {
-        return encode().map({(pair) -> Any in
+        return encode().mapList({(pair) -> Any in
             pair.0 == 1 ? pair.1 : pair
         })
     }
@@ -190,7 +190,7 @@ extension List {
             print("Invalid every value: \(every)")
             return self
         }
-        return filterAsIndexed(withRoot: 1, {$0.index % every != 0})!
+        return filterListAsIndexed(withRoot: 1, {$0.index % every != 0})!
     }
     
     func dropAlt(every: Int) -> List {
@@ -205,11 +205,11 @@ extension List {
         return dropIfIndexIsFactor(self, index: 1)
     }
     
-    func filter(_ predicate: (T) -> Bool) -> List<T>? {
+    func filterList(_ predicate: (T) -> Bool) -> List<T>? {
         if predicate(value) {
-            return List(value) + nextItem?.filter(predicate)
+            return List(value) + nextItem?.filterList(predicate)
         }
-        return nextItem?.filter(predicate)
+        return nextItem?.filterList(predicate)
     }
     
     func toIndexedList(_ index: Int = 0) -> List<IndexedItem<T>> {
@@ -219,7 +219,7 @@ extension List {
 
 extension List {
     func toList<R>() -> List<R> {
-        return map({($0 as! IndexedItem<R>).value})
+        return mapList({($0 as! IndexedItem<R>).value})
     }
 }
 
@@ -242,7 +242,7 @@ extension List {
             print("from should be less than to - obviously!")
             return self
         }
-        return filterAsIndexed(withRoot: 1, {$0.index > from && $0.index <= to})!
+        return filterListAsIndexed(withRoot: 1, {$0.index > from && $0.index <= to})!
     }
     
     func sliceAlt(_ from: Int, _ to: Int) -> List {
@@ -290,10 +290,10 @@ extension List {
         return r(parents: List(value), item: nextItem, index: position - 1)
     }
     
-    //I keep doing this alot so maybe it needs its own func: indexList.filter(predicate).map(backToValueList)
-    func filterAsIndexed(withRoot: Int = 0, _ predicate: (IndexedItem<T>) -> Bool) -> List<T>? {
-        guard let filtered = toIndexedList(withRoot).filter(predicate) else { return nil }
-        return filtered.toList()
+    //I keep doing this alot so maybe it needs its own func: indexList.filterList(predicate).mapList(backToValueList)
+    func filterListAsIndexed(withRoot: Int = 0, _ predicate: (IndexedItem<T>) -> Bool) -> List<T>? {
+        guard let filterListed = toIndexedList(withRoot).filterList(predicate) else { return nil }
+        return filterListed.toList()
     }
 }
 
@@ -338,7 +338,7 @@ extension List {
     class func lotto(_ numbers: Int, _ maximum: Int, generator: @escaping () -> Int) -> List<Int> {
         //for the sake of simplicity, if the generated number exceeds maximum, just use maximum
         //we could, instead, retry or something but...
-        let num = min(generator(), maximum)
+        let num = Swift.min(generator(), maximum)
         guard numbers > 1 else { return List<Int>(num) }
         return List<Int>(num) + lotto(numbers - 1, maximum, generator: generator)
     }
@@ -369,9 +369,9 @@ extension List {
         guard group > 1 else {
             return List<List<T>>(List<T>(value)) + nextItem!.combinations(group: group)
         }
-        let combos = nextItem!.combinations(group: group - 1).map({ List<T>(value) + $0 })
+        let combos = nextItem!.combinations(group: group - 1).mapList({ List<T>(value) + $0 })
             + nextItem!.combinations(group: group)
-        return combos.filter({$0.length == group}) ?? combos
+        return combos.filterList({$0.length == group}) ?? combos
     }
 }
 
@@ -415,21 +415,21 @@ extension List where T: Equatable {
 //            func addToRight(_ p: (List<T>,List<T>?)) -> (List<T>,List<T>?) {
 //                return (p.0, List<T>(x) + p.1)
 //            }
-//            return combination(n: n - 1, list: xs!).map(addToLeft)
-//                 + combination(n: n, list: xs!).map(addToRight)
+//            return combination(n: n - 1, list: xs!).mapList(addToLeft)
+//                 + combination(n: n, list: xs!).mapList(addToRight)
 //        }
 //        
 //        let twos = combination(n: 2, list: self).foldr(start: nil, reducer: {(b,p) -> List<List<List<T>>> in
 //            if p.1 == nil && b == nil { return List<List<List<T>>>(List<List<T>>(p.0)) }
-//            return p.1!.group3().map({List<List<T>>(p.0) + $0}) + b
+//            return p.1!.group3().mapList({List<List<T>>(p.0) + $0}) + b
 //        })
 //        let threes = combination(n: 3, list: self).foldr(start: nil, reducer: {(b,p) -> List<List<List<T>>> in
 //            if p.1 == nil && b == nil { return List<List<List<T>>>(List<List<T>>(p.0)) }
-//            return p.1!.group3().map({List<List<T>>(p.0) + $0}) + b
+//            return p.1!.group3().mapList({List<List<T>>(p.0) + $0}) + b
 //        })
 //        let fours = combination(n: 4, list: self).foldr(start: nil, reducer: {(b,p) -> List<List<List<T>>> in
 //            if p.1 == nil && b == nil { return List<List<List<T>>>(List<List<T>>(p.0)) }
-//            return p.1!.group3().map({List<List<T>>(p.0) + $0}) + b
+//            return p.1!.group3().mapList({List<List<T>>(p.0) + $0}) + b
 //        })
 //
 //        print(twos)
@@ -439,8 +439,8 @@ extension List where T: Equatable {
     //combine each elem of the list with every element of the other list
     // [1,2] combine [3,4,5] = [[1,3],[1,4],[1,5],[2,3],[2,4],[2,5]]
     func combine(with other: List<T>) -> List<List<List<T>>> {
-        return map({a in
-            other.map({b in
+        return mapList({a in
+            other.mapList({b in
                 List<T>(a) + List<T>(b)
             })
         });
@@ -462,7 +462,7 @@ func lsortFreq<T>(list: List<List<T>>) -> List<List<T>> {
     func freqOfLength(_ list: List<(Int, List<T>)>, rotation: Int = 0) -> List<(Int, List<T>)> {
         let (len, ls) = list.value
         guard let next = list.nextItem else { return List<(Int, List<T>)>((1, ls)) }
-        let freq = (next.filter({$0.0 == len})?.length ?? 0) + 1
+        let freq = (next.filterList({$0.0 == len})?.length ?? 0) + 1
         guard rotation < list.length - 1 else { return List<(Int, List<T>)>((freq, ls)) }
         return List<(Int, List<T>)>((freq, ls)) +
             freqOfLength(next + List<(Int, List<T>)>((len, ls)),
@@ -474,12 +474,12 @@ func lsortFreq<T>(list: List<List<T>>) -> List<List<T>> {
     func lengthItemPairs(_ list: List<List<T>>) -> List<(Int, List<T>)> {
 //        let len = list.length
 //        let (matches, rest) = list.span({$0.length == len})
-        return list.map({(ls: List<T>) in (ls.length, ls)})
+        return list.mapList({(ls: List<T>) in (ls.length, ls)})
     }
     let lengthed = lengthItemPairs(list)
     let frequencied = freqOfLength(lengthed)
     let sorted = sortByFreq(frequencied)
-    return sorted.map(fromPairToItem)
+    return sorted.mapList(fromPairToItem)
 }
 
 //more generic list sort, with a fn to evaluate what to sort by
@@ -490,8 +490,8 @@ func listSort<T, R:Comparable>(list: List<T>, by fn: @escaping (T) -> R) -> List
     guard let next = nextItem else { return head }
     let check = fn(value)
     let lessThanCheck: (T) -> Bool = { fn($0) < check }
-    let left = next.filter(lessThanCheck)
-    let right = next.filter({ !lessThanCheck($0) })
+    let left = next.filterList(lessThanCheck)
+    let right = next.filterList({ !lessThanCheck($0) })
     if left == nil && right == nil { return head }
     if left == nil { return head + listSort(list: right!, by: fn) }
     if right == nil { return listSort(list: left!, by: fn) + head }
