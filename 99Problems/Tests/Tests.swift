@@ -322,4 +322,20 @@ class Tests: XCTestCase {
     func testP35() {
         XCTAssertEqual(315.primeFactors, List(3, 3, 5, 7))
     }
+    
+    //P36 (**) Determine the prime factors of a given positive integer - Part 2.
+    func testP36() {
+        let actual = 315.primeFactorMultiplicity
+        let expected = List((3, 2), (5, 1), (7, 1))
+        XCTAssertEqual(actual, expected)
+    }
+    
+    //P37 (**) Calculate Euler’s totient function phi(m) (improved).
+    func testP37() {
+        XCTAssertEqual(10.totientImproved, 4)
+        //fwiw, the improved version is slower!
+        for i in 2...50 {
+            XCTAssertEqual(i.totientImproved, i.totient)
+        }
+    }
 }

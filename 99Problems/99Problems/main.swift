@@ -597,3 +597,38 @@ func primes(upTo max: Int) -> List<Int> {
     guard max > 1 else { return List(1) }
     return primes(upTo: max - 1) + List(max).filterList({$0.isPrime()})
 }
+
+
+//P36 (**) Determine the prime factors of a given positive integer - Part 2.
+extension Int {
+    var primeFactorMultiplicity: List<(Int, Int)>? {
+        return self.primeFactors?.pack().mapList({($0.value,$0.length)})
+    }
+    
+    //skipping for now because it appears to be really difficult to do without
+    //mutating a dictionary
+//    var primeFactorMultiplicityDict: Dictionary<Int, Int> {
+//        
+//    }
+}
+
+//P37 (**) Calculate Euler’s totient function phi(m) (improved).
+//if pn is a prime factor and mn is its multiplicity
+//phi(m) = (p1-1)*p1^(m1-1) * (p2-1)*p2^(m2-1) * (p3-1)*p3^(m3-1) * …
+extension Int {
+    var totientImproved: Int {
+        guard let pfs = self.primeFactorMultiplicity else { return 0 }
+        return pfs.foldr(start: 1, reducer: { (r: Int?, pair: (Int,Int)) -> Int in
+            return r! * (pair.0 - 1) * Int(powf(Float(pair.0), Float(pair.1 - 1)))
+        })
+    }
+    var totientImproved2: Int {
+        guard let pfs = self.primeFactorMultiplicity else { return 0 }
+        return product(list: pfs.mapList({(p,c) in (p-1) * Int(pow(Double(p), Double(c-1))) }))
+    }
+}
+
+func product(list: List<Int>) -> Int {
+    guard let next = list.nextItem else { return list.value }
+    return list.value * product(list: next)
+}
