@@ -513,7 +513,8 @@ extension Int {
     func isPrime() -> Bool {
         let n = self
         guard n > 1 else { return false }
-        return Array(2..<n).all({n % $0 != 0})
+        guard n != 2 else { return true }
+        return Array(2..<(n-1)).all({n % $0 != 0})
     }
 }
 
@@ -595,7 +596,7 @@ extension Int {
 
 func primes(upTo max: Int) -> List<Int> {
     guard max > 1 else { return List(1) }
-    return primes(upTo: max - 1) + List(max).filterList({$0.isPrime()})
+    return primes(upTo: max - 1) + (max.isPrime() ? List(max) : nil)
 }
 
 
@@ -631,4 +632,30 @@ extension Int {
 func product(list: List<Int>) -> Int {
     guard let next = list.nextItem else { return list.value }
     return list.value * product(list: next)
+}
+
+//P39 (*) A linked list of prime numbers.
+extension Int {
+    static func listPrimesInRange(_ range: CountableClosedRange<Int>) -> List<Int>? {
+        return List(Array(range)).filterList({$0.isPrime()})
+    }
+}
+
+//P40 (**) Goldbach’s conjecture.
+extension Int {
+    func goldbach() -> (Int, Int) {
+        let ps = primes(upTo: self)
+        let rs = ps.reverse()
+        func match(_ xs: List<Int>, _ ys: List<Int>) -> (Int, Int) {
+            let x = xs.value!, y = ys.value!
+            func nextMatch() -> (Int, Int) {
+                if xs.nextItem != nil { return match(xs.nextItem!, ys) }
+                if ys.nextItem != nil { return match(xs, ys.nextItem!) }
+                return (0,0)    //we hopefully never get here
+            }
+            guard x + y == self else { return nextMatch() }
+            return (x, y)
+        }
+        return match(ps, rs)
+    }
 }

@@ -333,9 +333,34 @@ class Tests: XCTestCase {
     //P37 (**) Calculate Euler’s totient function phi(m) (improved).
     func testP37() {
         XCTAssertEqual(10.totientImproved, 4)
-        //fwiw, the improved version is slower!
+        //fwiw, the improved version is slower, at least for small numbers!
         for i in 2...50 {
             XCTAssertEqual(i.totientImproved, i.totient)
         }
+    }
+    
+    func testP38Totient() {
+        measure {
+            print(10090.totient)
+        }
+    }
+    //Don't do this! It is terribly slow
+//    func testP38TotientImproved() {
+//        measure {
+//            print(10090.totientImproved)
+//        }
+//    }
+    
+    //P39 (*) A linked list of prime numbers.
+    func testP39() {
+        XCTAssertEqual(Int.listPrimesInRange(7...31), List(7, 11, 13, 17, 19, 23, 29, 31))
+    }
+    
+    
+    //P40 (**) Goldbach’s conjecture.
+    func testP40() {
+        let actual = 28.goldbach()
+        XCTAssertEqual(actual.0, 5)
+        XCTAssertEqual(actual.1, 23)
     }
 }

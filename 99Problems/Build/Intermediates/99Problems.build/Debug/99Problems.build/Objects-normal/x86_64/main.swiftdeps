@@ -70,6 +70,8 @@ provides-member:
 - ["Si", "primeFactorMultiplicity"]
 - ["Si", "totientImproved"]
 - ["Si", "totientImproved2"]
+- ["Si", "listPrimesInRange"]
+- ["Si", "goldbach"]
 provides-dynamic-lookup:
 depends-top-level:
 - !private "!"
@@ -94,6 +96,7 @@ depends-top-level:
 - !private "BooleanLiteralType"
 - "CastingPrecedence"
 - "Comparable"
+- "CountableClosedRange"
 - !private "Double"
 - "EncodedPair"
 - "Equatable"
@@ -481,6 +484,7 @@ depends-member:
 - !private ["V10_9Problems11IndexedItem", "value"]
 - !private ["Si", "Array"]
 - ["Si", "Bool"]
+- ["Si", "CountableClosedRange"]
 - !private ["Si", "Double"]
 - !private ["Si", "Float"]
 - ["Si", "Int"]
@@ -488,12 +492,14 @@ depends-member:
 - !private ["Si", "abs"]
 - !private ["Si", "floor"]
 - ["Si", "gcd"]
+- ["Si", "goldbach"]
 - !private ["Si", "init"]
 - ["Si", "isCoprimeTo"]
 - ["Si", "isEven"]
 - ["Si", "isFactor"]
 - ["Si", "isOdd"]
 - ["Si", "isPrime"]
+- ["Si", "listPrimesInRange"]
 - !private ["Si", "pow"]
 - !private ["Si", "powf"]
 - ["Si", "primeFactorMultiplicity"]
@@ -1104,4 +1110,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
-interface-hash: "cdd17ea773f83a3517e62e10ecc94d4e"
+interface-hash: "1aa496c093cb4f3a5605019c7854c111"
