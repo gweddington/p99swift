@@ -261,12 +261,12 @@ class Tests: XCTestCase {
     func testP26B() {
         let actual = List("a", "b", "c").permutations(group: 2)
         //because permutations does not return this in any particular order, just ensure it has all the values we expect
-        XCTAssert(actual.contains(List("a", "b")!))
-        XCTAssert(actual.contains(List("a", "c")!))
-        XCTAssert(actual.contains(List("b", "a")!))
-        XCTAssert(actual.contains(List("b", "c")!))
-        XCTAssert(actual.contains(List("c", "a")!))
-        XCTAssert(actual.contains(List("c", "b")!))
+        XCTAssert(actual.listContains(List("a", "b")!))
+        XCTAssert(actual.listContains(List("a", "c")!))
+        XCTAssert(actual.listContains(List("b", "a")!))
+        XCTAssert(actual.listContains(List("b", "c")!))
+        XCTAssert(actual.listContains(List("c", "a")!))
+        XCTAssert(actual.listContains(List("c", "b")!))
         XCTAssertEqual(actual.length, 6)
     }
     
@@ -293,5 +293,33 @@ class Tests: XCTestCase {
         let actual = lsortFreq(list: list)
         let expected = List(List("i", "j", "k", "l")!, List("o")!, List("a", "b", "c")!, List("f", "g", "h")!, List("d", "e")!, List("d", "e")!, List("m", "n")!)!
         XCTAssertEqual(actual, expected)
+    }
+    
+    //Section 2: Arithmetic
+    //P31 (**) Determine whether a given integer number is prime.
+    func testP31() {
+        XCTAssert(7.isPrime())
+        XCTAssertFalse(8.isPrime())
+    }
+    
+    //P32 (**) Determine the greatest common divisor of two positive integer numbers.
+    func testP32() {
+        XCTAssertEqual(Int.gcd(first: 36, second: 63), 9)
+    }
+    
+    //P33 (*) Determine whether two positive integer numbers are coprime.
+    func testP33() {
+        XCTAssert(35.isCoprimeTo(64))
+        XCTAssertFalse(35.isCoprimeTo(65))
+    }
+    
+    //P34 (**) Calculate Euler’s totient function phi(m).
+    func testP34() {
+        XCTAssertEqual(10.totient, 4)
+    }
+    
+    //P35 (**) Determine the prime factors of a given positive integer.
+    func testP35() {
+        XCTAssertEqual(315.primeFactors, List(3, 3, 5, 7))
     }
 }

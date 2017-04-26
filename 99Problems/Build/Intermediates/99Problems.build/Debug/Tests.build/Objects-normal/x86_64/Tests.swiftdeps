@@ -38,6 +38,11 @@ provides-dynamic-lookup:
 - "testP27"
 - "testP28"
 - "testP28B"
+- "testP31"
+- "testP32"
+- "testP33"
+- "testP34"
+- "testP35"
 depends-top-level:
 - !private "%"
 - !private "..."
@@ -60,7 +65,10 @@ depends-top-level:
 - !private "lsortFreq"
 - !private "print"
 depends-member:
+- !private ["Ps16AbsoluteValuable", "primeFactors"]
+- !private ["Ps16AbsoluteValuable", "totient"]
 - !private ["Ps9AnyObject", "Array"]
+- !private ["Ps9AnyObject", "Int"]
 - ["Ps9AnyObject", "List"]
 - !private ["Ps9AnyObject", "XCTAssert"]
 - !private ["Ps9AnyObject", "XCTAssertEqual"]
@@ -68,7 +76,6 @@ depends-member:
 - !private ["Ps9AnyObject", "XCTAssertNil"]
 - !private ["Ps9AnyObject", "combinations"]
 - !private ["Ps9AnyObject", "compress"]
-- !private ["Ps9AnyObject", "contains"]
 - !private ["Ps9AnyObject", "decode"]
 - !private ["Ps9AnyObject", "drop"]
 - !private ["Ps9AnyObject", "dropAlt"]
@@ -84,6 +91,7 @@ depends-member:
 - !private ["Ps9AnyObject", "isPalindrome"]
 - !private ["Ps9AnyObject", "last"]
 - !private ["Ps9AnyObject", "length"]
+- !private ["Ps9AnyObject", "listContains"]
 - !private ["Ps9AnyObject", "lotto"]
 - !private ["Ps9AnyObject", "lsort"]
 - !private ["Ps9AnyObject", "lsortFreq"]
@@ -110,26 +118,45 @@ depends-member:
 - !private ["Sa", "removeFirst"]
 - !private ["Ps23BidirectionalCollection", "init"]
 - !private ["Ps23BidirectionalCollection", "removeFirst"]
+- !private ["Ps19BinaryFloatingPoint", "primeFactors"]
+- !private ["Ps19BinaryFloatingPoint", "totient"]
+- !private ["Ps17BitwiseOperations", "gcd"]
+- !private ["Ps17BitwiseOperations", "isCoprimeTo"]
+- !private ["Ps17BitwiseOperations", "isPrime"]
+- !private ["Ps17BitwiseOperations", "primeFactors"]
+- !private ["Ps17BitwiseOperations", "totient"]
 - !private ["Ps7CVarArg", "Array"]
+- !private ["Ps7CVarArg", "Int"]
 - ["Ps7CVarArg", "List"]
 - !private ["Ps7CVarArg", "XCTAssert"]
 - !private ["Ps7CVarArg", "XCTAssertEqual"]
 - !private ["Ps7CVarArg", "XCTAssertFalse"]
 - !private ["Ps7CVarArg", "XCTAssertNil"]
 - !private ["Ps7CVarArg", "decode"]
+- !private ["Ps7CVarArg", "gcd"]
 - !private ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "isCoprimeTo"]
+- !private ["Ps7CVarArg", "isPrime"]
 - !private ["Ps7CVarArg", "lsort"]
 - !private ["Ps7CVarArg", "lsortFreq"]
+- !private ["Ps7CVarArg", "primeFactors"]
 - !private ["Ps7CVarArg", "print"]
 - !private ["Ps7CVarArg", "removeFirst"]
 - !private ["Ps7CVarArg", "setUp"]
 - !private ["Ps7CVarArg", "tearDown"]
 - !private ["Ps7CVarArg", "theList"]
+- !private ["Ps7CVarArg", "totient"]
 - ["Ps7CVarArg", ""]
 - !private ["Ps10Collection", "init"]
 - !private ["Ps10Collection", "removeFirst"]
+- !private ["Ps10Comparable", "gcd"]
 - !private ["Ps10Comparable", "init"]
+- !private ["Ps10Comparable", "isCoprimeTo"]
+- !private ["Ps10Comparable", "isPrime"]
+- !private ["Ps10Comparable", "primeFactors"]
+- !private ["Ps10Comparable", "totient"]
 - !private ["Ps28CustomDebugStringConvertible", "Array"]
+- !private ["Ps28CustomDebugStringConvertible", "Int"]
 - ["Ps28CustomDebugStringConvertible", "List"]
 - !private ["Ps28CustomDebugStringConvertible", "XCTAssert"]
 - !private ["Ps28CustomDebugStringConvertible", "XCTAssertEqual"]
@@ -139,16 +166,29 @@ depends-member:
 - !private ["Ps28CustomDebugStringConvertible", "init"]
 - !private ["Ps28CustomDebugStringConvertible", "lsort"]
 - !private ["Ps28CustomDebugStringConvertible", "lsortFreq"]
+- !private ["Ps28CustomDebugStringConvertible", "primeFactors"]
 - !private ["Ps28CustomDebugStringConvertible", "print"]
 - !private ["Ps28CustomDebugStringConvertible", "removeFirst"]
 - !private ["Ps28CustomDebugStringConvertible", "setUp"]
 - !private ["Ps28CustomDebugStringConvertible", "tearDown"]
 - !private ["Ps28CustomDebugStringConvertible", "theList"]
+- !private ["Ps28CustomDebugStringConvertible", "totient"]
 - ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps29CustomPlaygroundQuickLookable", "gcd"]
 - !private ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "isCoprimeTo"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "isPrime"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "primeFactors"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "totient"]
+- !private ["Ps17CustomReflectable", "gcd"]
 - !private ["Ps17CustomReflectable", "init"]
+- !private ["Ps17CustomReflectable", "isCoprimeTo"]
+- !private ["Ps17CustomReflectable", "isPrime"]
+- !private ["Ps17CustomReflectable", "primeFactors"]
 - !private ["Ps17CustomReflectable", "removeFirst"]
+- !private ["Ps17CustomReflectable", "totient"]
 - !private ["Ps23CustomStringConvertible", "Array"]
+- !private ["Ps23CustomStringConvertible", "Int"]
 - ["Ps23CustomStringConvertible", "List"]
 - !private ["Ps23CustomStringConvertible", "XCTAssert"]
 - !private ["Ps23CustomStringConvertible", "XCTAssertEqual"]
@@ -156,7 +196,6 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "XCTAssertNil"]
 - !private ["Ps23CustomStringConvertible", "combinations"]
 - !private ["Ps23CustomStringConvertible", "compress"]
-- !private ["Ps23CustomStringConvertible", "contains"]
 - !private ["Ps23CustomStringConvertible", "decode"]
 - !private ["Ps23CustomStringConvertible", "drop"]
 - !private ["Ps23CustomStringConvertible", "dropAlt"]
@@ -167,17 +206,22 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "encodeModified"]
 - !private ["Ps23CustomStringConvertible", "filterList"]
 - !private ["Ps23CustomStringConvertible", "flatten"]
+- !private ["Ps23CustomStringConvertible", "gcd"]
 - ["Ps23CustomStringConvertible", "init"]
 - !private ["Ps23CustomStringConvertible", "insert"]
+- !private ["Ps23CustomStringConvertible", "isCoprimeTo"]
 - !private ["Ps23CustomStringConvertible", "isPalindrome"]
+- !private ["Ps23CustomStringConvertible", "isPrime"]
 - !private ["Ps23CustomStringConvertible", "last"]
 - !private ["Ps23CustomStringConvertible", "length"]
+- !private ["Ps23CustomStringConvertible", "listContains"]
 - !private ["Ps23CustomStringConvertible", "lotto"]
 - !private ["Ps23CustomStringConvertible", "lsort"]
 - !private ["Ps23CustomStringConvertible", "lsortFreq"]
 - !private ["Ps23CustomStringConvertible", "pack"]
 - !private ["Ps23CustomStringConvertible", "pennultimate"]
 - !private ["Ps23CustomStringConvertible", "permutations"]
+- !private ["Ps23CustomStringConvertible", "primeFactors"]
 - !private ["Ps23CustomStringConvertible", "print"]
 - !private ["Ps23CustomStringConvertible", "randomPermute"]
 - !private ["Ps23CustomStringConvertible", "randomSelect"]
@@ -194,8 +238,12 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "subscript"]
 - !private ["Ps23CustomStringConvertible", "tearDown"]
 - !private ["Ps23CustomStringConvertible", "theList"]
+- !private ["Ps23CustomStringConvertible", "totient"]
 - ["Ps23CustomStringConvertible", ""]
+- !private ["Sd", "primeFactors"]
+- !private ["Sd", "totient"]
 - !private ["Ps9Equatable", "Array"]
+- !private ["Ps9Equatable", "Int"]
 - ["Ps9Equatable", "List"]
 - !private ["Ps9Equatable", "XCTAssert"]
 - !private ["Ps9Equatable", "XCTAssertEqual"]
@@ -203,7 +251,6 @@ depends-member:
 - !private ["Ps9Equatable", "XCTAssertNil"]
 - !private ["Ps9Equatable", "combinations"]
 - !private ["Ps9Equatable", "compress"]
-- !private ["Ps9Equatable", "contains"]
 - !private ["Ps9Equatable", "decode"]
 - !private ["Ps9Equatable", "drop"]
 - !private ["Ps9Equatable", "dropAlt"]
@@ -214,17 +261,22 @@ depends-member:
 - !private ["Ps9Equatable", "encodeModified"]
 - !private ["Ps9Equatable", "filterList"]
 - !private ["Ps9Equatable", "flatten"]
+- !private ["Ps9Equatable", "gcd"]
 - ["Ps9Equatable", "init"]
 - !private ["Ps9Equatable", "insert"]
+- !private ["Ps9Equatable", "isCoprimeTo"]
 - !private ["Ps9Equatable", "isPalindrome"]
+- !private ["Ps9Equatable", "isPrime"]
 - !private ["Ps9Equatable", "last"]
 - !private ["Ps9Equatable", "length"]
+- !private ["Ps9Equatable", "listContains"]
 - !private ["Ps9Equatable", "lotto"]
 - !private ["Ps9Equatable", "lsort"]
 - !private ["Ps9Equatable", "lsortFreq"]
 - !private ["Ps9Equatable", "pack"]
 - !private ["Ps9Equatable", "pennultimate"]
 - !private ["Ps9Equatable", "permutations"]
+- !private ["Ps9Equatable", "primeFactors"]
 - !private ["Ps9Equatable", "print"]
 - !private ["Ps9Equatable", "randomPermute"]
 - !private ["Ps9Equatable", "randomSelect"]
@@ -240,30 +292,60 @@ depends-member:
 - !private ["Ps9Equatable", "subscript"]
 - !private ["Ps9Equatable", "tearDown"]
 - !private ["Ps9Equatable", "theList"]
+- !private ["Ps9Equatable", "totient"]
 - ["Ps9Equatable", ""]
 - !private ["Ps25ExpressibleByArrayLiteral", "init"]
 - !private ["Ps25ExpressibleByArrayLiteral", "removeFirst"]
 - !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps25ExpressibleByFloatLiteral", "primeFactors"]
+- !private ["Ps25ExpressibleByFloatLiteral", "totient"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "gcd"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "isCoprimeTo"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "isPrime"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "primeFactors"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "totient"]
 - !private ["Ps26ExpressibleByStringLiteral", "init"]
 - !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- !private ["Ps13FloatingPoint", "primeFactors"]
+- !private ["Ps13FloatingPoint", "totient"]
 - !private ["Ps8Hashable", "Array"]
+- !private ["Ps8Hashable", "Int"]
 - ["Ps8Hashable", "List"]
 - !private ["Ps8Hashable", "XCTAssert"]
 - !private ["Ps8Hashable", "XCTAssertEqual"]
 - !private ["Ps8Hashable", "XCTAssertFalse"]
 - !private ["Ps8Hashable", "XCTAssertNil"]
 - !private ["Ps8Hashable", "decode"]
+- !private ["Ps8Hashable", "gcd"]
 - !private ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "isCoprimeTo"]
+- !private ["Ps8Hashable", "isPrime"]
 - !private ["Ps8Hashable", "lsort"]
 - !private ["Ps8Hashable", "lsortFreq"]
+- !private ["Ps8Hashable", "primeFactors"]
 - !private ["Ps8Hashable", "print"]
 - !private ["Ps8Hashable", "setUp"]
 - !private ["Ps8Hashable", "tearDown"]
 - !private ["Ps8Hashable", "theList"]
+- !private ["Ps8Hashable", "totient"]
 - ["Ps8Hashable", ""]
+- !private ["Si", "gcd"]
+- !private ["Si", "isCoprimeTo"]
+- !private ["Si", "isPrime"]
+- !private ["Si", "primeFactors"]
+- !private ["Si", "totient"]
+- !private ["Ps7Integer", "gcd"]
+- !private ["Ps7Integer", "isCoprimeTo"]
+- !private ["Ps7Integer", "isPrime"]
+- !private ["Ps7Integer", "primeFactors"]
+- !private ["Ps7Integer", "totient"]
+- !private ["Ps17IntegerArithmetic", "gcd"]
+- !private ["Ps17IntegerArithmetic", "isCoprimeTo"]
+- !private ["Ps17IntegerArithmetic", "isPrime"]
+- !private ["Ps17IntegerArithmetic", "primeFactors"]
+- !private ["Ps17IntegerArithmetic", "totient"]
 - !private ["Ps16IteratorProtocol", "combinations"]
 - !private ["Ps16IteratorProtocol", "compress"]
-- !private ["Ps16IteratorProtocol", "contains"]
 - !private ["Ps16IteratorProtocol", "decode"]
 - !private ["Ps16IteratorProtocol", "drop"]
 - !private ["Ps16IteratorProtocol", "dropAlt"]
@@ -279,6 +361,7 @@ depends-member:
 - !private ["Ps16IteratorProtocol", "isPalindrome"]
 - !private ["Ps16IteratorProtocol", "last"]
 - !private ["Ps16IteratorProtocol", "length"]
+- !private ["Ps16IteratorProtocol", "listContains"]
 - !private ["Ps16IteratorProtocol", "lotto"]
 - !private ["Ps16IteratorProtocol", "pack"]
 - !private ["Ps16IteratorProtocol", "pennultimate"]
@@ -296,7 +379,6 @@ depends-member:
 - !private ["Ps16IteratorProtocol", "subscript"]
 - !private ["C5Tests4List", "combinations"]
 - !private ["C5Tests4List", "compress"]
-- !private ["C5Tests4List", "contains"]
 - !private ["C5Tests4List", "decode"]
 - !private ["C5Tests4List", "deinit"]
 - !private ["C5Tests4List", "drop"]
@@ -313,6 +395,7 @@ depends-member:
 - !private ["C5Tests4List", "isPalindrome"]
 - !private ["C5Tests4List", "last"]
 - !private ["C5Tests4List", "length"]
+- !private ["C5Tests4List", "listContains"]
 - !private ["C5Tests4List", "lotto"]
 - !private ["C5Tests4List", "pack"]
 - !private ["C5Tests4List", "pennultimate"]
@@ -329,7 +412,14 @@ depends-member:
 - !private ["C5Tests4List", "split"]
 - !private ["C5Tests4List", "subscript"]
 - !private ["Ps25LosslessStringConvertible", "init"]
+- !private ["Ps25LosslessStringConvertible", "primeFactors"]
+- !private ["Ps25LosslessStringConvertible", "totient"]
+- !private ["Ps10MirrorPath", "gcd"]
 - !private ["Ps10MirrorPath", "init"]
+- !private ["Ps10MirrorPath", "isCoprimeTo"]
+- !private ["Ps10MirrorPath", "isPrime"]
+- !private ["Ps10MirrorPath", "primeFactors"]
+- !private ["Ps10MirrorPath", "totient"]
 - !private ["Ps17MutableCollection", "init"]
 - !private ["Ps17MutableCollection", "removeFirst"]
 - !private ["PSo8NSCoding", "init"]
@@ -380,8 +470,14 @@ depends-member:
 - ["CSo8NSObject", "testP27"]
 - ["CSo8NSObject", "testP28"]
 - ["CSo8NSObject", "testP28B"]
+- ["CSo8NSObject", "testP31"]
+- ["CSo8NSObject", "testP32"]
+- ["CSo8NSObject", "testP33"]
+- ["CSo8NSObject", "testP34"]
+- ["CSo8NSObject", "testP35"]
 - ["CSo8NSObject", "theList"]
 - !private ["PSo16NSObjectProtocol", "Array"]
+- !private ["PSo16NSObjectProtocol", "Int"]
 - ["PSo16NSObjectProtocol", "List"]
 - !private ["PSo16NSObjectProtocol", "XCTAssert"]
 - !private ["PSo16NSObjectProtocol", "XCTAssertEqual"]
@@ -406,7 +502,6 @@ depends-member:
 - !private ["Ps26RangeReplaceableCollection", "removeFirst"]
 - !private ["Ps8Sequence", "combinations"]
 - !private ["Ps8Sequence", "compress"]
-- !private ["Ps8Sequence", "contains"]
 - !private ["Ps8Sequence", "decode"]
 - !private ["Ps8Sequence", "drop"]
 - !private ["Ps8Sequence", "dropAlt"]
@@ -422,6 +517,7 @@ depends-member:
 - !private ["Ps8Sequence", "isPalindrome"]
 - !private ["Ps8Sequence", "last"]
 - !private ["Ps8Sequence", "length"]
+- !private ["Ps8Sequence", "listContains"]
 - !private ["Ps8Sequence", "lotto"]
 - !private ["Ps8Sequence", "pack"]
 - !private ["Ps8Sequence", "pennultimate"]
@@ -438,7 +534,22 @@ depends-member:
 - !private ["Ps8Sequence", "sliceAlt"]
 - !private ["Ps8Sequence", "split"]
 - !private ["Ps8Sequence", "subscript"]
+- !private ["Ps13SignedInteger", "gcd"]
+- !private ["Ps13SignedInteger", "isCoprimeTo"]
+- !private ["Ps13SignedInteger", "isPrime"]
+- !private ["Ps13SignedInteger", "primeFactors"]
+- !private ["Ps13SignedInteger", "totient"]
+- !private ["Ps12SignedNumber", "gcd"]
+- !private ["Ps12SignedNumber", "isCoprimeTo"]
+- !private ["Ps12SignedNumber", "isPrime"]
+- !private ["Ps12SignedNumber", "primeFactors"]
+- !private ["Ps12SignedNumber", "totient"]
 - !private ["Vs12StaticString", "init"]
+- !private ["Ps10Strideable", "gcd"]
+- !private ["Ps10Strideable", "isCoprimeTo"]
+- !private ["Ps10Strideable", "isPrime"]
+- !private ["Ps10Strideable", "primeFactors"]
+- !private ["Ps10Strideable", "totient"]
 - !private ["SS", "init"]
 - !private ["C5Tests5Tests", "Array"]
 - !private ["C5Tests5Tests", "EncodedPair"]
@@ -486,10 +597,16 @@ depends-member:
 - ["C5Tests5Tests", "testP27"]
 - ["C5Tests5Tests", "testP28"]
 - ["C5Tests5Tests", "testP28B"]
+- ["C5Tests5Tests", "testP31"]
+- ["C5Tests5Tests", "testP32"]
+- ["C5Tests5Tests", "testP33"]
+- ["C5Tests5Tests", "testP34"]
+- ["C5Tests5Tests", "testP35"]
 - ["C5Tests5Tests", "theList"]
 - !private ["Ps16TextOutputStream", "init"]
 - !private ["Ps20TextOutputStreamable", "init"]
 - !private ["PSo17XCTWaiterDelegate", "Array"]
+- !private ["PSo17XCTWaiterDelegate", "Int"]
 - ["PSo17XCTWaiterDelegate", "List"]
 - !private ["PSo17XCTWaiterDelegate", "XCTAssert"]
 - !private ["PSo17XCTWaiterDelegate", "XCTAssertEqual"]
@@ -549,6 +666,11 @@ depends-member:
 - ["CSo6XCTest", "testP27"]
 - ["CSo6XCTest", "testP28"]
 - ["CSo6XCTest", "testP28B"]
+- ["CSo6XCTest", "testP31"]
+- ["CSo6XCTest", "testP32"]
+- ["CSo6XCTest", "testP33"]
+- ["CSo6XCTest", "testP34"]
+- ["CSo6XCTest", "testP35"]
 - ["CSo6XCTest", "theList"]
 - !private ["CSo10XCTestCase", "Array"]
 - !private ["CSo10XCTestCase", "EncodedPair"]
@@ -595,51 +717,106 @@ depends-member:
 - ["CSo10XCTestCase", "testP27"]
 - ["CSo10XCTestCase", "testP28"]
 - ["CSo10XCTestCase", "testP28B"]
+- ["CSo10XCTestCase", "testP31"]
+- ["CSo10XCTestCase", "testP32"]
+- ["CSo10XCTestCase", "testP33"]
+- ["CSo10XCTestCase", "testP34"]
+- ["CSo10XCTestCase", "testP35"]
 - ["CSo10XCTestCase", "theList"]
 - ["CSo10XCTestCase", ""]
 - !private ["Ps14_ArrayProtocol", "init"]
 - !private ["Ps14_ArrayProtocol", "removeFirst"]
 - !private ["Ps23_BidirectionalIndexable", "init"]
 - !private ["Ps23_BidirectionalIndexable", "removeFirst"]
+- !private ["Ps15_CVarArgAligned", "primeFactors"]
+- !private ["Ps15_CVarArgAligned", "totient"]
+- !private ["Ps22_CVarArgPassedAsDouble", "primeFactors"]
+- !private ["Ps22_CVarArgPassedAsDouble", "totient"]
 - !private ["Ps24_DestructorSafeContainer", "init"]
 - !private ["Ps24_DestructorSafeContainer", "removeFirst"]
 - !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps33_ExpressibleByBuiltinFloatLiteral", "primeFactors"]
+- !private ["Ps33_ExpressibleByBuiltinFloatLiteral", "totient"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "gcd"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "isCoprimeTo"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "isPrime"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "primeFactors"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "totient"]
 - !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
 - !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
 - !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
 - !private ["Ps33_ExpressibleByStringInterpolation", "init"]
 - !private ["Ps35_HasCustomAnyHashableRepresentation", "init"]
 - !private ["Ps9_Hashable", "Array"]
+- !private ["Ps9_Hashable", "Int"]
 - ["Ps9_Hashable", "List"]
 - !private ["Ps9_Hashable", "XCTAssert"]
 - !private ["Ps9_Hashable", "XCTAssertEqual"]
 - !private ["Ps9_Hashable", "XCTAssertFalse"]
 - !private ["Ps9_Hashable", "XCTAssertNil"]
 - !private ["Ps9_Hashable", "decode"]
+- !private ["Ps9_Hashable", "gcd"]
 - !private ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "isCoprimeTo"]
+- !private ["Ps9_Hashable", "isPrime"]
 - !private ["Ps9_Hashable", "lsort"]
 - !private ["Ps9_Hashable", "lsortFreq"]
+- !private ["Ps9_Hashable", "primeFactors"]
 - !private ["Ps9_Hashable", "print"]
 - !private ["Ps9_Hashable", "setUp"]
 - !private ["Ps9_Hashable", "tearDown"]
 - !private ["Ps9_Hashable", "theList"]
+- !private ["Ps9_Hashable", "totient"]
 - ["Ps9_Hashable", ""]
+- !private ["Ps14_Incrementable", "gcd"]
+- !private ["Ps14_Incrementable", "isCoprimeTo"]
+- !private ["Ps14_Incrementable", "isPrime"]
+- !private ["Ps14_Incrementable", "primeFactors"]
+- !private ["Ps14_Incrementable", "totient"]
 - !private ["Ps10_Indexable", "init"]
 - !private ["Ps10_Indexable", "removeFirst"]
 - !private ["Ps14_IndexableBase", "init"]
 - !private ["Ps14_IndexableBase", "removeFirst"]
+- !private ["Ps8_Integer", "gcd"]
+- !private ["Ps8_Integer", "isCoprimeTo"]
+- !private ["Ps8_Integer", "isPrime"]
+- !private ["Ps8_Integer", "primeFactors"]
+- !private ["Ps8_Integer", "totient"]
+- !private ["Ps18_IntegerArithmetic", "gcd"]
+- !private ["Ps18_IntegerArithmetic", "isCoprimeTo"]
+- !private ["Ps18_IntegerArithmetic", "isPrime"]
+- !private ["Ps18_IntegerArithmetic", "primeFactors"]
+- !private ["Ps18_IntegerArithmetic", "totient"]
 - !private ["Ps17_MutableIndexable", "init"]
 - !private ["Ps17_MutableIndexable", "removeFirst"]
+- !private ["Ps21_ObjectiveCBridgeable", "gcd"]
 - !private ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "isCoprimeTo"]
+- !private ["Ps21_ObjectiveCBridgeable", "isPrime"]
+- !private ["Ps21_ObjectiveCBridgeable", "primeFactors"]
 - !private ["Ps21_ObjectiveCBridgeable", "removeFirst"]
+- !private ["Ps21_ObjectiveCBridgeable", "totient"]
 - !private ["Ps22_RandomAccessIndexable", "init"]
 - !private ["Ps22_RandomAccessIndexable", "removeFirst"]
 - !private ["Ps26_RangeReplaceableIndexable", "init"]
 - !private ["Ps26_RangeReplaceableIndexable", "removeFirst"]
+- !private ["Ps14_SignedInteger", "gcd"]
+- !private ["Ps14_SignedInteger", "isCoprimeTo"]
+- !private ["Ps14_SignedInteger", "isPrime"]
+- !private ["Ps14_SignedInteger", "primeFactors"]
+- !private ["Ps14_SignedInteger", "totient"]
+- !private ["Ps11_Strideable", "gcd"]
+- !private ["Ps11_Strideable", "isCoprimeTo"]
+- !private ["Ps11_Strideable", "isPrime"]
+- !private ["Ps11_Strideable", "primeFactors"]
+- !private ["Ps11_Strideable", "totient"]
 depends-nominal:
+- !private "Ps16AbsoluteValuable"
 - "Ps9AnyObject"
 - !private "Sa"
 - !private "Ps23BidirectionalCollection"
+- !private "Ps19BinaryFloatingPoint"
+- !private "Ps17BitwiseOperations"
 - "Ps7CVarArg"
 - !private "Ps10Collection"
 - !private "Ps10Comparable"
@@ -647,12 +824,19 @@ depends-nominal:
 - !private "Ps29CustomPlaygroundQuickLookable"
 - !private "Ps17CustomReflectable"
 - "Ps23CustomStringConvertible"
+- !private "Sd"
 - "Ps9Equatable"
 - !private "Ps25ExpressibleByArrayLiteral"
 - !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps25ExpressibleByFloatLiteral"
+- !private "Ps27ExpressibleByIntegerLiteral"
 - !private "Ps26ExpressibleByStringLiteral"
 - !private "Ps33ExpressibleByUnicodeScalarLiteral"
+- !private "Ps13FloatingPoint"
 - "Ps8Hashable"
+- !private "Si"
+- !private "Ps7Integer"
+- !private "Ps17IntegerArithmetic"
 - "Ps16IteratorProtocol"
 - "C5Tests4List"
 - !private "Ps25LosslessStringConvertible"
@@ -670,7 +854,10 @@ depends-nominal:
 - !private "Ps22RandomAccessCollection"
 - !private "Ps26RangeReplaceableCollection"
 - "Ps8Sequence"
+- !private "Ps13SignedInteger"
+- !private "Ps12SignedNumber"
 - !private "Vs12StaticString"
+- !private "Ps10Strideable"
 - !private "SS"
 - "C5Tests5Tests"
 - !private "Ps16TextOutputStream"
@@ -680,20 +867,29 @@ depends-nominal:
 - "CSo10XCTestCase"
 - !private "Ps14_ArrayProtocol"
 - !private "Ps23_BidirectionalIndexable"
+- !private "Ps15_CVarArgAligned"
+- !private "Ps22_CVarArgPassedAsDouble"
 - !private "Ps24_DestructorSafeContainer"
 - !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- !private "Ps33_ExpressibleByBuiltinFloatLiteral"
+- !private "Ps35_ExpressibleByBuiltinIntegerLiteral"
 - !private "Ps34_ExpressibleByBuiltinStringLiteral"
 - !private "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
 - !private "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
 - !private "Ps33_ExpressibleByStringInterpolation"
 - !private "Ps35_HasCustomAnyHashableRepresentation"
 - "Ps9_Hashable"
+- !private "Ps14_Incrementable"
 - !private "Ps10_Indexable"
 - !private "Ps14_IndexableBase"
+- !private "Ps8_Integer"
+- !private "Ps18_IntegerArithmetic"
 - !private "Ps17_MutableIndexable"
 - !private "Ps21_ObjectiveCBridgeable"
 - !private "Ps22_RandomAccessIndexable"
 - !private "Ps26_RangeReplaceableIndexable"
+- !private "Ps14_SignedInteger"
+- !private "Ps11_Strideable"
 depends-dynamic-lookup:
 depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/XPC.apinotesc"
@@ -755,4 +951,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCAbstractTest.h"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElementQuery.h"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Modules/module.modulemap"
-interface-hash: "ec6056a09984644dd134f51b894ebdd1"
+interface-hash: "750ba09191ac6e89f68224fce9486b52"

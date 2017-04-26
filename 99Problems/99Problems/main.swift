@@ -388,7 +388,7 @@ extension List where T:Equatable {
 
     func removeDups() -> List {
         guard let next = nextItem else { return List(value) }
-        if next.contains(value) {
+        if next.listContains(value) {
             return next.removeDups()
         }
         return List(value) + next.removeDups()
@@ -498,12 +498,102 @@ func listSort<T, R:Comparable>(list: List<T>, by fn: @escaping (T) -> R) -> List
     return listSort(list: left!, by: fn) + head + listSort(list: right!, by: fn)
 }
 
-
-
 extension List where T:Equatable {
-    func contains(_ elem: T) -> Bool {
+    func listContains(_ elem: T) -> Bool {
         if value == elem { return true }
         if nextItem == nil { return false }
-        return nextItem!.contains(elem)
+        return nextItem!.listContains(elem)
     }
+}
+
+//====================================================================================
+//  Section 2: Arithmetic
+//P31 (**) Determine whether a given integer number is prime.
+extension Int {
+    func isPrime() -> Bool {
+        let n = self
+        guard n > 1 else { return false }
+        return Array(2..<n).all({n % $0 != 0})
+    }
+}
+
+extension Array {
+    func all(_ predicate: (Element) -> Bool) -> Bool {
+        //return self.filter(predicate).count == self.count
+        for x in self {
+            if !predicate(x) { return false }
+        }
+        return true
+    }
+    func any(_ predicate: (Element) -> Bool) -> Bool {
+        //return self.filter(predicate).count > 0
+        for x in self {
+            if predicate(x) { return true }
+        }
+        return false
+    }
+}
+
+//P32 (**) Determine the greatest common divisor of two positive integer numbers.
+extension Int {
+    static func gcd(first: Int, second: Int) -> Int {
+        if second == 0 { return abs(first) }
+        return gcd(first: second, second: first % second)
+    }
+}
+
+//P33 (*) Determine whether two positive integer numbers are coprime.
+extension Int {
+    func isCoprimeTo(_ other: Int) -> Bool {
+        return Int.gcd(first: self, second: other) == 1
+    }
+}
+
+//P34 (**) Calculate Euler’s totient function phi(m).
+//the count of all numbers that are coprime to m and <= m
+extension Int {
+    var totient: Int {
+        return Array(1...self).filter({$0.isCoprimeTo(self)}).count
+    }
+}
+
+//P35 (**) Determine the prime factors of a given positive integer.
+extension Int {
+    //note instead of checking 2...self, we reduce the set because any number between 
+    //half of self and self can't be a prime factor of self
+    var primeFactors: List<Int>? {
+        func pf(_ n: Int) -> List<Int>? {
+            guard n > 1 else { return nil }
+            guard let prime = primes(upTo: n)
+                .drop(count: 1)?
+                .filterList({$0.isFactor(of: n)})?.value else {
+                    return nil
+            }
+            return List(prime) + pf(n / prime)
+        }
+        return pf(self)
+    }
+    
+    func isFactor(of x: Int) -> Bool {
+        return x % self == 0
+    }
+
+    //I ended up not using these but perhaps they will be useful in the future
+    func isEven(_ x: Int) -> Bool {
+        return self % 2 == 0
+    }
+    func isOdd(_ x: Int) -> Bool {
+        return !isEven(x)
+    }
+    
+    func sqrtFloor() -> Int {
+        let f = Float(self)
+        return Int(floor(sqrt(f)))
+    }
+    
+}
+
+func primes(upTo max: Int) -> List<Int> {
+    guard max > 1 else { return List(1) }
+    return primes(upTo: max - 1) + List(max).filterList({$0.isPrime()})
 }
