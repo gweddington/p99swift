@@ -129,3 +129,47 @@ public struct IndexedItem<T> {
     var index: Int
 }
 
+
+public class BinaryTree<T> {
+    var node: T
+    var left: BinaryTree<T>?
+    var right: BinaryTree<T>?
+    
+    init(node: T, left: BinaryTree<T>? = nil, right: BinaryTree<T>? = nil) {
+        self.node = node
+        self.left = left
+        self.right = right
+    }
+}
+
+extension BinaryTree: CustomStringConvertible {
+    public var description: String {
+        return displayWithLevel()
+//        let len = length
+//        let spacer = repeatElement("  ", count: len - 1).joined()
+//        var s = "\(spacer)Node \(node)"
+//        if let l = left?.description { s += "\n\(spacer)L \(l)" } else { s += " nil" }
+//        if let r = right?.description { s += "\n\(spacer)R \(r)" } else { s += " nil" }
+//        if len > 1 { s = "\n\(s)" }
+//        return s
+    }
+    public func displayWithLevel(level: Int = 0) -> String {
+        let spacer = repeatElement("  ", count: level).joined()
+        var ls = "L\(left?.displayWithLevel(level: level+1) ?? "")"
+        var rs = "R\(right?.displayWithLevel(level: level+1) ?? "")"
+        if left != nil { ls = "\n\(ls)" }
+        if right != nil { rs = "\n\(rs)" }
+        let brk = level == 0 ? "\n" : ""
+        return "\(brk)\(spacer)\(level)-Node \(node)\(ls)\(rs)"
+    }
+}
+
+extension BinaryTree {
+    public var length: Int {
+        return 1 + (left?.length ?? 0) + (right?.length ?? 0)
+    }
+    
+    public var isLeaf: Bool {
+        return left == nil && right == nil
+    }
+}

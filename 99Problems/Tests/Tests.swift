@@ -359,8 +359,167 @@ class Tests: XCTestCase {
     
     //P40 (**) Goldbach’s conjecture.
     func testP40() {
-        let actual = 28.goldbach()
+        let actual = 28.goldbach()!
         XCTAssertEqual(actual.0, 5)
         XCTAssertEqual(actual.1, 23)
+        let a2 = 12.goldbach()!
+        XCTAssertEqual(a2.0, 5)
+        XCTAssertEqual(a2.1, 7)
+    }
+    
+    //P41 (**) A list of Goldbach compositions.
+    func testP41() {
+        let actual = Int.goldbachList(9...20)
+        let expected = List("10 = 3 + 7",
+                            "12 = 5 + 7",
+                            "14 = 3 + 11",
+                            "16 = 3 + 13",
+                            "18 = 5 + 13",
+                            "20 = 3 + 17")
+        XCTAssertEqual(actual, expected)
+        
+        print("skipping goldbachListLimited because it is slow to exec")
+        //let a2 = Int.goldbachListLimited(1...2000, minValue: 50)
+        //let e2 = List("992 = 73 + 919",
+        //              "1382 = 61 + 1321",
+        //              "1856 = 67 + 1789",
+        //              "1928 = 61 + 1867")
+        //XCTAssertEqual(a2, e2)
+    }
+    
+    //P46 (**) Truth tables for logical expressions.
+    func testP46() {
+        XCTAssertTrue(and(a: true, b: true))
+        XCTAssertFalse(and(a: true, b: false))
+        XCTAssertFalse(and(a: false, b: true))
+
+        XCTAssertTrue(or(a: true, b: false))
+        XCTAssertTrue(or(a: false, b: true))
+        XCTAssertFalse(or(a: false, b: false))
+        
+        XCTAssertTrue(nand(a: false, b: true))
+        XCTAssertTrue(nand(a: true, b: false))
+        XCTAssertFalse(nand(a: true, b: true))
+
+        XCTAssertFalse(nor(a: true, b: false))
+        XCTAssertFalse(nor(a: false, b: true))
+        XCTAssertTrue(nor(a: false, b: false))
+
+        XCTAssertTrue(xor(a: true, b: false))
+        XCTAssertTrue(xor(a: false, b: true))
+        XCTAssertFalse(xor(a: false, b: false))
+        XCTAssertFalse(xor(a: true, b: true))
+
+        XCTAssertFalse(impl(a: true, b: false))
+        XCTAssertTrue(impl(a: false, b: true))
+        XCTAssertTrue(impl(a: false, b: false))
+        XCTAssertTrue(impl(a: true, b: true))
+
+        XCTAssertFalse(equ(a: true, b: false))
+        XCTAssertFalse(equ(a: false, b: true))
+        XCTAssertTrue(equ(a: false, b: false))
+        XCTAssertTrue(equ(a: true, b: true))
+
+        let expected = List(
+            List(true,  true,  true )!,
+            List(true,  false, true )!,
+            List(false, true,  false)!,
+            List(false, false, false)!
+        )!
+        XCTAssertEqual(table(expression: { and(a: $0, b: or(a: $0, b: $1)) }), expected)
+    }
+    
+    //P47 (*) Truth tables for logical expressions - Part 2.
+    func testP47() {
+        let expected = List(
+            List(true,  true,  true )!,
+            List(true,  false, true )!,
+            List(false, true,  false)!,
+            List(false, false, false)!
+        )!
+        XCTAssertEqual(table(expression: { $0 ∧ ($0 ∨ $1) }), expected)
+    }
+    
+    //P48 (**) Truth tables for logical expressions - Part 3.
+    func testP48() {
+        let expected = List(
+            List(true,  true,  true,  true )!,
+            List(true,  true,  false, true )!,
+            List(true,  false, true,  true )!,
+            List(true,  false, false, false)!,
+            List(false, true,  true,  true )!,
+            List(false, true,  false, false)!,
+            List(false, false, true,  true )!,
+            List(false, false, false, false)!
+        )!
+        XCTAssertEqual(table(variables: 3, expression: { vars in vars[0] ∧ vars[1] ∨ vars[2] }), expected)
+        
+    }
+    
+    //P49 - Gray Codes
+    func testP49() {
+        let expected = List("000", "001", "011", "010", "110", "111", "101", "100")!
+        XCTAssertEqual(gray(number: 3), expected)
+
+    
+        let expected2 = List("0000", "0001", "0011", "0010", "0110", "0111", "0101", "0100"
+                            ,"1100","1101","1111","1110", "1010", "1011", "1001", "1000")!
+        XCTAssertEqual(gray(number: 4), expected2)
+
+        let gray2 = memoSingleArgFunc(fn: gray)
+        XCTAssertEqual(gray(number: 1), gray2(1))
+        XCTAssertEqual(gray(number: 2), gray2(2))
+        XCTAssertEqual(gray(number: 3), gray2(3))
+        XCTAssertEqual(gray(number: 4), gray2(4))
+    }
+
+    //with a gray number of 8, the memoized version was 3 times faster
+    //I think each measure block is executed 10 times
+    //this is the time for each run for one sample of 10
+    //[0.069467, 0.002209, 0.002203, 0.002208, 0.002748, 0.002333, 0.002179, 0.002195, 0.001838, 0.002455]
+    //notice the first one takes .07 secs and each subsequent one takes .002 secs
+//    func testSpeedGray() {
+//        measure {
+//            print(gray(number: 8))
+//        }
+//        //1.016
+//        //1.003
+//        //1.002
+//    }
+//    func testSpeedGray2() {
+//        let gray2 = memoSingleArgFunc(fn: gray)
+//        measure {
+//            print(gray2(8))
+//        }
+//        //0.347
+//        //0.349
+//        //0.371
+//    }
+    
+    func testP50() {
+        //note: we have to sort the huffman result to put the list in the same order as the
+        // expected result because order is not guaranteed to be the same as it was going in
+        // actually, the resulting order will be by the original int value NOT the orig string value
+        // so, in contrast, I could have just adjusted the expected result order
+        let actual = listSort(list: huffman(symbols: List(("a", 45), ("b", 13), ("c", 12), ("d", 16), ("e", 9), ("f", 5)))) { $0.0 }
+        let expected = List(("a", "0"), ("b", "101"), ("c", "100"), ("d", "111"), ("e", "1101"), ("f", "1100"))!
+        XCTAssertEqual(actual, expected)
+    }
+    
+    //P54 (*) Completely balanced trees.
+    func testP54() {
+        let balanced = BinaryTree(node: "a",
+                                  left: BinaryTree(node: "b"),
+                                  right: BinaryTree(node: "c"))
+        let unbalanced = BinaryTree(node: "x",
+                                   left: BinaryTree(node: "y",
+                                                    left: BinaryTree(node: "z")))
+        XCTAssert(balanced.isCompletelyBalanced)
+        XCTAssertFalse(unbalanced.isCompletelyBalanced)
+    }
+    
+    //P55 (**) Construct completely balanced binary trees.
+    func testP55() {
+        print(BinaryTree.makeBalancedTrees(nodes: 3, value: "x"))
     }
 }

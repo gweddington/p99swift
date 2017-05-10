@@ -360,6 +360,7 @@
 				4469CB771EA68A08002BEB0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4469CB811EA68AE2002BEB0E /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
@@ -368,6 +369,7 @@
 				4469CB831EA68AE2002BEB0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

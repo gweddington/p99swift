@@ -566,7 +566,6 @@ extension Int {
         func pf(_ n: Int) -> List<Int>? {
             guard n > 1 else { return nil }
             guard let prime = primes(upTo: n)
-                .drop(count: 1)?
                 .filterList({$0.isFactor(of: n)})?.value else {
                     return nil
             }
@@ -580,10 +579,10 @@ extension Int {
     }
 
     //I ended up not using these but perhaps they will be useful in the future
-    func isEven(_ x: Int) -> Bool {
-        return self % 2 == 0
+    static func isEven(_ x: Int) -> Bool {
+        return x % 2 == 0
     }
-    func isOdd(_ x: Int) -> Bool {
+    static func isOdd(_ x: Int) -> Bool {
         return !isEven(x)
     }
     
@@ -595,7 +594,7 @@ extension Int {
 }
 
 func primes(upTo max: Int) -> List<Int> {
-    guard max > 1 else { return List(1) }
+    guard max > 2 else { return List(2) }
     return primes(upTo: max - 1) + (max.isPrime() ? List(max) : nil)
 }
 
@@ -643,19 +642,241 @@ extension Int {
 
 //P40 (**) Goldbach’s conjecture.
 extension Int {
-    func goldbach() -> (Int, Int) {
+    func goldbach() -> (Int, Int)? {
         let ps = primes(upTo: self)
         let rs = ps.reverse()
-        func match(_ xs: List<Int>, _ ys: List<Int>) -> (Int, Int) {
-            let x = xs.value!, y = ys.value!
-            func nextMatch() -> (Int, Int) {
-                if xs.nextItem != nil { return match(xs.nextItem!, ys) }
-                if ys.nextItem != nil { return match(xs, ys.nextItem!) }
-                return (0,0)    //we hopefully never get here
-            }
-            guard x + y == self else { return nextMatch() }
-            return (x, y)
-        }
-        return match(ps, rs)
+        let match = self
+        return findMatchingElements(from: ps, and: rs, where: { (x, y) -> Bool in
+            x + y == match
+        })
     }
 }
+func findMatchingElements<T>(from list1: List<T>, and list2: List<T>, where predicate: @escaping (T, T) -> Bool) -> (T, T)? {
+    func match(_ xIndex: Int = 0, _ yIndex: Int = 0) -> (T, T)? {
+        let x = list1[xIndex]!, y = list2[yIndex]!
+        func nextMatch() -> (T, T)? {
+            let xInvalid = xIndex >= list1.length - 1
+            let yInvalid = yIndex >= list2.length - 1
+            if xInvalid && yInvalid { return nil }
+            if xInvalid { return match(0, yIndex + 1) }
+            if yInvalid { return match(xIndex + 1, 0) }
+            return match(xIndex + 1, yIndex)
+        }
+        guard predicate(x, y) else { return nextMatch() }
+        return (x, y)
+    }
+    return match()
+    
+}
+
+//P41 (**) A list of Goldbach compositions.
+extension Int {
+    static func goldbachList(_ range: CountableClosedRange<Int>) -> List<String> {
+        func toGBString(x: Int) -> String {
+            guard let (a, b) = x.goldbach() else { return "" }
+            return "\(x) = \(a) + \(b)"
+        }
+        return List(Array(range)).filterList(Int.isEven)!.mapList(toGBString)
+    }
+}
+/*In most cases, if an even number is written as the sum of two prime numbers, one of them is very small. Very rarely, the primes are both bigger than, say, 50. Try to find out how many such cases there are in the range 2...3000.
+NOTE: this is REALLY slow, it works but is impractical due to its speed
+*/
+extension Int {
+    static func goldbachListLimited(_ range: CountableClosedRange<Int>, minValue: Int) -> List<String> {
+        func toGBString(x: Int) -> String? {
+            guard let (a, b) = x.goldbach() else { return nil }
+            guard a >= minValue && b >= minValue else { return nil }
+            return "\(x) = \(a) + \(b)"
+        }
+        return List(Array(range))
+            .filterList(Int.isEven)!
+            .mapList(toGBString)
+            .filterList({$0 != nil})!
+            .mapList({$0!})
+    }
+}
+
+//P46 (**) Truth tables for logical expressions.
+func and(a: Bool, b: Bool) -> Bool {
+    guard a else { return false }
+    guard b else { return false }
+    return true
+    //also could be return a && b but that feels like cheating
+}
+func or(a: Bool, b: Bool) -> Bool {
+    guard a else { return b }
+    return true
+}
+func nand(a: Bool, b: Bool) -> Bool {
+    return !and(a: a, b: b)
+}
+func nor(a: Bool, b: Bool) -> Bool {
+    return !or(a:a, b:b)
+}
+func xor(a: Bool, b: Bool) -> Bool {
+    return a != b
+}
+func impl(a: Bool, b: Bool) -> Bool {
+    if a && !b { return false }
+    return true
+}
+func equ(a: Bool, b: Bool) -> Bool {
+    return !xor(a: a, b: b)
+}
+func table(expression: @escaping (Bool,Bool) -> Bool) -> List<List<Bool>> {
+    func apply(_ a: Bool) -> (Bool) -> List<Bool> {
+        return { (_ b: Bool) in
+            List<Bool>(a, b, expression(a, b))!
+        }
+    }
+    let tt = apply(true)(true)
+    let tf = apply(true)(false)
+    let ft = apply(false)(true)
+    let ff = apply(false)(false)
+    return List(tt, tf, ft, ff)
+}
+
+//P47 (*) Truth tables for logical expressions - Part 2.
+precedencegroup AndNandPrecedence { higherThan: ComparisonPrecedence }
+infix operator ∧: AndNandPrecedence         //and
+infix operator ⊼: AndNandPrecedence         //nand
+infix operator ∨: ComparisonPrecedence      //or
+infix operator ⊽: ComparisonPrecedence      //nor
+infix operator ⊕: ComparisonPrecedence      //xor
+infix operator →: ComparisonPrecedence      //impl
+infix operator ≡: ComparisonPrecedence      //xnor or equ
+func ∧(left: Bool, right: Bool) -> Bool {
+    return and(a: left, b: right)
+}
+func ⊼(left: Bool, right: Bool) -> Bool {
+    return nand(a: left, b: right)
+}
+func ∨(left: Bool, right: Bool) -> Bool {
+    return or(a: left, b: right)
+}
+func ⊽(left: Bool, right: Bool) -> Bool {
+    return nor(a: left, b: right)
+}
+func ⊕(left: Bool, right: Bool) -> Bool {
+    return xor(a: left, b: right)
+}
+func →(left: Bool, right: Bool) -> Bool {
+    return impl(a: left, b: right)
+}
+func ≡(left: Bool, right: Bool) -> Bool {
+    return equ(a: left, b: right)
+}
+
+//P48 (**) Truth tables for logical expressions - Part 3.
+func table(variables: Int, expression: @escaping ([Bool]) -> Bool) -> List<List<Bool>> {
+    func combineBools(times: Int) -> List<List<Bool>> {
+        guard times > 1 else {
+            return List<List<Bool>>([List<Bool>([true])!, List<Bool>([false])!])
+        }
+        let next = combineBools(times: times - 1)
+        let trues = next.mapList({List<Bool>(true) + $0})
+        let falses = next.mapList({List<Bool>(false) + $0})
+        return trues + falses
+    }
+    
+    let bools = combineBools(times: variables)
+    
+    return bools.mapList({$0 + List<Bool>(expression($0.values()))})
+}
+
+//P49 - Gray Codes
+func gray(number: Int) -> List<String> {
+    guard number > 1 else { return List("0","1") }
+    let rest = gray(number: number - 1)
+    let r2 = rest.reverse()
+    return rest.mapList({"0" + $0}) + r2.mapList({"1" + $0})
+}
+//See if you can use memoization to make the function more efficient.
+func memoSingleArgFunc<T:Hashable,R>(fn: @escaping (T) -> R) -> (T) -> R {
+    var memo: [T:R] = [:]
+    return { (v: T) in
+        if let m = memo[v] {
+            return m
+        }
+        memo[v] = fn(v)
+        return memo[v]!
+    }
+}
+//P50 (***) Huffman code.
+func huffman(symbols: List<(String, Int)>) -> List<(String, String)> {
+    //1. build a huffman tree
+    let tree = buildHuffmanTree(symbols: symbols)
+    //2. traverse the tree and assign codes
+    return codeHuffmanTree(tree: tree)!
+}
+typealias huffmanTree = BinaryTree<(String, Int)>
+func buildHuffmanTree(symbols: List<(String, Int)>) -> huffmanTree {
+    func huff(_ treeList: List<huffmanTree>) -> List<huffmanTree> {
+        guard treeList.length > 1 else { return treeList }
+        let heap = listSort(list: treeList) { $0.node.1 }
+        let top2 = heap.take(2)
+        let first = top2.value!
+        let second = top2.nextItem!.value!
+        let node = ("Internal Node", first.node.1 + second.node.1)
+        let tree = huffmanTree(node: node, left: first, right: second)
+        guard let rest = heap.drop(count: 2) else { return List(tree) }
+        return huff(List(tree) + rest)
+    }
+    func fromPairToHuffmanTree(pair: (String, Int)) -> huffmanTree {
+        return huffmanTree(node: pair)
+    }
+    let treeList = symbols.mapList(fromPairToHuffmanTree)
+    return huff(treeList).value
+}
+func codeHuffmanTree(tree: huffmanTree?, code: String = "") -> List<(String, String)>? {
+    guard let tree = tree else { return nil }
+    guard tree.length > 1 else { return List((tree.node.0, code)) }
+    guard tree.isLeaf == false else { return List((tree.node.0, code)) }
+    let left = codeHuffmanTree(tree: tree.left, code: "\(code)0")
+    let right = codeHuffmanTree(tree: tree.right, code: "\(code)1")
+    if left != nil { return left! + right }
+    return right
+}
+
+//P54 (*) Completely balanced trees.
+extension BinaryTree {
+    public var isCompletelyBalanced: Bool {
+        return abs((left?.length ?? 0) - (right?.length ?? 0)) <= 1
+    }
+}
+
+//P55 (**) Construct completely balanced binary trees.
+extension BinaryTree {
+    static func makeBalancedTrees(nodes: Int, value: T) -> List<BinaryTree<T>>? {
+        guard nodes > 0 else { return nil }
+        guard nodes > 1 else { return List(BinaryTree(node: value)) }
+
+        let half = (nodes - 1) / 2
+        let otherHalf = nodes - half - 1
+        let xs = makeBalancedTrees(nodes: half, value: value)?
+            .mapList({ Optional($0) })
+        let ys = makeBalancedTrees(nodes: otherHalf, value: value)?
+            .mapList({ Optional($0) })
+        let pairs = cartesian(a: xs, b: ys)!
+        //if nodes is odd, half and otherHalf will be identical
+        //in which case, we don't need to swap the left and right trees
+        //because that will create duplicates
+        let swapped = half == otherHalf ?
+            nil :
+            pairs.mapList({BinaryTree(node: value, left: $0.1, right: $0.0)})
+        return pairs.mapList({BinaryTree(node: value, left: $0.0, right: $0.1)})
+            + swapped
+    }
+}
+
+func cartesian<T>(a: List<T?>?, b: List<T?>?) -> List<(T?,T?)>? {
+    if a == nil && b == nil { return nil }
+    else if a == nil { return b!.mapList({ (nil, $0) }) }
+    else if b == nil { return a!.mapList({ ($0, nil) }) }
+    let a = a!, b = b!
+    let part = b.mapList({ (a.value!, $0) })
+    guard let next = a.nextItem else { return part }
+    return part + cartesian(a: next, b: b)
+}
+
