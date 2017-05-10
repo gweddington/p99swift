@@ -5,6 +5,7 @@ provides-top-level:
 - "BinaryTree"
 - "=="
 - "=="
+- "=="
 provides-nominal:
 - "C5Tests4List"
 - "V5Tests11IndexedItem"
@@ -100,6 +101,7 @@ depends-member:
 - !private ["Ps23BidirectionalCollection", "init"]
 - !private ["Ps23BidirectionalCollection", "joined"]
 - !private ["Ps23BidirectionalCollection", "removeFirst"]
+- ["C5Tests10BinaryTree", "=="]
 - ["C5Tests10BinaryTree", "BinaryTree"]
 - ["C5Tests10BinaryTree", "Bool"]
 - ["C5Tests10BinaryTree", "Int"]
@@ -187,6 +189,7 @@ depends-member:
 - ["Ps9Equatable", "_preprocessingPass"]
 - !private ["Ps9Equatable", "clone"]
 - ["Ps9Equatable", "description"]
+- !private ["Ps9Equatable", "displayWithLevel"]
 - ["Ps9Equatable", "drop"]
 - ["Ps9Equatable", "dropFirst"]
 - ["Ps9Equatable", "dropLast"]
@@ -195,13 +198,17 @@ depends-member:
 - ["Ps9Equatable", "forEach"]
 - !private ["Ps9Equatable", "init"]
 - !private ["Ps9Equatable", "insert"]
+- !private ["Ps9Equatable", "left"]
 - !private ["Ps9Equatable", "length"]
 - ["Ps9Equatable", "makeIterator"]
 - ["Ps9Equatable", "map"]
 - ["Ps9Equatable", "next"]
 - !private ["Ps9Equatable", "nextItem"]
+- !private ["Ps9Equatable", "node"]
 - ["Ps9Equatable", "prefix"]
 - !private ["Ps9Equatable", "remove"]
+- !private ["Ps9Equatable", "repeatElement"]
+- !private ["Ps9Equatable", "right"]
 - ["Ps9Equatable", "split"]
 - ["Ps9Equatable", "suffix"]
 - !private ["Ps9Equatable", "swapValuesAtIndices"]
@@ -529,4 +536,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCAbstractTest.h"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCUIElementQuery.h"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Modules/module.modulemap"
-interface-hash: "66780ccb9325fb4f0e1a50fd67468c91"
+interface-hash: "5c1ae150a3158956080d0a6814147258"

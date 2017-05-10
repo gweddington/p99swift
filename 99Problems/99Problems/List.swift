@@ -173,3 +173,11 @@ extension BinaryTree {
         return left == nil && right == nil
     }
 }
+
+extension BinaryTree: Equatable {
+    //for my testing purposes, its good enough to test the equality of the string representation
+    //of the node values (as opposed to requiring T itself to be equatable
+    static public func ==(a: BinaryTree, b: BinaryTree) -> Bool {
+        return "\(a.node)" == "\(b.node)" && a.left == b.left && a.right == b.right
+    }
+}

@@ -880,3 +880,17 @@ func cartesian<T>(a: List<T?>?, b: List<T?>?) -> List<(T?,T?)>? {
     return part + cartesian(a: next, b: b)
 }
 
+//P56 (**) Symmetric binary trees.
+extension BinaryTree {
+    func isMirrorOf(tree: BinaryTree) -> Bool {
+        guard !isLeaf else { return tree.isLeaf }
+        if let l = left, let r = tree.right { return l.isMirrorOf(tree: r) }
+        if let r = right, let l = tree.left { return r.isMirrorOf(tree: l) }
+        return false
+    }
+    var isSymmetric: Bool {
+        guard left != nil else { return right == nil }  //if both nil then it is symmetric
+        guard right != nil else { return false } //if left is not nil but right is nil
+        return left!.isMirrorOf(tree: right!)
+    }
+}

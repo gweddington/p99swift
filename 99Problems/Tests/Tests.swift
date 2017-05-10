@@ -520,6 +520,39 @@ class Tests: XCTestCase {
     
     //P55 (**) Construct completely balanced binary trees.
     func testP55() {
-        print(BinaryTree.makeBalancedTrees(nodes: 3, value: "x"))
+        let actual = BinaryTree.makeBalancedTrees(nodes: 4, value: "x")
+        let leaf = BinaryTree(node: "x")
+        let s0 = BinaryTree(node: "x",
+                            left: leaf,
+                            right: BinaryTree(node: "x",
+                                              left: leaf,
+                                              right: nil))
+        let s1 = BinaryTree(node: "x",
+                            left: leaf,
+                            right: BinaryTree(node: "x",
+                                              left: nil,
+                                              right: leaf))
+        let s2 = BinaryTree(node: "x",
+                            left: BinaryTree(node: "x",
+                                             left: leaf,
+                                             right: nil),
+                            right: leaf)
+        let s3 = BinaryTree(node: "x",
+                            left: BinaryTree(node: "x",
+                                             left: nil,
+                                             right: leaf),
+                            right: leaf)
+        XCTAssert((actual?.values().any({ $0 == s0 }))!)
+        XCTAssert((actual?.values().any({ $0 == s1 }))!)
+        XCTAssert((actual?.values().any({ $0 == s2 }))!)
+        XCTAssert((actual?.values().any({ $0 == s3 }))!)
+    }
+    
+    //P56 (**) Symmetric binary trees.
+    func testP56() {
+        let tree = BinaryTree(node: "A", left: BinaryTree(node: "B"), right: BinaryTree(node: "C"))
+        let tree2 = BinaryTree(node: "A", left: BinaryTree(node: "B"), right: BinaryTree(node: "C", left: BinaryTree(node: "D")))
+        XCTAssert(tree.isSymmetric)
+        XCTAssertFalse(tree2.isSymmetric)
     }
 }
